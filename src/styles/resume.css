@@ -129,17 +129,33 @@
 
 .p-stripe {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1rem;
-  padding: 1rem 1.25rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  padding: 1.1rem 0;
   margin-bottom: 1rem;
   border: 1px solid var(--p-line);
   border-radius: 14px;
   background: var(--p-panel);
 }
 
+.p-stripe .p-stat {
+  padding: 0 1.4rem;
+}
+
+.p-stripe .p-stat + .p-stat {
+  border-left: 1px solid var(--p-line);
+}
+
 .p-stripe .p-stat b {
-  font-size: 2.2rem;
+  font-size: 3rem;
+}
+
+.p-stripe .p-stat span {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--p-ink);
 }
 
 /* AI panel */
@@ -598,6 +614,10 @@
   }
   .p-stripe {
     grid-template-columns: 1fr 1fr;
+    gap: 1rem 0;
+  }
+  .p-stripe .p-stat:nth-child(3) {
+    border-left: 0;
   }
   .p-journey {
     grid-template-columns: 1fr 1fr;
