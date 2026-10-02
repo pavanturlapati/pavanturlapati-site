@@ -129,7 +129,7 @@
 
 .p-stripe {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 0;
   padding: 1.1rem 0;
   margin-bottom: 1rem;
@@ -139,7 +139,7 @@
 }
 
 .p-stripe .p-stat {
-  padding: 0 1.4rem;
+  padding: 0 1.2rem;
 }
 
 .p-stripe .p-stat + .p-stat {
@@ -147,12 +147,12 @@
 }
 
 .p-stripe .p-stat b {
-  font-size: 3rem;
+  font-size: 2.8rem;
 }
 
 .p-stripe .p-stat span {
   margin-top: 0.5rem;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   line-height: 1.35;
   color: var(--p-ink);
