@@ -2,6 +2,7 @@ node_modules/
 dist/
 .astro/
 exports/
+TODO.md
 .env
 .env.*
 !.env.example
