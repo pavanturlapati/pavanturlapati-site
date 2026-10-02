@@ -78,17 +78,24 @@ browser's Print, then Save as PDF, if someone asks for one.
 
 ## One-time setup
 
-1. **Create a GitHub repo** and push this folder as its root (`main` branch).
-2. **GitHub, Settings, Pages:** set *Source* to **GitHub Actions**.
-3. **GitHub, Settings, Pages, Custom domain:** enter `pavanturlapati.com`
-   (`public/CNAME` already contains it) and enable *Enforce HTTPS* once the
-   certificate is issued.
+Status: steps 1–3 are done (repo `pavanturlapati/pavanturlapati-site`, Pages
+source set to GitHub Actions, custom domain saved). Step 4 is DNS at
+Cloudflare. The record values below were checked against GitHub's docs on
+2026-10-01.
+
+1. **GitHub repo:** `pavanturlapati/pavanturlapati-site`, `main` branch.
+2. **GitHub, Settings, Pages:** *Source* is **GitHub Actions**.
+3. **GitHub, Settings, Pages, Custom domain:** `pavanturlapati.com`. Enable
+   *Enforce HTTPS* once the certificate is issued (up to 24 hours after DNS
+   resolves). With Actions publishing, `public/CNAME` is ignored but harmless.
 4. **Cloudflare DNS** for `pavanturlapati.com`, with the proxy set to
    **DNS only** (grey cloud) so GitHub can issue the certificate:
-   - four `A` records on the apex, `185.199.108.153`, `185.199.109.153`,
-     `185.199.110.153`, `185.199.111.153`, or one `CNAME` on the apex pointing
-     at `<your-github-username>.github.io` (Cloudflare flattens it);
-   - a `CNAME` for `www` pointing at `<your-github-username>.github.io`.
+   - four `A` records on `@`: `185.199.108.153`, `185.199.109.153`,
+     `185.199.110.153`, `185.199.111.153`;
+   - optionally four `AAAA` records on `@`: `2606:50c0:8000::153`,
+     `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`;
+   - a `CNAME` for `www` pointing at `pavanturlapati.github.io` (without the
+     repo name).
 5. Check GitHub's current custom-domain guide if any of the above has changed.
 
 ### Vedanta notes on a subdomain
