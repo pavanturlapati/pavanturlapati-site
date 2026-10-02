@@ -210,6 +210,10 @@
   color: var(--p-pink);
 }
 
+.p-checks-cyan li::before {
+  color: var(--p-cyan);
+}
+
 .p-checks .p-more {
   color: var(--p-muted);
   font-style: italic;

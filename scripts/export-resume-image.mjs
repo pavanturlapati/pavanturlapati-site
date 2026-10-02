@@ -34,8 +34,8 @@ const outFile = join(
 /** Hero card: roughly the 1.91:1 ratio LinkedIn uses for link and media cards. */
 const heroCss =
   ".p-grid{grid-template-columns:1fr 1fr!important}" +
-  ".p-grid>.p-col:nth-child(1)>.p-panel:nth-child(2){display:none!important}" +
-  ".p-grid>.p-col:nth-child(2)>.p-panel:nth-child(2){display:none!important}" +
+  ".p-grid>.p-col:nth-child(1)>.p-panel:nth-child(n+2){display:none!important}" +
+  ".p-grid>.p-col:nth-child(2)>.p-panel:nth-child(n+2){display:none!important}" +
   ".p-grid>.p-col:nth-child(3){display:none!important}" +
   ".p-row{display:none!important}" +
   ".p-grid{margin-bottom:1rem!important}" +

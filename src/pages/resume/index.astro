@@ -44,31 +44,11 @@ const impact = [
   },
 ];
 
-const scope = [
-  {
-    title: "Four consumer brands",
-    text: "One quality approach across web, mobile, ordering, loyalty, payment, API and POS journeys.",
-  },
-  {
-    title: "A major release every week",
-    text: "Plus small releases almost daily, governed with clear entry and exit criteria.",
-  },
-  {
-    title: "End-to-end validation",
-    text: "Functional, integration, automation and performance testing.",
-  },
-  {
-    title: "Risk-based governance",
-    text: "Quality reporting, defect governance and executive escalation.",
-  },
-  {
-    title: "Engagement leadership",
-    text: "Client satisfaction, delivery, staffing, growth and commercial outcomes.",
-  },
-  {
-    title: "Cross-functional partner",
-    text: "Works daily with Engineering, Platform, Product and Operations.",
-  },
+const projects = [
+  "Cloudflare Browser Run proof of concept",
+  "Automated Scrum Master with Power Automate and SharePoint",
+  "Agentic API and web automation projects",
+  "Claude AI certification",
 ];
 
 const aiTools = [
@@ -379,20 +359,30 @@ const value = [
           <h3 class="p-mini">Agents and tools I built</h3>
           <ul class="p-checks">
             {aiBuilt.map((item) => <li>{item}</li>)}
-            <li class="p-more">…and more</li>
+            <li class="p-more">…and more in progress</li>
           </ul>
         </section>
 
-        <section class="p-panel" aria-labelledby="scope">
-          <h2 class="p-title t-cyan" id="scope">Current scope</h2>
+        <section class="p-panel" aria-labelledby="projects">
+          <h2 class="p-title t-cyan" id="projects">
+            Recent hands-on projects
+          </h2>
           <p class="p-lead">
-            End-to-end digital quality for a multi-brand consumer portfolio.
+            Hobby builds and learning that keep me close to what's next.
           </p>
-          <ul class="p-tiles">
+          <ul class="p-checks p-checks-cyan">
+            {projects.map((item) => <li>{item}</li>)}
+            <li class="p-more">…and more in progress</li>
+          </ul>
+        </section>
+
+        <section class="p-panel" aria-labelledby="domains">
+          <h2 class="p-title t-green" id="domains">Domains delivered</h2>
+          <ul class="p-domains">
             {
-              scope.map((item) => (
-                <li class="p-tile">
-                  <strong>{item.title}</strong>
+              domains.map((item) => (
+                <li>
+                  <strong>{item.name}</strong>
                   <span>{item.text}</span>
                 </li>
               ))
@@ -412,20 +402,6 @@ const value = [
               </div>
             ))
           }
-        </section>
-
-        <section class="p-panel" aria-labelledby="domains">
-          <h2 class="p-title t-green" id="domains">Domains delivered</h2>
-          <ul class="p-domains">
-            {
-              domains.map((item) => (
-                <li>
-                  <strong>{item.name}</strong>
-                  <span>{item.text}</span>
-                </li>
-              ))
-            }
-          </ul>
         </section>
 
         <section class="p-panel" aria-labelledby="tech">
