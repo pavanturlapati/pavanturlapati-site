@@ -1,0 +1,99 @@
+---
+import Base from "../layouts/Base.astro";
+import { getArticles, getFilms, getLinks, getNotes } from "../lib/content";
+import { excerpt, formatDate, stars } from "../lib/format";
+import { site } from "../config";
+
+const [articles, notes, links] = await Promise.all([
+  getArticles(),
+  getNotes(),
+  getLinks(),
+]);
+
+type Item = {
+  kind: string;
+  date: Date;
+  title: string;
+  href: string;
+  summary?: string;
+  external?: boolean;
+};
+
+// Only the three most recent reviews with text appear here; every watch is
+// on /watching/.
+const reviews = getFilms()
+  .filter((film) => film.kind === "review" && film.review)
+  .slice(0, 3);
+
+const latest: Item[] = [
+  ...articles.map((entry) => ({
+    kind: "Article",
+    date: entry.data.date,
+    title: entry.data.title,
+    href: `/writing/${entry.id}/`,
+    summary: entry.data.description,
+  })),
+  ...notes.map((entry) => ({
+    kind: "Note",
+    date: entry.data.date,
+    title: excerpt(entry.body ?? "", 110),
+    href: `/notes/${entry.id}/`,
+  })),
+  ...links.map((entry) => ({
+    kind: "Link",
+    date: entry.data.date,
+    title: entry.data.title,
+    href: entry.data.url,
+    external: true,
+  })),
+  ...reviews.map((film) => ({
+    kind: "Film",
+    date: new Date(film.publishedAt),
+    title: `${film.title}${film.year ? ` (${film.year})` : ""} ${stars(film.rating)}`.trim(),
+    href: "/watching/",
+    summary: film.review ?? undefined,
+  })),
+]
+  .sort((a, b) => b.date.getTime() - a.date.getTime())
+  .slice(0, 10);
+---
+
+<Base>
+  <h1>{site.name}</h1>
+  <p class="lede">{site.tagline}</p>
+  <p>
+    Looking for a conversation about a role or mentoring? Have a look at my
+    <a href="/resume/">résumé</a> or <a href={`mailto:${site.email}`}>email me</a>.
+  </p>
+
+  <h2>Latest</h2>
+  {
+    latest.length === 0 ? (
+      <p class="empty">Nothing published yet.</p>
+    ) : (
+      <ul class="entries">
+        {latest.map((item) => (
+          <li class="entry">
+            <div class="meta">
+              <span class="badge">{item.kind}</span>
+              <time datetime={item.date.toISOString()}>
+                {formatDate(item.date)}
+              </time>
+            </div>
+            <h3>
+              <a
+                href={item.href}
+                {...(item.external
+                  ? { rel: "noopener", target: "_blank" }
+                  : {})}
+              >
+                {item.title}
+              </a>
+            </h3>
+            {item.summary && <p>{excerpt(item.summary, 180)}</p>}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</Base>

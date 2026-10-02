@@ -1,0 +1,22 @@
+---
+import { site, socials } from "../config";
+---
+
+<footer class="site-footer">
+  <div class="shell">
+    <ul aria-label="Elsewhere">
+      {
+        socials.map((item) => (
+          <li>
+            <a href={item.href} rel="me noopener" target="_blank">
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+      <li><a href={`mailto:${site.email}`}>Email</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+    </ul>
+    <p>© {site.name}</p>
+  </div>
+</footer>

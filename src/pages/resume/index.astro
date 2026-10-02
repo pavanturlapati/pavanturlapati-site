@@ -1,0 +1,504 @@
+---
+import "../../styles/resume.css";
+import Base from "../../layouts/Base.astro";
+import { site } from "../../config";
+
+const expertise = [
+  "Quality strategy",
+  "Testing COE",
+  "AI-augmented QE",
+  "Automation",
+  "Release governance",
+  "Performance",
+  "Digital platforms",
+  "Client leadership",
+  "DevOps quality",
+  "Framework and tooling strategy",
+  "Data migration quality",
+];
+
+const stats = [
+  { value: "20+", label: "Years in quality engineering, since Dec 2005" },
+  { value: "65+", label: "Resources managed: 15+ onsite, 50+ offshore" },
+  { value: "30%", label: "Cost savings while the scope doubled" },
+  { value: "2 → 4", label: "Brands delivered, with a team of 7 instead of 20" },
+  { value: "Weekly", label: "Major release, with small releases almost daily" },
+];
+
+const impact = [
+  {
+    title: "Doubled the scope with a smaller team",
+    text: "Brands grew from two to four while the testing team went from 20 to 7, with about 30% cost savings. Small releases still went out almost daily and a major release every week, through prioritization and AI-based automation.",
+  },
+  {
+    title: "Stabilized the account, repeatedly",
+    text: "Stepped in hands-on and resolved critical technical problems, several times protecting delivery and the client relationship.",
+  },
+
+  {
+    title: "Right framework, right tools",
+    text: "Guided the decision on the automation framework and low-cost tooling the program runs on.",
+  },
+  {
+    title: "Building the QE practice",
+    text: "Establishing standards, reusable assets and ways of working across brands and workstreams.",
+  },
+];
+
+const scope = [
+  {
+    title: "Four brands, up from two",
+    text: "One quality approach across web, mobile, ordering, loyalty, payment, API and POS journeys.",
+  },
+  {
+    title: "A major release every week",
+    text: "Plus small releases almost daily, governed with clear entry and exit criteria.",
+  },
+  {
+    title: "End-to-end validation",
+    text: "Functional, integration, automation and performance testing.",
+  },
+  {
+    title: "Risk-based governance",
+    text: "Quality reporting, defect governance and executive escalation.",
+  },
+  {
+    title: "Engagement leadership",
+    text: "Client satisfaction, delivery, staffing, growth and commercial outcomes.",
+  },
+  {
+    title: "Cross-functional partner",
+    text: "Works daily with Engineering, Platform, Product and Operations.",
+  },
+];
+
+const aiTools = [
+  "ChatGPT",
+  "Claude",
+  "Copilot",
+  "Personal MCP agents",
+  "Reusable skills",
+];
+
+const aiUses = [
+  "Test case generation",
+  "Automation code",
+  "Test data",
+  "Defect triage",
+  "Release readiness reports",
+  "Documentation",
+];
+
+const aiBuilt = [
+  "Test case and script generator",
+  "Release analysis skill",
+  "Test execution agents",
+  "Defect root-cause (RCA) agent",
+  "Custom reports from Jira data via the Jira REST API",
+  "Automatic build download and install",
+];
+
+const groups = [
+  {
+    title: "Quality & testing",
+    color: "t-cyan",
+    text: "Quality strategy · Risk-based testing · Functional and integration · Performance · API and end-to-end · Service virtualization · Data validation",
+  },
+  {
+    title: "Automation & DevOps",
+    color: "t-orange",
+    text: "Automation frameworks · CI/CD · DevOps quality · Release governance · Cloud migration validation",
+  },
+  {
+    title: "Delivery & leadership",
+    color: "t-purple",
+    text: "Engagement management · Client leadership · Onsite and offshore teams · Building a QE practice · Framework and tooling decisions · Guiding and mentoring · Executive reporting",
+  },
+];
+
+const domains = [
+  {
+    name: "Healthcare",
+    text: "HIPAA claims · Gentran EDI · Laboratory validation",
+  },
+  { name: "Telecom", text: "Internet · LAN · Voice" },
+  { name: "Insurance", text: "Siebel automation · Java-to-Pega migration" },
+  { name: "Restaurant (QSR)", text: "Ordering · Loyalty · Payment · POS" },
+  { name: "Retail", text: "POS and digital journeys" },
+  { name: "Media", text: "Data engineering quality" },
+];
+
+const tech = [
+  {
+    title: "Languages",
+    color: "t-cyan",
+    text: "Java · C# · JavaScript · TypeScript · Python",
+  },
+  {
+    title: "Modern automation",
+    color: "t-orange",
+    text: "Playwright · Selenium · Appium · Rest Assured · Tosca · Copado",
+  },
+  {
+    title: "Foundations",
+    color: "t-purple",
+    text: "QTP · BPT · WinRunner · Winium · SSMS",
+  },
+  {
+    title: "Cloud",
+    color: "t-green",
+    text: "AWS · Azure · Google Cloud",
+  },
+];
+
+const certifications = [
+  "Professional Scrum Master I",
+  "Certified SAFe 5 DevOps Practitioner",
+  "ISTQB Certified Tester, Foundation Level",
+  "Tricentis Tosca credentials",
+  "Copado Robotic Testing",
+  "Google Cloud Fundamentals",
+  "AWS Business Professional",
+];
+
+const journey = [
+  {
+    when: "Dec 2005",
+    title: "Started in testing",
+    text: "Test Analyst and Test Engineer",
+  },
+  {
+    when: "Before 2014",
+    title: "Hands-on to lead",
+    text: "Test Lead, automation, service virtualization, migrations",
+  },
+  {
+    when: "Apr 2014",
+    title: "Manager",
+    text: "Delivery Test and DevOps Lead",
+  },
+  {
+    when: "Jul 2019",
+    title: "Senior Manager",
+    text: "Engagement Manager for 65+ people and Delivery Lead, four brands",
+  },
+  {
+    when: "Today",
+    title: "Building a QE practice",
+    text: "AI-augmented delivery at scale",
+  },
+];
+
+const value = [
+  {
+    title: "Build a testing COE",
+    text: "Standards, frameworks, reusable assets and a practice teams can adopt.",
+  },
+  {
+    title: "Raise automation efficiency",
+    text: "The right framework and low-cost tools, with AI where it pays off.",
+  },
+  {
+    title: "Solve hard technical problems",
+    text: "Hands-on depth to unblock teams and protect delivery.",
+  },
+  {
+    title: "Lead people and delivery",
+    text: "Technical credibility with people, project and client management.",
+  },
+];
+---
+
+<Base
+  wide
+  title="Résumé"
+  description="Pavan Turlapati: hands-on quality engineering and delivery leader with 20+ years of experience in testing COEs, automation, AI-augmented testing and release governance."
+>
+  <article class="poster" aria-labelledby="resume-name">
+    <header class="p-hero">
+      <div>
+        <p class="p-headline">
+          Building quality in.<br />
+          Releasing with confidence.<br />
+          Leading delivery <span class="p-grad-text">at scale.</span>
+        </p>
+        <p class="p-headline-sub">
+          Quality engineering · Automation · AI-augmented delivery
+        </p>
+      </div>
+
+      <div class="p-name-block">
+        <h1 class="p-name" id="resume-name">{site.name}</h1>
+        <p class="p-role">Technical Quality &amp; Delivery Leader</p>
+        <p class="p-tagline">
+          A hands-on technical leader who also delivers on people, projects and
+          clients, now scaled with AI.
+        </p>
+      </div>
+
+      <blockquote class="p-quote">
+        Process should guide our judgment, <em>not replace it.</em>
+      </blockquote>
+    </header>
+
+    <ul class="p-stripe" aria-label="Key numbers">
+      {
+        stats.map((stat) => (
+          <li class="p-stat">
+            <b>{stat.value}</b>
+            <span>{stat.label}</span>
+          </li>
+        ))
+      }
+    </ul>
+
+    <ul class="p-chips" aria-label="Areas of expertise">
+      {expertise.map((item) => <li>{item}</li>)}
+    </ul>
+
+    <div class="p-grid">
+      <div class="p-col">
+        <section class="p-panel" aria-labelledby="impact">
+          <h2 class="p-title t-orange" id="impact">Impact</h2>
+          <ul class="p-impact">
+            {
+              impact.map((item) => (
+                <li>
+                  <strong>{item.title}</strong>
+                  <span>{item.text}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <section class="p-panel" aria-labelledby="experience">
+          <h2 class="p-title t-purple" id="experience">
+            Experience highlights
+          </h2>
+
+          <article class="p-job">
+            <div class="p-job-head">
+              <h3>Senior Manager</h3>
+              <span class="p-date">Jul 2019 – Present</span>
+            </div>
+            <p class="p-sub">
+              Engagement Manager and Delivery Lead, multi-brand restaurant
+              technology portfolio
+            </p>
+            <ul class="p-bullets">
+              <li>
+                As Engagement Manager, manage 65+ resources (15+ onsite, 50+
+                offshore) and own client satisfaction, delivery, account growth
+                and commercial outcomes.
+              </li>
+              <li>
+                As hands-on Delivery Lead, single point of leadership for the
+                multi-brand digital, POS and data workstreams, now four brands
+                with a 7-person team.
+              </li>
+              <li>
+                Govern release readiness for a major release every week and
+                small releases almost daily, with risk-based strategy, entry
+                and exit criteria, and executive escalation.
+              </li>
+              <li>
+                Partner with Engineering, Platform, Product and Operations on
+                quality priorities.
+              </li>
+              <li>
+                Apply AI assistants and self-built agents across test design,
+                automation, triage and release reporting.
+              </li>
+            </ul>
+          </article>
+
+          <article class="p-job">
+            <div class="p-job-head">
+              <h3>Manager, Delivery Test and DevOps Lead</h3>
+              <span class="p-date">Apr 2014 – Jul 2019</span>
+            </div>
+            <ul class="p-bullets">
+              <li>
+                Led client-facing quality engineering and DevOps delivery for
+                global digital transformation programs.
+              </li>
+              <li>
+                Managed onsite and offshore teams across web, mobile, desktop,
+                API and end-to-end testing.
+              </li>
+              <li>
+                Designed automation frameworks, supported cloud migration and
+                coordinated multi-region validation.
+              </li>
+            </ul>
+          </article>
+
+          <article class="p-job">
+            <div class="p-job-head">
+              <h3>Earlier roles</h3>
+              <span class="p-date">Dec 2005 onward</span>
+            </div>
+            <ul class="p-bullets">
+              <li>
+                Data engineering test and test management roles covering data
+                quality, automation, performance, security and SaaS
+                integration (media and restaurant).
+              </li>
+              <li>
+                Service Virtualization Lead: integrated testing capabilities,
+                proofs of concept and cost-benefit analysis.
+              </li>
+              <li>
+                Test Lead for a Java-to-Pega claims workflow migration, plus
+                Siebel test automation (insurance).
+              </li>
+              <li>
+                Test Analyst and Test Engineer across HIPAA claims, EDI,
+                laboratory validation, telecom (internet, LAN, voice),
+                enterprise portals and end-to-end testing.
+              </li>
+            </ul>
+          </article>
+        </section>
+      </div>
+
+      <div class="p-col">
+        <section class="p-panel p-ai" aria-labelledby="ai">
+          <h2 class="p-title t-pink" id="ai">AI-augmented quality</h2>
+          <p class="p-lead">
+            AI is part of how I work every day, through assistants and agents I
+            build myself.
+          </p>
+          <ul class="p-pills p-pills-hot" aria-label="AI tools">
+            {aiTools.map((item) => <li>{item}</li>)}
+          </ul>
+          <h3 class="p-mini">Where I apply it</h3>
+          <ul class="p-pills" aria-label="Where AI is applied">
+            {aiUses.map((item) => <li>{item}</li>)}
+          </ul>
+          <h3 class="p-mini">Agents and tools I built</h3>
+          <ul class="p-checks">
+            {aiBuilt.map((item) => <li>{item}</li>)}
+          </ul>
+        </section>
+
+        <section class="p-panel" aria-labelledby="scope">
+          <h2 class="p-title t-cyan" id="scope">Current scope</h2>
+          <p class="p-lead">
+            End-to-end digital quality for a multi-brand consumer portfolio.
+          </p>
+          <ul class="p-tiles">
+            {
+              scope.map((item) => (
+                <li class="p-tile">
+                  <strong>{item.title}</strong>
+                  <span>{item.text}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+      </div>
+
+      <div class="p-col">
+        <section class="p-panel" aria-labelledby="expertise">
+          <h2 class="p-title t-orange" id="expertise">Expertise</h2>
+          {
+            groups.map((group) => (
+              <div class="p-group">
+                <h3 class={group.color}>{group.title}</h3>
+                <p>{group.text}</p>
+              </div>
+            ))
+          }
+        </section>
+
+        <section class="p-panel" aria-labelledby="domains">
+          <h2 class="p-title t-green" id="domains">Domains delivered</h2>
+          <ul class="p-domains">
+            {
+              domains.map((item) => (
+                <li>
+                  <strong>{item.name}</strong>
+                  <span>{item.text}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <section class="p-panel" aria-labelledby="tech">
+          <h2 class="p-title t-cyan" id="tech">Technology</h2>
+          {
+            tech.map((group) => (
+              <div class="p-group">
+                <h3 class={group.color}>{group.title}</h3>
+                <p>{group.text}</p>
+              </div>
+            ))
+          }
+        </section>
+
+        <section class="p-panel" aria-labelledby="education">
+          <h2 class="p-title t-green" id="education">
+            Education &amp; certifications
+          </h2>
+          <ul class="p-edu">
+            <li class="p-degree">
+              B.Tech, Electronics and Communication Engineering
+            </li>
+            {certifications.map((item) => <li>{item}</li>)}
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <section class="p-panel p-row" aria-labelledby="journey">
+      <h2 class="p-title t-orange" id="journey">Career journey</h2>
+      <ol class="p-journey">
+        {
+          journey.map((step) => (
+            <li>
+              <span class="p-when">{step.when}</span>
+              <strong>{step.title}</strong>
+              <span class="p-what">{step.text}</span>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="p-panel p-row" aria-labelledby="value">
+      <h2 class="p-title t-pink" id="value">Where I add the most value</h2>
+      <ul class="p-value">
+        {
+          value.map((item) => (
+            <li class="p-tile">
+              <strong>{item.title}</strong>
+              <span>{item.text}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <footer class="p-banner">
+      <ul>
+        <li>Quality is how I see</li>
+        <li>Judgment is how I lead</li>
+        <li>Open to testing COE and technical leadership roles</li>
+        <li>Let's talk</li>
+      </ul>
+      <div class="p-contact">
+        <span>{site.location}</span>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+        <a
+          href="https://www.linkedin.com/in/pavanturlapati/"
+          rel="me noopener"
+          target="_blank">LinkedIn</a
+        >
+      </div>
+    </footer>
+  </article>
+</Base>

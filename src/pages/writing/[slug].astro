@@ -1,0 +1,54 @@
+---
+import { render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import { getArticles } from "../../lib/content";
+import { formatDate } from "../../lib/format";
+
+export async function getStaticPaths() {
+  const articles = await getArticles();
+  return articles.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, description, date, tags, linkedin } = entry.data;
+---
+
+<Base
+  title={title}
+  description={description}
+  type="article"
+  published={date.toISOString()}
+>
+  <p class="back"><a href="/writing/">← All writing</a></p>
+  <article>
+    <header>
+      <h1>{title}</h1>
+      <p class="meta">
+        <time datetime={date.toISOString()}>{formatDate(date)}</time>
+        {
+          tags.map((tag) => (
+            <>
+              {" · "}
+              <a href={`/writing/tag/${tag}/`}>{tag}</a>
+            </>
+          ))
+        }
+      </p>
+    </header>
+    <div class="prose">
+      <Content />
+    </div>
+    {
+      linkedin && (
+        <p class="meta">
+          Also on <a href={linkedin} rel="noopener" target="_blank">LinkedIn</a>
+          . Join the conversation there.
+        </p>
+      )
+    }
+  </article>
+</Base>

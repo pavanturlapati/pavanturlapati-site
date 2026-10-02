@@ -1,0 +1,51 @@
+---
+import { render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import { getNotes } from "../../lib/content";
+import { formatDate } from "../../lib/format";
+
+const notes = await getNotes();
+const rendered = await Promise.all(
+  notes.map(async (entry) => ({ entry, Content: (await render(entry)).Content })),
+);
+---
+
+<Base
+  title="Notes"
+  description="Short opinions and thoughts, too small for an article."
+>
+  <h1>Notes</h1>
+  <p class="lede">Short opinions and thoughts, too small for an article.</p>
+
+  {
+    rendered.length === 0 ? (
+      <p class="empty">No notes yet.</p>
+    ) : (
+      <ul class="entries">
+        {rendered.map(({ entry, Content }) => (
+          <li class="entry">
+            <div class="note-text prose">
+              <Content />
+            </div>
+            <p class="meta">
+              <a href={`/notes/${entry.id}/`}>
+                <time datetime={entry.data.date.toISOString()}>
+                  {formatDate(entry.data.date)}
+                </time>
+              </a>
+              {entry.data.x && (
+                <>
+                  {" · "}
+                  <a href={entry.data.x} rel="noopener" target="_blank">
+                    on X
+                  </a>
+                </>
+              )}
+              {entry.data.draft && <span class="badge">Draft</span>}
+            </p>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</Base>

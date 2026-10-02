@@ -1,0 +1,80 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getFilms } from "../../lib/content";
+import { formatDate, formatMonth, stars } from "../../lib/format";
+
+const films = getFilms();
+
+/** Watched date when known, otherwise the date it was logged. */
+const dayOf = (film: (typeof films)[number]) =>
+  film.watchedDate ?? film.publishedAt.slice(0, 10);
+
+const sorted = [...films].sort(
+  (a, b) =>
+    dayOf(b).localeCompare(dayOf(a)) ||
+    b.publishedAt.localeCompare(a.publishedAt),
+);
+
+// Group by month, preserving the sorted order.
+const groups: { label: string; films: typeof films }[] = [];
+for (const film of sorted) {
+  const label = formatMonth(new Date(`${dayOf(film)}T00:00:00Z`));
+  const last = groups[groups.length - 1];
+  if (last && last.label === label) last.films.push(film);
+  else groups.push({ label, films: [film] });
+}
+---
+
+<Base
+  title="Watching"
+  description="Films I've watched, rated and reviewed, synced from Letterboxd."
+>
+  <h1>Watching</h1>
+  <p class="lede">
+    Films I've watched, straight from
+    <a href="https://letterboxd.com/infi56/" rel="me noopener" target="_blank"
+      >Letterboxd</a
+    >. {films.length} logged so far.
+  </p>
+
+  {
+    groups.length === 0 ? (
+      <p class="empty">No films logged yet.</p>
+    ) : (
+      groups.map((group) => (
+        <section>
+          <h2>{group.label}</h2>
+          <ul class="entries">
+            {group.films.map((film) => (
+              <li class="film">
+                <div class="film-title">
+                  <a href={film.url} rel="noopener" target="_blank">
+                    {film.title}
+                  </a>
+                  {film.year && <span class="muted"> ({film.year})</span>}{" "}
+                  {film.rating !== null && (
+                    <span
+                      class="film-rating"
+                      aria-label={`${film.rating} out of 5`}
+                    >
+                      {stars(film.rating)}
+                    </span>
+                  )}
+                  {film.liked && <span aria-label="liked"> ♥</span>}
+                  {film.rewatch && <span class="badge">Rewatch</span>}
+                  {film.watchedDate && (
+                    <span class="meta">
+                      {" "}
+                      · {formatDate(new Date(`${film.watchedDate}T00:00:00Z`))}
+                    </span>
+                  )}
+                </div>
+                {film.review && <blockquote>{film.review}</blockquote>}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    )
+  }
+</Base>
