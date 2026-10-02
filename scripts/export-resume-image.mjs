@@ -224,7 +224,16 @@ try {
 
   await mkdir(dirname(outFile), { recursive: true });
   const png = Buffer.from(shot.data, "base64");
-  await writeFile(outFile, png);
+  // On Windows the file can be briefly locked (e.g. by an image preview).
+  for (let attempt = 1; ; attempt++) {
+    try {
+      await writeFile(outFile, png);
+      break;
+    } catch (error) {
+      if (attempt >= 8) throw error;
+      await sleep(500);
+    }
+  }
 
   // PNG header stores width and height at bytes 16 and 20.
   console.log(

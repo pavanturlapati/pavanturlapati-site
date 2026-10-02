@@ -210,6 +210,15 @@
   color: var(--p-pink);
 }
 
+.p-checks .p-more {
+  color: var(--p-muted);
+  font-style: italic;
+}
+
+.p-checks .p-more::before {
+  content: none;
+}
+
 /* Impact */
 
 .p-impact {
