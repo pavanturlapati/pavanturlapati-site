@@ -23,7 +23,7 @@ const { title, description, date, tags, linkedin } = entry.data;
   type="article"
   published={date.toISOString()}
 >
-  <p class="back"><a href="/writing/">← All writing</a></p>
+  <p class="back"><a href="/blog/">← All posts</a></p>
   <article>
     <header>
       <h1>{title}</h1>
@@ -33,7 +33,7 @@ const { title, description, date, tags, linkedin } = entry.data;
           tags.map((tag) => (
             <>
               {" · "}
-              <a href={`/writing/tag/${tag}/`}>{tag}</a>
+              <a href={`/blog/tag/${tag}/`}>{tag}</a>
             </>
           ))
         }

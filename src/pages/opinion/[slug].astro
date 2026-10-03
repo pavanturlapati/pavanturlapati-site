@@ -18,12 +18,12 @@ const { date, x } = entry.data;
 ---
 
 <Base
-  title={`Note, ${formatDate(date)}`}
+  title={`Opinion, ${formatDate(date)}`}
   description={excerpt(entry.body ?? "", 160)}
   type="article"
   published={date.toISOString()}
 >
-  <p class="back"><a href="/notes/">← All notes</a></p>
+  <p class="back"><a href="/opinion/">← All opinions</a></p>
   <article>
     <div class="prose">
       <Content />

@@ -1,7 +1,7 @@
 # pt-site
 
-Personal website for Pavan Turlapati: articles, short notes, project write-ups,
-a weekly bulletin, a Letterboxd film log, and a résumé. Built with [Astro](https://astro.build)
+Personal website for Pavan Turlapati: a blog, short opinions, project write-ups,
+a weekly bulletin, a Hobbies page (starting with a Letterboxd film log), and a résumé. Built with [Astro](https://astro.build)
 as a fully static site, hosted free on GitHub Pages at
 <https://pavanturlapati.com>.
 
@@ -27,8 +27,8 @@ redeploys itself.
 
 | What | Where | Frontmatter |
 |---|---|---|
-| Article | `src/content/articles/<slug>.md` | `title`, `description`, `date`, `tags`, optional `linkedin`, `draft` |
-| Note | `src/content/notes/YYYY-MM-DD-<slug>.md` | `date`, optional `x`, `draft` |
+| Blog post | `src/content/articles/<slug>.md` | `title`, `description`, `date`, `tags`, optional `linkedin`, `draft` |
+| Opinion | `src/content/notes/YYYY-MM-DD-<slug>.md` | `date`, optional `x`, `draft` |
 | Project | `src/content/projects/<slug>.md` | `title`, `description`, `date`, optional `linkedin`, `draft` |
 | Weekly edition | `src/content/weekly/YYYY-MM-DD.md` | `title`, `description`, `date`, optional `linkedin`, `draft` |
 
@@ -45,8 +45,7 @@ redeploys itself.
 - Unknown frontmatter keys also fail the build, so a typo like `drafft: true`
   can't publish a draft by accident.
 - `draft: true` entries show in `npm run dev` but never in a production build.
-- After sharing on LinkedIn or X, paste the post URL into `linkedin:` (articles)
-  or `x:` (notes) and the site links to it.
+- After sharing on LinkedIn or X, paste the post URL into `linkedin:` (blog posts) or `x:` (opinions) and the site links to it.
 
 Example note:
 

@@ -8,7 +8,7 @@ export const site = {
   tagline:
     "Quality engineering and delivery leader. I write about building confidence into digital products, and about Vedanta and life.",
   description:
-    "Articles, short notes, film reviews and résumé of Pavan Turlapati, a Digital Quality Engineering and delivery leader.",
+    "Blog posts, short opinions, film reviews and résumé of Pavan Turlapati, a Digital Quality Engineering and delivery leader.",
   url: "https://pavanturlapati.com",
   email: "pavanturlapati@gmail.com",
   location: "Atlanta, Georgia",
@@ -41,11 +41,11 @@ export const socials = [
 
 /** Primary navigation. `external` links open in the same tab (own domain). */
 export const nav = [
-  { label: "Writing", href: "/writing/" },
+  { label: "Blog", href: "/blog/" },
   { label: "Weekly", href: "/weekly/" },
   { label: "Projects", href: "/projects/" },
-  { label: "Notes", href: "/notes/" },
-  { label: "Watching", href: "/watching/" },
+  { label: "Opinion", href: "/opinion/" },
+  { label: "Hobbies", href: "/hobbies/" },
   { label: "Résumé", href: "/resume/" },
   { label: "Vedanta", href: vedantaUrl, external: true },
 ] as const;

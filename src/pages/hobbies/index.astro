@@ -26,10 +26,13 @@ for (const film of sorted) {
 ---
 
 <Base
-  title="Watching"
-  description="Films I've watched, rated and reviewed, synced from Letterboxd."
+  title="Hobbies"
+  description="Things I do for fun, starting with the films I watch."
 >
-  <h1>Watching</h1>
+  <h1>Hobbies</h1>
+  <p class="lede">Things I do for fun, away from work.</p>
+
+  <h2>Films</h2>
   <p class="lede">
     Films I've watched, straight from
     <a href="https://letterboxd.com/infi56/" rel="me noopener" target="_blank"
@@ -43,7 +46,7 @@ for (const film of sorted) {
     ) : (
       groups.map((group) => (
         <section>
-          <h2>{group.label}</h2>
+          <h3>{group.label}</h3>
           <ul class="entries">
             {group.films.map((film) => (
               <li class="film">

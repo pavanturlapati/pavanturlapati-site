@@ -20,24 +20,24 @@ type Item = {
 };
 
 // Only the three most recent reviews with text appear here; every watch is
-// on /watching/.
+// on /hobbies/.
 const reviews = getFilms()
   .filter((film) => film.kind === "review" && film.review)
   .slice(0, 3);
 
 const latest: Item[] = [
   ...articles.map((entry) => ({
-    kind: "Article",
+    kind: "Blog",
     date: entry.data.date,
     title: entry.data.title,
-    href: `/writing/${entry.id}/`,
+    href: `/blog/${entry.id}/`,
     summary: entry.data.description,
   })),
   ...notes.map((entry) => ({
-    kind: "Note",
+    kind: "Opinion",
     date: entry.data.date,
     title: excerpt(entry.body ?? "", 110),
-    href: `/notes/${entry.id}/`,
+    href: `/opinion/${entry.id}/`,
   })),
   ...projects.map((entry) => ({
     kind: "Project",
@@ -50,7 +50,7 @@ const latest: Item[] = [
     kind: "Film",
     date: new Date(film.publishedAt),
     title: `${film.title}${film.year ? ` (${film.year})` : ""} ${stars(film.rating)}`.trim(),
-    href: "/watching/",
+    href: "/hobbies/",
     summary: film.review ?? undefined,
   })),
 ]

@@ -11,15 +11,15 @@ const rendered = await Promise.all(
 ---
 
 <Base
-  title="Notes"
-  description="Short opinions and thoughts, too small for an article."
+  title="Opinion"
+  description="Short opinions and thoughts, too small for a blog post."
 >
-  <h1>Notes</h1>
-  <p class="lede">Short opinions and thoughts, too small for an article.</p>
+  <h1>Opinion</h1>
+  <p class="lede">Short opinions and thoughts, too small for a blog post.</p>
 
   {
     rendered.length === 0 ? (
-      <p class="empty">No notes yet.</p>
+      <p class="empty">No opinions yet.</p>
     ) : (
       <ul class="entries">
         {rendered.map(({ entry, Content }) => (
@@ -28,7 +28,7 @@ const rendered = await Promise.all(
               <Content />
             </div>
             <p class="meta">
-              <a href={`/notes/${entry.id}/`}>
+              <a href={`/opinion/${entry.id}/`}>
                 <time datetime={entry.data.date.toISOString()}>
                   {formatDate(entry.data.date)}
                 </time>

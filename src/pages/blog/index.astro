@@ -8,10 +8,10 @@ const usedTags = [...new Set(articles.flatMap((entry) => entry.data.tags))].sort
 ---
 
 <Base
-  title="Writing"
-  description="Articles on quality engineering, leadership, Vedanta and life."
+  title="Blog"
+  description="Blog posts on quality engineering, leadership, Vedanta and life."
 >
-  <h1>Writing</h1>
+  <h1>Blog</h1>
   <p class="lede">
     Longer pieces on quality engineering, leadership, Vedanta and life.
   </p>
@@ -21,7 +21,7 @@ const usedTags = [...new Set(articles.flatMap((entry) => entry.data.tags))].sort
       <ul class="tag-list" aria-label="Filter by tag">
         {usedTags.map((tag) => (
           <li>
-            <a href={`/writing/tag/${tag}/`}>{tag}</a>
+            <a href={`/blog/tag/${tag}/`}>{tag}</a>
           </li>
         ))}
       </ul>
@@ -30,7 +30,7 @@ const usedTags = [...new Set(articles.flatMap((entry) => entry.data.tags))].sort
 
   {
     articles.length === 0 ? (
-      <p class="empty">No articles yet.</p>
+      <p class="empty">No posts yet.</p>
     ) : (
       <ul class="entries">
         {articles.map((entry) => (
@@ -42,7 +42,7 @@ const usedTags = [...new Set(articles.flatMap((entry) => entry.data.tags))].sort
               {entry.data.draft && <span class="badge">Draft</span>}
             </div>
             <h2>
-              <a href={`/writing/${entry.id}/`}>{entry.data.title}</a>
+              <a href={`/blog/${entry.id}/`}>{entry.data.title}</a>
             </h2>
             <p>{entry.data.description}</p>
           </li>
