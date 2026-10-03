@@ -33,9 +33,13 @@ redeploys itself.
 | Weekly edition | `src/content/weekly/YYYY-MM-DD.md` | `title`, `description`, `date`, optional `linkedin`, `draft` |
 
 - A note has no title. Its text is the body of the file.
-- A project write-up follows a fixed outline: Project name, Objective, Tech
-  stack, Approach, Benefits, Limitations, Conclusion. Keep client and employer
-  names, IDs and private repo links out of it.
+- A project write-up follows a fixed outline (`templates/project.md`): Project
+  name, Objective, Tech stack, Approach, Benefits, Limitations, Conclusion.
+  Start one with `npm run new:project -- my-project-name`. It creates a draft
+  with `TODO` markers; replace them all, then remove `draft: true`.
+  Before publishing, check that it has no client or employer names, no IDs or
+  keys, no revenue figures and no links to private repos (generic docs links
+  are fine), and that any numbers are real or marked as estimates.
 - `tags` must come from the list in `src/config.ts` (`articleTags`). Add a tag
   there first. A typo fails the build rather than silently creating a new tag.
 - Unknown frontmatter keys also fail the build, so a typo like `drafft: true`
