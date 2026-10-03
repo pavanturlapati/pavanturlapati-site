@@ -87,10 +87,12 @@ const title = JSON.parse(frontmatter("title") ?? '""');
 const description = JSON.parse(frontmatter("description") ?? '""');
 
 // The article card carries the link, so drop the bare URL line from the text.
+// Removing it leaves a double blank line, so collapse those.
 const commentary = text
   .split("\n")
   .filter((line) => line.trim() !== pageUrl)
   .join("\n")
+  .replace(/\n{3,}/g, "\n\n")
   .trim();
 
 const post = (body) => ({
@@ -102,15 +104,15 @@ const post = (body) => ({
   isReshareDisabledByAuthor: false,
 });
 
-const asCard = {
+const card = (thumbnail) => ({
   ...post(commentary),
-  content: { article: { source: pageUrl, title, description } },
-};
+  content: { article: { source: pageUrl, title, description, ...(thumbnail ? { thumbnail } : {}) } },
+});
 const asPlainLink = post(`${commentary}\n\n${pageUrl}`);
 
 if (DRY_RUN) {
   console.log(`Dry run for ${date}. Would post:\n`);
-  console.log(JSON.stringify({ ...asCard, author: author ?? "urn:li:person:<id>" }, null, 2));
+  console.log(JSON.stringify({ ...card("urn:li:image:<uploaded from public/og-image.png>"), author: author ?? "urn:li:person:<id>" }, null, 2));
   process.exit(0);
 }
 
@@ -141,20 +143,52 @@ if (!NO_WAIT) {
 
 // ---------------------------------------------------------------- post
 
+const headers = () => ({
+  Authorization: `Bearer ${token}`,
+  "Linkedin-Version": VERSION,
+  "X-Restli-Protocol-Version": "2.0.0",
+  "Content-Type": "application/json",
+});
+
 async function send(payload) {
-  return fetch(API, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Linkedin-Version": VERSION,
-      "X-Restli-Protocol-Version": "2.0.0",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
-  });
+  return fetch(API, { method: "POST", headers: headers(), body: JSON.stringify(payload) });
 }
 
-let res = await send(asCard);
+// LinkedIn does not fetch the page's og:image for API posts. The card image
+// has to be uploaded first. This returns an image URN, or null on any failure
+// (the post then goes out without an image rather than not at all).
+async function uploadThumbnail() {
+  try {
+    const image = await readFile("public/og-image.png");
+    const init = await fetch("https://api.linkedin.com/rest/images?action=initializeUpload", {
+      method: "POST",
+      headers: headers(),
+      body: JSON.stringify({ initializeUploadRequest: { owner: author } }),
+    });
+    if (!init.ok) throw new Error(`initializeUpload returned ${init.status}: ${(await init.text()).slice(0, 200)}`);
+    const { value } = await init.json();
+    const put = await fetch(value.uploadUrl, {
+      method: "PUT",
+      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/octet-stream" },
+      body: image,
+    });
+    if (!put.ok) throw new Error(`image upload returned ${put.status}: ${(await put.text()).slice(0, 200)}`);
+    return value.image;
+  } catch (err) {
+    console.log(`::warning::Could not upload the card image, posting without it. ${err.message}`);
+    return null;
+  }
+}
+
+const thumbnail = await uploadThumbnail();
+if (thumbnail) console.log(`Uploaded card image ${thumbnail}`);
+
+let res = await send(card(thumbnail));
+if ((res.status === 400 || res.status === 422) && thumbnail) {
+  console.log(`Card with image rejected (${res.status}): ${(await res.text()).slice(0, 300)}`);
+  console.log("Retrying the card without the image.");
+  res = await send(card(null));
+}
 if (res.status === 400 || res.status === 422) {
   console.log(`Article card rejected (${res.status}): ${(await res.text()).slice(0, 300)}`);
   console.log("Retrying as a plain text post with the link.");
