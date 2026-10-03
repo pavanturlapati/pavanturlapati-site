@@ -2,6 +2,7 @@
 title: "Weekly Mashup: an automated weekly bulletin"
 description: "How I built a weekly AI, QSR technology and testing bulletin that writes, publishes and posts itself, for about 40 cents a month."
 date: 2026-10-03
+linkedin: "https://www.linkedin.com/feed/update/urn:li:activity:7512181003784921088/"
 ---
 
 ## Project name
