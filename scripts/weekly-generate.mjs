@@ -384,7 +384,17 @@ const { review_notes } = written.json;
 const fixDashes = (s) => s.replace(/\s*[\u2013\u2014]\s*/g, ", ");
 const description = fixDashes(written.json.description);
 const body = fixDashes(written.json.body);
-const linkedin = fixDashes(written.json.linkedin);
+const editionUrl = `${SITE}/weekly/${editionDate}/`;
+const DISCLOSURE = "Written by AI from public sources. Not human-reviewed before posting.";
+// The URL and the disclosure are fixed text, so guarantee them here instead of
+// trusting the model to include them.
+const linkedin = (() => {
+  let lines = fixDashes(written.json.linkedin).trim().split("\n");
+  lines = lines.filter((l) => l.trim() !== DISCLOSURE);
+  if (!lines.some((l) => l.includes(editionUrl))) lines.push("", editionUrl);
+  lines.push("", DISCLOSURE);
+  return lines.join("\n");
+})();
 const errors = [];
 const warnings = [];
 
@@ -412,7 +422,6 @@ else if (words > 1500) warnings.push(`Edition is long: about ${words} words.`);
 if (body.split("\n").filter((l) => l.startsWith("### ")).length < 3) errors.push("Fewer than three items in the edition.");
 if (description.length > 200) warnings.push(`Description is ${description.length} characters.`);
 if (linkedin.length > 2800) errors.push(`LinkedIn text is ${linkedin.length} characters (limit 3,000).`);
-if (!linkedin.includes(`${SITE}/weekly/${editionDate}/`)) errors.push("LinkedIn text does not include the edition URL.");
 
 // ---------------------------------------------------------------- write files
 
