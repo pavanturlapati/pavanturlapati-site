@@ -1,7 +1,7 @@
 # pt-site
 
-Personal website for Pavan Turlapati: articles, short notes, a curated link
-feed, a Letterboxd film log, and a résumé. Built with [Astro](https://astro.build)
+Personal website for Pavan Turlapati: articles, short notes, project write-ups,
+a weekly bulletin, a Letterboxd film log, and a résumé. Built with [Astro](https://astro.build)
 as a fully static site, hosted free on GitHub Pages at
 <https://pavanturlapati.com>.
 
@@ -29,11 +29,13 @@ redeploys itself.
 |---|---|---|
 | Article | `src/content/articles/<slug>.md` | `title`, `description`, `date`, `tags`, optional `linkedin`, `draft` |
 | Note | `src/content/notes/YYYY-MM-DD-<slug>.md` | `date`, optional `x`, `draft` |
-| Feed link | `src/content/links/YYYY-MM-DD-<slug>.md` | `title`, `url`, `date`, `draft` |
+| Project | `src/content/projects/<slug>.md` | `title`, `description`, `date`, optional `linkedin`, `draft` |
 | Weekly edition | `src/content/weekly/YYYY-MM-DD.md` | `title`, `description`, `date`, optional `linkedin`, `draft` |
 
 - A note has no title. Its text is the body of the file.
-- A feed link's body is your one-line comment (optional).
+- A project write-up follows a fixed outline: Project name, Objective, Tech
+  stack, Approach, Benefits, Limitations, Conclusion. Keep client and employer
+  names, IDs and private repo links out of it.
 - `tags` must come from the list in `src/config.ts` (`articleTags`). Add a tag
   there first. A typo fails the build rather than silently creating a new tag.
 - Unknown frontmatter keys also fail the build, so a typo like `drafft: true`
@@ -52,20 +54,7 @@ date: 2026-10-01
 A test that never fails is not a safety net. It's decoration.
 ```
 
-Example feed link:
-
-```md
----
-title: Title of the article
-url: https://example.com/article
-date: 2026-10-02
----
-
-One line on why it is worth reading.
-```
-
-The feed is a hand-curated list at `/feed`. There are no feed links yet, so
-the page shows "Nothing here yet."
+Projects live at `/projects/`. The old `/feed/` address redirects there.
 
 ## Weekly Mashup
 

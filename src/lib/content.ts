@@ -21,8 +21,8 @@ export const getArticles = async () =>
 export const getNotes = async () =>
   (await getCollection("notes", published)).sort(newestFirst);
 
-export const getLinks = async () =>
-  (await getCollection("links", published)).sort(newestFirst);
+export const getProjects = async () =>
+  (await getCollection("projects", published)).sort(newestFirst);
 
 export const getWeekly = async () =>
   (await getCollection("weekly", published)).sort(newestFirst);

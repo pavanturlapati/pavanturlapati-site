@@ -1,13 +1,13 @@
 ---
 import Base from "../layouts/Base.astro";
-import { getArticles, getFilms, getLinks, getNotes } from "../lib/content";
+import { getArticles, getFilms, getNotes, getProjects } from "../lib/content";
 import { excerpt, formatDate, stars } from "../lib/format";
 import { site } from "../config";
 
-const [articles, notes, links] = await Promise.all([
+const [articles, notes, projects] = await Promise.all([
   getArticles(),
   getNotes(),
-  getLinks(),
+  getProjects(),
 ]);
 
 type Item = {
@@ -39,12 +39,12 @@ const latest: Item[] = [
     title: excerpt(entry.body ?? "", 110),
     href: `/notes/${entry.id}/`,
   })),
-  ...links.map((entry) => ({
-    kind: "Link",
+  ...projects.map((entry) => ({
+    kind: "Project",
     date: entry.data.date,
     title: entry.data.title,
-    href: entry.data.url,
-    external: true,
+    href: `/projects/${entry.id}/`,
+    summary: entry.data.description,
   })),
   ...reviews.map((film) => ({
     kind: "Film",

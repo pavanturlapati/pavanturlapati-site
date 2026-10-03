@@ -33,13 +33,15 @@ const notes = defineCollection({
   }),
 });
 
-/** Curated news feed: src/content/links/YYYY-MM-DD-short-slug.md */
-const links = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/links" }),
+/** Project write-ups: src/content/projects/<slug>.md */
+const projects = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/projects" }),
   schema: z.strictObject({
     title: z.string().min(1),
-    url: z.url(),
+    description: z.string().min(1),
     date: z.coerce.date(),
+    /** URL of the LinkedIn post, if this write-up was also shared there. */
+    linkedin: z.url().optional(),
     draft: z.boolean().default(false),
   }),
 });
@@ -58,4 +60,4 @@ const weekly = defineCollection({
   }),
 });
 
-export const collections = { articles, notes, links, weekly };
+export const collections = { articles, notes, projects, weekly };

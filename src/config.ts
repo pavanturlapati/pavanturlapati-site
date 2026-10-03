@@ -43,9 +43,9 @@ export const socials = [
 export const nav = [
   { label: "Writing", href: "/writing/" },
   { label: "Weekly", href: "/weekly/" },
+  { label: "Projects", href: "/projects/" },
   { label: "Notes", href: "/notes/" },
   { label: "Watching", href: "/watching/" },
-  { label: "Feed", href: "/feed/" },
   { label: "Résumé", href: "/resume/" },
   { label: "Vedanta", href: vedantaUrl, external: true },
 ] as const;
