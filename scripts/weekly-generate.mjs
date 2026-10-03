@@ -101,6 +101,16 @@ async function authHeaders() {
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) {
+    // Claims are not secret (they describe the workflow run). The token itself is never printed.
+    const claims = JSON.parse(Buffer.from(assertion.split(".")[1], "base64url").toString());
+    console.error(
+      "GitHub token claims:",
+      JSON.stringify(
+        Object.fromEntries(
+          ["iss", "sub", "aud", "ref", "repository", "repository_owner", "repository_owner_id", "event_name", "job_workflow_ref"].map((k) => [k, claims[k]]),
+        ),
+      ),
+    );
     throw new Error(
       `Anthropic token exchange failed (HTTP ${res.status}). The reason is on the Authentication history page in the Claude Console (Settings > Workload identity).`,
     );
