@@ -1,0 +1,46 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getWeekly } from "../../lib/content";
+import { formatDate } from "../../lib/format";
+
+const editions = await getWeekly();
+---
+
+<Base
+  title="Weekly Mashup"
+  description="A weekly digest of what's new in AI, QSR technology and software testing, with sources."
+>
+  <h1>Weekly Mashup</h1>
+  <p class="lede">
+    What's new in AI, QSR technology and software testing, once a week. Short
+    summaries with the source for each, so you can catch up in minutes and read
+    the originals if something matters to you.
+  </p>
+  <p class="meta">
+    AI-assisted: drafted with an AI model from public sources, then reviewed and
+    edited by me before it goes out.
+  </p>
+
+  {
+    editions.length === 0 ? (
+      <p class="empty">The first edition is on its way.</p>
+    ) : (
+      <ul class="entries">
+        {editions.map((entry) => (
+          <li class="entry">
+            <div class="meta">
+              <time datetime={entry.data.date.toISOString()}>
+                {formatDate(entry.data.date)}
+              </time>
+              {entry.data.draft && <span class="badge">Draft</span>}
+            </div>
+            <h2>
+              <a href={`/weekly/${entry.id}/`}>{entry.data.title}</a>
+            </h2>
+            <p>{entry.data.description}</p>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</Base>

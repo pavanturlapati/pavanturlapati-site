@@ -44,4 +44,18 @@ const links = defineCollection({
   }),
 });
 
-export const collections = { articles, notes, links };
+/** Weekly Mashup, one file per edition: src/content/weekly/YYYY-MM-DD.md */
+const weekly = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/weekly" }),
+  schema: z.strictObject({
+    title: z.string().min(1),
+    description: z.string().min(1),
+    /** Publication date (the Tuesday the edition goes out). */
+    date: z.coerce.date(),
+    /** URL of the LinkedIn post, once shared there. */
+    linkedin: z.url().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { articles, notes, links, weekly };

@@ -1,0 +1,52 @@
+---
+import { render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import { getWeekly } from "../../lib/content";
+import { formatDate } from "../../lib/format";
+
+export async function getStaticPaths() {
+  const editions = await getWeekly();
+  return editions.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, description, date, linkedin, draft } = entry.data;
+---
+
+<Base
+  title={title}
+  description={description}
+  type="article"
+  published={date.toISOString()}
+>
+  <p class="back"><a href="/weekly/">← All editions</a></p>
+  <article>
+    <header>
+      <h1>{title}</h1>
+      <p class="meta">
+        <time datetime={date.toISOString()}>{formatDate(date)}</time>
+        {" · "}AI-assisted, reviewed by me
+        {draft && <span class="badge">Draft</span>}
+      </p>
+    </header>
+    <div class="prose">
+      <Content />
+    </div>
+    {
+      linkedin && (
+        <p class="meta">
+          Also on <a href={linkedin} rel="noopener" target="_blank">LinkedIn</a>
+          . Join the conversation there.
+        </p>
+      )
+    }
+    <p class="meta">
+      Summaries are written from the linked sources and can contain errors. Check
+      the original before relying on anything here. Views are my own.
+    </p>
+  </article>
+</Base>

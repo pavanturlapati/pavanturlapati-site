@@ -24,6 +24,9 @@ export const getNotes = async () =>
 export const getLinks = async () =>
   (await getCollection("links", published)).sort(newestFirst);
 
+export const getWeekly = async () =>
+  (await getCollection("weekly", published)).sort(newestFirst);
+
 export type Film = {
   id: string;
   kind: "review" | "watch";
