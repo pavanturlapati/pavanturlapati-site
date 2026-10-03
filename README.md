@@ -97,20 +97,35 @@ Tuesday 12:00am ET).
 
 ```sh
 npm run weekly:collect      # fetch candidates only, no API calls
-npm run weekly              # collect, then write the edition (needs the key)
+npm run weekly              # collect, then write the edition (needs ANTHROPIC_API_KEY)
 node scripts/weekly-generate.mjs --dry-run   # show prompt sizes, no API call
 node scripts/weekly-generate.mjs --date 2026-10-13
 ```
 
 **Setup**
 
-- Add the key as the repository secret `ANTHROPIC_API_KEY` (Settings >
-  Secrets and variables > Actions, or `gh secret set ANTHROPIC_API_KEY`).
-  Locally, set it as an environment variable. Never commit it.
+- **No API key is stored.** In GitHub Actions the script uses Anthropic's
+  [Workload Identity Federation](https://platform.claude.com/docs/en/manage-claude/wif-providers/github-actions):
+  the job gets a short-lived GitHub OIDC token and exchanges it for a
+  short-lived Anthropic token. One-time setup in the Claude Console (Settings >
+  Workload identity > Connect workload > GitHub Actions):
+  - Issuer: `https://token.actions.githubusercontent.com` (discovery mode).
+  - Rule match: `subject_prefix` `repo:pavanturlapati/pavanturlapati-site:ref:refs/heads/main`,
+    audience `https://api.anthropic.com`, claims `repository_owner` =
+    `pavanturlapati`. Keep it this narrow: the repo is public.
+  - Scope `workspace:inference` is enough (the script only calls Messages).
+  - Then add the IDs as repository **variables** (not secrets):
+    `ANTHROPIC_FEDERATION_RULE_ID`, `ANTHROPIC_ORGANIZATION_ID`,
+    `ANTHROPIC_SERVICE_ACCOUNT_ID`, and `ANTHROPIC_WORKSPACE_ID` (the last
+    only needed if the rule covers more than one workspace).
+    `gh variable set NAME --body VALUE` works.
+- **Local runs** cannot use federation. Set `ANTHROPIC_API_KEY` in your shell
+  for those, or skip local runs and trigger the Action (it only opens a draft
+  PR). The key wins over federation if both are set.
 - Settings > Actions > General > Workflow permissions: enable "Allow GitHub
   Actions to create and approve pull requests".
-- The Anthropic API is billed separately from a Claude.ai plan. Set a spend
-  cap in the Anthropic console.
+- The Anthropic API is billed separately from a Claude.ai plan, so the
+  organization needs prepaid credit. Set a spend cap in the console.
 - The model is `claude-sonnet-5-5` (override with `WEEKLY_MODEL`). A run is
   two calls, about $0.10 to $0.20, so roughly $0.50 to $0.80 a month.
 - `weekly.yml` is manual (`workflow_dispatch`) until the schedule line is

@@ -19,6 +19,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  id-token: write # lets the job get a GitHub OIDC token for Anthropic identity federation
 
 jobs:
   draft:
@@ -35,7 +36,12 @@ jobs:
 
       - name: Collect and write the edition
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Identity federation: no API key is stored. These are IDs, not secrets,
+          # kept as repository variables. See README, "Setup".
+          ANTHROPIC_FEDERATION_RULE_ID: ${{ vars.ANTHROPIC_FEDERATION_RULE_ID }}
+          ANTHROPIC_ORGANIZATION_ID: ${{ vars.ANTHROPIC_ORGANIZATION_ID }}
+          ANTHROPIC_SERVICE_ACCOUNT_ID: ${{ vars.ANTHROPIC_SERVICE_ACCOUNT_ID }}
+          ANTHROPIC_WORKSPACE_ID: ${{ vars.ANTHROPIC_WORKSPACE_ID }}
           EDITION_DATE: ${{ inputs.date }}
         run: |
           npm run weekly:collect

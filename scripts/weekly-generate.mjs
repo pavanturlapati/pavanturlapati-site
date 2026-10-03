@@ -13,8 +13,11 @@
 // Usage:
 //   node scripts/weekly-generate.mjs [--date YYYY-MM-DD] [--dry-run]
 //
-// Needs ANTHROPIC_API_KEY in the environment (never commit it). --dry-run
-// builds the prompts and prints their size without calling the API.
+// Needs credentials (never commit them). In GitHub Actions it uses Workload
+// Identity Federation: a short-lived GitHub OIDC token is exchanged for a
+// short-lived Anthropic token, so no API key is stored anywhere. For local runs,
+// set ANTHROPIC_API_KEY instead. --dry-run builds the prompts and prints their
+// size without calling the API.
 
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { htmlToText, USER_AGENT } from "./weekly-lib.mjs";
@@ -54,6 +57,57 @@ function nextTuesday() {
 
 // ---------------------------------------------------------------- Anthropic
 
+const GITHUB_AUDIENCE = "https://api.anthropic.com";
+
+const hasFederation = () =>
+  Boolean(
+    process.env.ANTHROPIC_FEDERATION_RULE_ID &&
+      process.env.ANTHROPIC_ORGANIZATION_ID &&
+      process.env.ANTHROPIC_SERVICE_ACCOUNT_ID &&
+      process.env.ACTIONS_ID_TOKEN_REQUEST_URL &&
+      process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN,
+  );
+
+// Returns the auth headers for one API call. An API key (local runs) wins if
+// set. Otherwise swap a fresh GitHub OIDC token for a short-lived Anthropic
+// token. GitHub tokens carry a jti, so each exchange needs a new one.
+async function authHeaders() {
+  if (process.env.ANTHROPIC_API_KEY) return { "x-api-key": process.env.ANTHROPIC_API_KEY };
+  if (!hasFederation()) {
+    throw new Error(
+      "No credentials. Set ANTHROPIC_API_KEY (local), or run in GitHub Actions with id-token: write and the ANTHROPIC_FEDERATION_* variables.",
+    );
+  }
+  const env = process.env;
+  const jwtRes = await fetch(
+    `${env.ACTIONS_ID_TOKEN_REQUEST_URL}&audience=${encodeURIComponent(GITHUB_AUDIENCE)}`,
+    { headers: { Authorization: `Bearer ${env.ACTIONS_ID_TOKEN_REQUEST_TOKEN}` } },
+  );
+  if (!jwtRes.ok) throw new Error(`Could not get a GitHub OIDC token (HTTP ${jwtRes.status}).`);
+  const { value: assertion } = await jwtRes.json();
+
+  const exchange = {
+    grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer",
+    assertion,
+    federation_rule_id: env.ANTHROPIC_FEDERATION_RULE_ID,
+    organization_id: env.ANTHROPIC_ORGANIZATION_ID,
+    service_account_id: env.ANTHROPIC_SERVICE_ACCOUNT_ID,
+  };
+  if (env.ANTHROPIC_WORKSPACE_ID) exchange.workspace_id = env.ANTHROPIC_WORKSPACE_ID;
+  const res = await fetch("https://api.anthropic.com/v1/oauth/token", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(exchange),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    throw new Error(
+      `Anthropic token exchange failed (HTTP ${res.status}). The reason is on the Authentication history page in the Claude Console (Settings > Workload identity).`,
+    );
+  }
+  return { authorization: `Bearer ${data.access_token}` };
+}
+
 async function callClaude({ system, user, schema, effort, maxTokens }) {
   const body = {
     model: MODEL,
@@ -67,7 +121,7 @@ async function callClaude({ system, user, schema, effort, maxTokens }) {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        "x-api-key": process.env.ANTHROPIC_API_KEY,
+        ...(await authHeaders()),
         "anthropic-version": "2023-06-01",
       },
       body: JSON.stringify(body),
@@ -229,8 +283,10 @@ if (DRY_RUN) {
   process.exit(0);
 }
 
-if (!process.env.ANTHROPIC_API_KEY) {
-  console.error("ANTHROPIC_API_KEY is not set.");
+if (!process.env.ANTHROPIC_API_KEY && !hasFederation()) {
+  console.error(
+    "No credentials. Set ANTHROPIC_API_KEY for a local run, or run the GitHub Action (uses identity federation).",
+  );
   process.exit(1);
 }
 
