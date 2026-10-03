@@ -227,7 +227,11 @@ STYLE: plain, concrete, no hype, no emoji, no filler. Avoid words like "game-cha
 
 ALSO RETURN:
 - description: one sentence (under 160 characters) for the page and search results, naming the top themes.
-- linkedin: a LinkedIn post in plain text (no Markdown), under 2,600 characters. First line is a plain hook that states what is in the edition. Then the big three as short lines starting with a hyphen, then one sentence saying the full edition has the rest with sources, then the edition URL on its own line. Then a final line, exactly: "Written by AI from public sources. Not human-reviewed before posting." Do not use the first person and do not invent personal experience.
+- linkedin: a short LinkedIn teaser in plain text (no Markdown), under 1,100 characters. Its job is to make people visit the website for the full edition, so it must NOT contain the whole summary. Structure:
+  1. One hook line: the single most notable story of the week, stated concretely and without hype or clickbait.
+  2. A blank line, then exactly three lines starting with "- ": the big three as short headlines (under 90 characters each) saying what happened. No explanations, no "why it matters", no source names.
+  3. A blank line, then one line: "Plus N more across AI, QSR and testing, each with the source and why it matters. Full edition below." where N is the number of items beyond the big three (given in the input).
+  Do not include any URL and do not mention that it is AI-written; both are added automatically. Do not use the first person and do not invent personal experience.
 - review_notes: a short Markdown list of anything uncertain in the edition: items based on a snippet only, company claims, statements that go slightly beyond the source. Write "None" if nothing.
 
 Here is the previous edition, as an example of the format and tone only. Do not reuse its content:
@@ -360,6 +364,7 @@ for (const p of picks) {
 console.log("Writing the edition...");
 const writeUser = `Edition date (the day it is published): ${editionDate}
 Edition URL: ${SITE}/weekly/${editionDate}/
+Number of items: ${articles.length} (so N for the LinkedIn teaser is ${Math.max(0, articles.length - 3)})
 
 Items (JSON). "bigThree": true marks the items the editor chose for the big three.
 
@@ -385,7 +390,7 @@ const fixDashes = (s) => s.replace(/\s*[\u2013\u2014]\s*/g, ", ");
 const description = fixDashes(written.json.description);
 const body = fixDashes(written.json.body);
 const editionUrl = `${SITE}/weekly/${editionDate}/`;
-const DISCLOSURE = "Written by AI from public sources. Not human-reviewed before posting.";
+const DISCLOSURE = "AI-generated from public sources.";
 // The URL and the disclosure are fixed text, so guarantee them here instead of
 // trusting the model to include them.
 const linkedin = (() => {
@@ -421,7 +426,7 @@ if (words > 2000) errors.push(`Edition is far too long: about ${words} words.`);
 else if (words > 1500) warnings.push(`Edition is long: about ${words} words.`);
 if (body.split("\n").filter((l) => l.startsWith("### ")).length < 3) errors.push("Fewer than three items in the edition.");
 if (description.length > 200) warnings.push(`Description is ${description.length} characters.`);
-if (linkedin.length > 2800) errors.push(`LinkedIn text is ${linkedin.length} characters (limit 3,000).`);
+if (linkedin.length > 2000) errors.push(`LinkedIn text is ${linkedin.length} characters, expected a short teaser (limit 3,000).`);
 
 // ---------------------------------------------------------------- write files
 
@@ -483,3 +488,4 @@ await mkdir("data/linkedin", { recursive: true });
 await writeFile(`data/linkedin/${editionDate}.txt`, linkedin.trim() + "\n");
 await writeFile(".weekly/edition-date.txt", editionDate + "\n");
 console.log(`\nWrote ${editionPath}`);
+console.log(`\nLinkedIn text (${linkedin.length} characters):\n-----\n${linkedin.trim()}\n-----`);

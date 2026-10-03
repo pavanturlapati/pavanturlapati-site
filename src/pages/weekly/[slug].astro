@@ -29,7 +29,7 @@ const { title, description, date, linkedin, draft } = entry.data;
       <h1>{title}</h1>
       <p class="meta">
         <time datetime={date.toISOString()}>{formatDate(date)}</time>
-        {" · "}AI-generated, not reviewed before publishing
+        {" · "}AI-generated
         {draft && <span class="badge">Draft</span>}
       </p>
     </header>
