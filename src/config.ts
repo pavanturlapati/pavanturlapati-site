@@ -42,6 +42,7 @@ export const socials = [
 /** Primary navigation. `external` links open in the same tab (own domain). */
 export const nav = [
   { label: "Writing", href: "/writing/" },
+  { label: "Weekly", href: "/weekly/" },
   { label: "Notes", href: "/notes/" },
   { label: "Watching", href: "/watching/" },
   { label: "Feed", href: "/feed/" },
