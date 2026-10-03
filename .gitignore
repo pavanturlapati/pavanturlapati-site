@@ -7,3 +7,4 @@ TODO.md
 .env.*
 !.env.example
 .DS_Store
+.weekly/

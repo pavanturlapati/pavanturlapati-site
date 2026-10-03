@@ -1,0 +1,65 @@
+name: Weekly Mashup
+
+# Collects the week's items, has Claude draft the edition, and opens a DRAFT
+# pull request. Nothing is published until the PR is merged (merging to main
+# triggers the normal deploy).
+#
+# Manual first: run it from the Actions tab for a few weeks. When the output
+# is consistently good, uncomment the schedule below.
+# 12:00 UTC is 8am EDT / 7am EST on Monday.
+on:
+  # schedule:
+  #   - cron: "0 12 * * 1"
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Edition date (the Tuesday it goes out), YYYY-MM-DD. Blank = next Tuesday."
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Collect and write the edition
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          EDITION_DATE: ${{ inputs.date }}
+        run: |
+          npm run weekly:collect
+          if [ -n "$EDITION_DATE" ]; then
+            node scripts/weekly-generate.mjs --date "$EDITION_DATE"
+          else
+            node scripts/weekly-generate.mjs
+          fi
+
+      - name: Open a draft pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          DATE="$(cat .weekly/edition-date.txt)"
+          BRANCH="weekly/$DATE"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$BRANCH"
+          git add "src/content/weekly/$DATE.md"
+          git commit -m "Add Weekly Mashup for $DATE"
+          git push --force origin "$BRANCH"
+          if gh pr view "$BRANCH" >/dev/null 2>&1; then
+            gh pr edit "$BRANCH" --body-file .weekly/review.md
+          else
+            gh pr create --draft --base main --head "$BRANCH" \
+              --title "Weekly Mashup: $DATE" --body-file .weekly/review.md
+          fi

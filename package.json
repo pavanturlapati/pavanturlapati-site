@@ -12,6 +12,9 @@
     "preview": "astro preview",
     "check": "astro check",
     "sync:letterboxd": "node scripts/sync-letterboxd.mjs",
+    "weekly:collect": "node scripts/weekly-collect.mjs",
+    "weekly:generate": "node scripts/weekly-generate.mjs",
+    "weekly": "node scripts/weekly-collect.mjs && node scripts/weekly-generate.mjs",
     "export:resume": "node scripts/export-resume-image.mjs",
     "export:hero": "node scripts/export-resume-image.mjs hero"
   },
@@ -22,6 +25,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "fast-xml-parser": "^5.11.2",
     "typescript": "^6.0.3"
   }
 }

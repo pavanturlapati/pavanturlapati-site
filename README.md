@@ -30,6 +30,7 @@ redeploys itself.
 | Article | `src/content/articles/<slug>.md` | `title`, `description`, `date`, `tags`, optional `linkedin`, `draft` |
 | Note | `src/content/notes/YYYY-MM-DD-<slug>.md` | `date`, optional `x`, `draft` |
 | Feed link | `src/content/links/YYYY-MM-DD-<slug>.md` | `title`, `url`, `date`, `draft` |
+| Weekly edition | `src/content/weekly/YYYY-MM-DD.md` | `title`, `description`, `date`, optional `linkedin`, `draft` |
 
 - A note has no title. Its text is the body of the file.
 - A feed link's body is your one-line comment (optional).
@@ -65,6 +66,68 @@ One line on why it is worth reading.
 
 The feed is a hand-curated list at `/feed`. There are no feed links yet, so
 the page shows "Nothing here yet."
+
+## Weekly Mashup
+
+A weekly bulletin on AI, QSR technology and software testing, at `/weekly/`.
+Each edition is dated the Tuesday it goes out. It is AI-assisted: a script
+drafts it, and a human reviews it before anything is published.
+
+**How it works**
+
+1. `scripts/weekly-collect.mjs` fetches the feeds listed in
+   `scripts/weekly-sources.mjs`, keeps items from the last 7 days, removes
+   duplicates and writes `.weekly/collected.json`. No AI is involved.
+2. `scripts/weekly-generate.mjs` makes two Claude calls. The first picks 8 to
+   10 items from titles and snippets. The script then fetches the full text of
+   only those articles. The second call writes the edition and a LinkedIn
+   version, using only what the articles say.
+3. It writes `src/content/weekly/YYYY-MM-DD.md`, plus `.weekly/linkedin.txt`
+   and `.weekly/review.md` (checks and things to verify). `.weekly/` is not
+   committed.
+4. The GitHub Action `weekly.yml` runs the two scripts and opens a draft pull
+   request. The PR description holds the review checklist and the LinkedIn
+   text. Merging to `main` publishes the edition through the normal deploy.
+
+**Weekly routine:** the draft PR arrives Monday morning ET. Review and edit
+it Monday evening, then merge and post to LinkedIn (can be scheduled for
+Tuesday 12:00am ET).
+
+**Run it by hand**
+
+```sh
+npm run weekly:collect      # fetch candidates only, no API calls
+npm run weekly              # collect, then write the edition (needs the key)
+node scripts/weekly-generate.mjs --dry-run   # show prompt sizes, no API call
+node scripts/weekly-generate.mjs --date 2026-10-13
+```
+
+**Setup**
+
+- Add the key as the repository secret `ANTHROPIC_API_KEY` (Settings >
+  Secrets and variables > Actions, or `gh secret set ANTHROPIC_API_KEY`).
+  Locally, set it as an environment variable. Never commit it.
+- Settings > Actions > General > Workflow permissions: enable "Allow GitHub
+  Actions to create and approve pull requests".
+- The Anthropic API is billed separately from a Claude.ai plan. Set a spend
+  cap in the Anthropic console.
+- The model is `claude-sonnet-5-5` (override with `WEEKLY_MODEL`). A run is
+  two calls, about $0.10 to $0.20, so roughly $0.50 to $0.80 a month.
+- `weekly.yml` is manual (`workflow_dispatch`) until the schedule line is
+  uncommented.
+
+**Editing the sources:** change `scripts/weekly-sources.mjs`. Check any new
+feed with `curl` first, since some sites return 403 or HTML instead of RSS.
+`scripts/weekly-example.md` is the format example given to the model.
+
+**Truth rules:** the prompt tells the model to state only what the supplied
+text says, to attribute company claims, and to say less when it only has a
+snippet. The script also checks that every link was supplied, section order,
+length and the LinkedIn character limit. These checks help but do not replace
+reading the edition.
+
+The Weekly tab is not in the navigation yet. Add `{ label: "Weekly", href:
+"/weekly/" }` in `src/config.ts` when the first real edition is ready.
 
 ## Letterboxd
 
