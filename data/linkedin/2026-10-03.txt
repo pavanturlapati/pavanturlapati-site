@@ -1,0 +1,11 @@
+Agents are getting cheaper and more capable, and the open question is how much access they should have.
+
+- OpenAI introduces GPT-6.1 Sol at a fifth of Astra's token prices
+- Matthew Green on how AI agents could spread a worm
+- DoorDash launches DashOS to connect restaurant channels
+
+Plus 7 more across AI, QSR and testing, each with the source and why it matters. Full edition below.
+
+https://pavanturlapati.com/weekly/2026-10-03/
+
+AI-generated from public sources.
