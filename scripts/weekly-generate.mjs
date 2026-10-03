@@ -228,7 +228,7 @@ STYLE: plain, concrete, no hype, no emoji, no filler. Avoid words like "game-cha
 ALSO RETURN:
 - description: one sentence (under 160 characters) for the page and search results, naming the top themes.
 - linkedin: a short LinkedIn teaser in plain text (no Markdown), under 1,100 characters. Its job is to make people visit the website for the full edition, so it must NOT contain the whole summary. Structure:
-  1. One hook line: the single most notable story of the week, stated concretely and without hype or clickbait.
+  1. One hook line framing the theme of the week in plain words (for example what the stories have in common). It must not repeat any of the three headlines below.
   2. A blank line, then exactly three lines starting with "- ": the big three as short headlines (under 90 characters each) saying what happened. No explanations, no "why it matters", no source names.
   3. A blank line, then one line: "Plus N more across AI, QSR and testing, each with the source and why it matters. Full edition below." where N is the number of items beyond the big three (given in the input).
   Do not include any URL and do not mention that it is AI-written; both are added automatically. Do not use the first person and do not invent personal experience.
