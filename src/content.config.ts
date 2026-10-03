@@ -50,7 +50,7 @@ const weekly = defineCollection({
   schema: z.strictObject({
     title: z.string().min(1),
     description: z.string().min(1),
-    /** Publication date (the Tuesday the edition goes out). */
+    /** Publication date, the day the edition goes out (New York time). */
     date: z.coerce.date(),
     /** URL of the LinkedIn post, once shared there. */
     linkedin: z.url().optional(),

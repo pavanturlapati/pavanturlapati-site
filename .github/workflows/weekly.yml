@@ -1,28 +1,40 @@
 name: Weekly Mashup
 
-# Collects the week's items, has Claude draft the edition, and opens a DRAFT
-# pull request. Nothing is published until the PR is merged (merging to main
-# triggers the normal deploy).
+# Fully automatic, no human in the loop:
+#   1. collect this week's items and have Claude write the edition,
+#   2. commit it to main (which publishes it on the site),
+#   3. wait for the page to go live, then post it to LinkedIn,
+#   4. record the LinkedIn post URL on the edition.
 #
-# Manual first: run it from the Actions tab for a few weeks. When the output
-# is consistently good, uncomment the schedule below.
-# 12:00 UTC is 8am EDT / 7am EST on Monday.
+# If the generator's checks fail, the run fails and nothing is published. If
+# something wrong gets through, delete the edition file (and the LinkedIn post).
+#
+# 11:00 UTC on Tuesday is 7am EDT / 6am EST. GitHub can start scheduled runs
+# several minutes late. The edition is dated the New York date of the run.
 on:
-  # schedule:
-  #   - cron: "0 12 * * 1"
+  schedule:
+    - cron: "0 11 * * 2"
   workflow_dispatch:
     inputs:
       date:
-        description: "Edition date (the Tuesday it goes out), YYYY-MM-DD. Blank = next Tuesday."
+        description: "Edition date, YYYY-MM-DD. Blank = today (New York). An already published date is not overwritten."
         required: false
+      dry_run:
+        description: "Generate only: show the result in the run summary, publish and post nothing."
+        type: boolean
+        default: false
 
 permissions:
-  contents: write
-  pull-requests: write
-  id-token: write # lets the job get a GitHub OIDC token for Anthropic identity federation
+  contents: write # commit the edition to main
+  actions: write # start the deploy (pushes made with GITHUB_TOKEN do not trigger it)
+  id-token: write # GitHub OIDC token for Anthropic identity federation
+
+concurrency:
+  group: weekly-mashup
+  cancel-in-progress: false
 
 jobs:
-  draft:
+  weekly:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -45,27 +57,70 @@ jobs:
           EDITION_DATE: ${{ inputs.date }}
         run: |
           npm run weekly:collect
-          if [ -n "$EDITION_DATE" ]; then
-            node scripts/weekly-generate.mjs --date "$EDITION_DATE"
-          else
-            node scripts/weekly-generate.mjs
+          ARGS=""
+          if [ -n "$EDITION_DATE" ]; then ARGS="--date $EDITION_DATE"; fi
+          # The model's output can occasionally fail a check (bad link, missing
+          # section). One retry is cheap (about 9 cents).
+          node scripts/weekly-generate.mjs $ARGS || {
+            echo "First attempt failed, retrying once."
+            node scripts/weekly-generate.mjs $ARGS
+          }
+
+      - name: Show the result in the run summary
+        if: always()
+        run: |
+          if [ -f .weekly/review.md ]; then cat .weekly/review.md >> "$GITHUB_STEP_SUMMARY"; fi
+          if [ "${{ inputs.dry_run }}" = "true" ] && [ -f .weekly/edition-date.txt ]; then
+            DATE="$(cat .weekly/edition-date.txt)"
+            { echo; echo "## Edition body"; echo; echo '````markdown'; cat "src/content/weekly/$DATE.md"; echo '````'; } >> "$GITHUB_STEP_SUMMARY"
           fi
 
-      - name: Open a draft pull request
+      - name: Publish the edition
+        if: ${{ !inputs.dry_run }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          if [ ! -f .weekly/edition-date.txt ]; then
+            echo "Nothing new to publish."
+            exit 0
+          fi
           DATE="$(cat .weekly/edition-date.txt)"
-          BRANCH="weekly/$DATE"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -B "$BRANCH"
-          git add "src/content/weekly/$DATE.md"
+          git add "src/content/weekly/$DATE.md" "data/linkedin/$DATE.txt"
           git commit -m "Add Weekly Mashup for $DATE"
-          git push --force origin "$BRANCH"
-          if gh pr view "$BRANCH" >/dev/null 2>&1; then
-            gh pr edit "$BRANCH" --body-file .weekly/review.md
+          git push origin HEAD:main
+          gh workflow run deploy.yml
+
+      - name: Post to LinkedIn
+        if: ${{ !inputs.dry_run }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_AUTHOR_URN: ${{ vars.LINKEDIN_AUTHOR_URN }}
+          LINKEDIN_TOKEN_EXPIRES: ${{ vars.LINKEDIN_TOKEN_EXPIRES }}
+          LINKEDIN_API_VERSION: ${{ vars.LINKEDIN_API_VERSION }}
+          INPUT_DATE: ${{ inputs.date }}
+        run: |
+          if [ -f .weekly/edition-date.txt ]; then
+            DATE="$(cat .weekly/edition-date.txt)"
+          elif [ -n "$INPUT_DATE" ]; then
+            # Re-run for an edition that is already published (for example,
+            # when an earlier LinkedIn post failed). The post step skips it if
+            # it already has a LinkedIn URL.
+            DATE="$INPUT_DATE"
           else
-            gh pr create --draft --base main --head "$BRANCH" \
-              --title "Weekly Mashup: $DATE" --body-file .weekly/review.md
+            DATE="$(TZ=America/New_York date +%F)"
+          fi
+          node scripts/weekly-linkedin.mjs --date "$DATE"
+
+          if [ -f .weekly/linkedin-url.txt ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add "src/content/weekly/$DATE.md"
+            git commit -m "Link Weekly Mashup $DATE to its LinkedIn post"
+            git pull --rebase origin main
+            git push origin HEAD:main
+            gh workflow run deploy.yml
+            echo "LinkedIn post: $(cat .weekly/linkedin-url.txt)" >> "$GITHUB_STEP_SUMMARY"
           fi

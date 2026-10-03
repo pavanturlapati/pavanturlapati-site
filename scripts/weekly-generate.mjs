@@ -1,4 +1,6 @@
 // Stage 2 of the Weekly Mashup pipeline: pick items, read them, write the edition.
+// Runs unattended (nobody reviews the output before it is published), so any
+// failed hard check exits non-zero and nothing is published.
 //
 // Reads .weekly/collected.json (from weekly-collect.mjs), then:
 //   1. SELECT: one small Claude call picks ~9 items from titles and snippets.
@@ -6,12 +8,16 @@
 //   3. WRITE:  one Claude call writes the edition and a LinkedIn version.
 //
 // Output:
-//   src/content/weekly/YYYY-MM-DD.md   the edition (YYYY-MM-DD = the Tuesday it goes out)
-//   .weekly/linkedin.txt               LinkedIn-ready text (not committed)
-//   .weekly/review.md                  notes and warnings for the reviewer (not committed)
+//   src/content/weekly/YYYY-MM-DD.md   the edition (YYYY-MM-DD = the day it goes out, New York time)
+//   data/linkedin/YYYY-MM-DD.txt       LinkedIn text, posted by weekly-linkedin.mjs
+//   .weekly/review.md                  notes and warnings, shown in the job summary (not committed)
+//   .weekly/edition-date.txt           written only when there is something to publish
 //
 // Usage:
-//   node scripts/weekly-generate.mjs [--date YYYY-MM-DD] [--dry-run]
+//   node scripts/weekly-generate.mjs [--date YYYY-MM-DD] [--dry-run] [--force]
+//
+// An edition that already exists (and is not a draft) is left alone unless
+// --force is given, so a re-run cannot overwrite a published edition.
 //
 // Needs credentials (never commit them). In GitHub Actions it uses Workload
 // Identity Federation: a short-lived GitHub OIDC token is exchanged for a
@@ -34,6 +40,7 @@ const WORDS_PER_MINUTE = 220;
 
 const args = process.argv.slice(2);
 const DRY_RUN = args.includes("--dry-run");
+const FORCE = args.includes("--force");
 const dateArg = args.includes("--date") ? args[args.indexOf("--date") + 1] : null;
 
 // ---------------------------------------------------------------- dates
@@ -46,13 +53,9 @@ const shortDate = (iso) => {
 };
 const longDate = (iso) => `${shortDate(iso)}, ${iso.slice(0, 4)}`;
 
-// The edition goes out on the next Tuesday (New York time). Run on Monday: tomorrow.
-function nextTuesday() {
-  const parts = new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" }).format(new Date());
-  const d = new Date(`${parts}T12:00:00Z`);
-  const ahead = (2 - d.getUTCDay() + 7) % 7 || 7;
-  d.setUTCDate(d.getUTCDate() + ahead);
-  return d.toISOString().slice(0, 10);
+// The edition is dated today in New York (the workflow runs on Tuesday morning).
+function todayInNewYork() {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" }).format(new Date());
 }
 
 // ---------------------------------------------------------------- Anthropic
@@ -188,10 +191,12 @@ From the numbered candidate list, choose 8 to 10 items. Prefer:
 - a mix across sections, led by AI, roughly 4 AI, 3 QSR, 2 Testing, but let quality decide. Fewer than 8 is fine if the week is thin.
 Skip: ads, event or ticket promotions, job and layoff deal pitches, pure menu or store-opening items, personal quotes without substance, and anything you cannot tell is worth reading from the title and snippet.
 Items marked catchup=true are older than a week; include one only if it is clearly worth it.
+Items marked snippetOnly=true cannot be read in full (the publisher blocks it), so they would be summarized from one short line. Pick one only if the news is clearly major; otherwise prefer a readable item.
+No human reviews the result, so prefer well-sourced, concrete stories over speculative or thin ones.
 Also pick the "big three": the three picked items a busy reader should not miss.
 Return ids exactly as given.`;
 
-const WRITE_SYSTEM = `You write a weekly tech bulletin ("Weekly Mashup") for a senior software quality and delivery leader, published on his personal site and shared on LinkedIn. It must be readable in under 30 minutes, including the links.
+const WRITE_SYSTEM = `You write a weekly tech bulletin ("Weekly Mashup") for a senior software quality and delivery leader, published on his personal site and shared on LinkedIn. It is published automatically with no human review, so accuracy and restraint matter more than completeness. It must be readable in under 30 minutes, including the links.
 
 TRUTH RULES (most important):
 - State only what the supplied article text says. Do not add facts, numbers, names, dates or context from your own knowledge.
@@ -222,8 +227,8 @@ STYLE: plain, concrete, no hype, no emoji, no filler. Avoid words like "game-cha
 
 ALSO RETURN:
 - description: one sentence (under 160 characters) for the page and search results, naming the top themes.
-- linkedin: a LinkedIn post in plain text (no Markdown), under 2,600 characters. First line is a plain hook that states what is in the edition. Then the big three as short lines starting with a hyphen, then one sentence saying the full edition has the rest with sources, then the edition URL on its own line. Then a final line: "AI-assisted, reviewed by me." Write in the first person only for that last line and for neutral framing; do not invent personal experience.
-- review_notes: a short Markdown list of things a human reviewer should double-check: items based on a snippet only, company claims, anything uncertain. Write "None" if nothing.
+- linkedin: a LinkedIn post in plain text (no Markdown), under 2,600 characters. First line is a plain hook that states what is in the edition. Then the big three as short lines starting with a hyphen, then one sentence saying the full edition has the rest with sources, then the edition URL on its own line. Then a final line, exactly: "Written by AI from public sources. Not human-reviewed before posting." Do not use the first person and do not invent personal experience.
+- review_notes: a short Markdown list of anything uncertain in the edition: items based on a snippet only, company claims, statements that go slightly beyond the source. Write "None" if nothing.
 
 Here is the previous edition, as an example of the format and tone only. Do not reuse its content:
 
@@ -236,11 +241,22 @@ const collected = JSON.parse(await readFile(COLLECTED, "utf8").catch(() => {
   process.exit(1);
 }));
 
-const editionDate = dateArg ?? nextTuesday();
+const editionDate = dateArg ?? todayInNewYork();
 if (!/^\d{4}-\d{2}-\d{2}$/.test(editionDate)) {
   console.error("--date must look like 2026-10-06");
   process.exit(1);
 }
+
+const editionPath = `src/content/weekly/${editionDate}.md`;
+const existing = await readFile(editionPath, "utf8").catch(() => null);
+if (existing && !/^draft:\s*true\s*$/m.test(existing) && !FORCE) {
+  console.log(`${editionPath} is already published. Nothing to do (use --force to overwrite).`);
+  process.exit(0);
+}
+
+// Publishers that block automated page reads. Their items can only be
+// summarized from a short feed snippet, so the editor is told to prefer others.
+const SNIPPET_ONLY = new Set(["OpenAI", "Nation's Restaurant News", "Modern Restaurant Management"]);
 
 const candidates = collected.items.map((item, i) => ({ id: i + 1, ...item }));
 const example = (await readFile("scripts/weekly-example.md", "utf8")).replace(/^---[\s\S]*?---\s*/, "");
@@ -248,7 +264,7 @@ const example = (await readFile("scripts/weekly-example.md", "utf8")).replace(/^
 const selectUser = candidates
   .map(
     (c) =>
-      `[${c.id}] (${c.section}) ${c.source}, ${c.published}${c.catchup ? ", catchup=true" : ""}\n    ${c.title}\n    ${c.snippet}`,
+      `[${c.id}] (${c.section}) ${c.source}, ${c.published}${c.catchup ? ", catchup=true" : ""}${SNIPPET_ONLY.has(c.source) ? ", snippetOnly=true" : ""}\n    ${c.title}\n    ${c.snippet}`,
   )
   .join("\n");
 
@@ -342,7 +358,7 @@ for (const p of picks) {
 
 // 3. WRITE
 console.log("Writing the edition...");
-const writeUser = `Edition date (the Tuesday it is published): ${editionDate}
+const writeUser = `Edition date (the day it is published): ${editionDate}
 Edition URL: ${SITE}/weekly/${editionDate}/
 
 Items (JSON). "bigThree": true marks the items the editor chose for the big three.
@@ -360,12 +376,21 @@ console.log(`  cost ~$${cost(written.usage).toFixed(3)}`);
 
 // ---------------------------------------------------------------- checks
 
-const { description, body, linkedin, review_notes } = written.json;
+// Nobody reviews the output, so there are two levels. `errors` block publishing
+// (the run fails and nothing is committed or posted). `warnings` are noted in
+// the job summary only.
+const { review_notes } = written.json;
+// Style fix instead of a failure: long dashes become a comma.
+const fixDashes = (s) => s.replace(/\s*[\u2013\u2014]\s*/g, ", ");
+const description = fixDashes(written.json.description);
+const body = fixDashes(written.json.body);
+const linkedin = fixDashes(written.json.linkedin);
+const errors = [];
 const warnings = [];
 
 const allowed = new Set(articles.map((a) => a.url));
 for (const [, url] of body.matchAll(/\]\((https?:\/\/[^)\s]+)\)/g)) {
-  if (!allowed.has(url)) warnings.push(`Link not in the supplied items: ${url}`);
+  if (!allowed.has(url)) errors.push(`Link not in the supplied items: ${url}`);
 }
 for (const a of articles) {
   if (!body.includes(a.url)) warnings.push(`Missing from the edition: ${a.title}`);
@@ -375,17 +400,19 @@ let at = -1;
 for (const h of ["## The big three", "## AI", "## QSR", "## Testing", "## Takeaway"]) {
   const idx = body.indexOf(h);
   if (idx === -1) {
-    if (h === "## The big three" || h === "## Takeaway") warnings.push(`Missing heading: ${h}`);
+    if (h === "## The big three" || h === "## Takeaway") errors.push(`Missing heading: ${h}`);
     continue;
   }
-  if (idx < at) warnings.push(`Section out of order: ${h}`);
+  if (idx < at) errors.push(`Section out of order: ${h}`);
   at = idx;
 }
-if (/[\u2013\u2014]/.test(body)) warnings.push("Body contains long dashes (style rule: avoid).");
 const words = body.split(/\s+/).length;
-if (words > 1500) warnings.push(`Edition is long: about ${words} words.`);
-if (linkedin.length > 2800) warnings.push(`LinkedIn text is ${linkedin.length} characters (limit 3,000).`);
-if (!linkedin.includes(`${SITE}/weekly/${editionDate}/`)) warnings.push("LinkedIn text does not include the edition URL.");
+if (words > 2000) errors.push(`Edition is far too long: about ${words} words.`);
+else if (words > 1500) warnings.push(`Edition is long: about ${words} words.`);
+if (body.split("\n").filter((l) => l.startsWith("### ")).length < 3) errors.push("Fewer than three items in the edition.");
+if (description.length > 200) warnings.push(`Description is ${description.length} characters.`);
+if (linkedin.length > 2800) errors.push(`LinkedIn text is ${linkedin.length} characters (limit 3,000).`);
+if (!linkedin.includes(`${SITE}/weekly/${editionDate}/`)) errors.push("LinkedIn text does not include the edition URL.");
 
 // ---------------------------------------------------------------- write files
 
@@ -400,21 +427,24 @@ ${body.trim()}
 `;
 
 await mkdir(".weekly", { recursive: true });
-await writeFile(`src/content/weekly/${editionDate}.md`, file);
-await writeFile(".weekly/linkedin.txt", linkedin.trim() + "\n");
 
 const totalCost = cost(selected.usage) + cost(written.usage);
-const review = `## Review checklist
+const list = (items, none) => (items.length ? items.map((w) => `- ${w}`).join("\n") : none);
+const review = `## Weekly Mashup ${editionDate}
 
 Edition: \`src/content/weekly/${editionDate}.md\` (about ${words} words, ${articles.length} items)
 
-### Model notes
+### Blocking problems
+
+${list(errors, "- None.")}
+
+### Warnings
+
+${list(warnings, "- None.")}
+
+### Model notes (things that may go slightly beyond the sources)
 
 ${review_notes.trim()}
-
-### Automatic checks
-
-${warnings.length ? warnings.map((w) => `- ${w}`).join("\n") : "- All checks passed."}
 
 ### Run
 
@@ -427,12 +457,20 @@ ${linkedin.trim()}
 \`\`\`
 `;
 await writeFile(".weekly/review.md", review);
-await writeFile(".weekly/edition-date.txt", editionDate + "\n");
 
-console.log(`\nWrote src/content/weekly/${editionDate}.md`);
-console.log("Wrote .weekly/linkedin.txt and .weekly/review.md");
 console.log(`Estimated cost this run: $${totalCost.toFixed(3)}`);
 if (warnings.length) {
   console.log("\nWarnings:");
   for (const w of warnings) console.log(`  - ${w}`);
 }
+if (errors.length) {
+  console.error("\nBlocking problems, nothing written:");
+  for (const e of errors) console.error(`  - ${e}`);
+  process.exit(1);
+}
+
+await writeFile(editionPath, file);
+await mkdir("data/linkedin", { recursive: true });
+await writeFile(`data/linkedin/${editionDate}.txt`, linkedin.trim() + "\n");
+await writeFile(".weekly/edition-date.txt", editionDate + "\n");
+console.log(`\nWrote ${editionPath}`);

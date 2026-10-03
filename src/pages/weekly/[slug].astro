@@ -29,7 +29,7 @@ const { title, description, date, linkedin, draft } = entry.data;
       <h1>{title}</h1>
       <p class="meta">
         <time datetime={date.toISOString()}>{formatDate(date)}</time>
-        {" · "}AI-assisted, reviewed by me
+        {" · "}AI-generated, not reviewed before publishing
         {draft && <span class="badge">Draft</span>}
       </p>
     </header>
@@ -45,8 +45,9 @@ const { title, description, date, linkedin, draft } = entry.data;
       )
     }
     <p class="meta">
-      Summaries are written from the linked sources and can contain errors. Check
-      the original before relying on anything here. Views are my own.
+      Written by an AI model from the linked sources and published automatically.
+      It can contain errors, so check the original before relying on anything
+      here. Views are my own.
     </p>
   </article>
 </Base>

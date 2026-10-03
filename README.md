@@ -70,8 +70,10 @@ the page shows "Nothing here yet."
 ## Weekly Mashup
 
 A weekly bulletin on AI, QSR technology and software testing, at `/weekly/`.
-Each edition is dated the Tuesday it goes out. It is AI-assisted: a script
-drafts it, and a human reviews it before anything is published.
+Each edition is dated the day it goes out (a Tuesday, New York time). It is
+written by an AI model and **published automatically with no human review**.
+The site and the LinkedIn text say so. If something is wrong, delete the
+edition file (and the LinkedIn post).
 
 **How it works**
 
@@ -82,16 +84,21 @@ drafts it, and a human reviews it before anything is published.
    10 items from titles and snippets. The script then fetches the full text of
    only those articles. The second call writes the edition and a LinkedIn
    version, using only what the articles say.
-3. It writes `src/content/weekly/YYYY-MM-DD.md`, plus `.weekly/linkedin.txt`
-   and `.weekly/review.md` (checks and things to verify). `.weekly/` is not
-   committed.
-4. The GitHub Action `weekly.yml` runs the two scripts and opens a draft pull
-   request. The PR description holds the review checklist and the LinkedIn
-   text. Merging to `main` publishes the edition through the normal deploy.
+3. It runs checks. Blocking ones (a link that was not in the supplied items, a
+   missing or out-of-order section, too few items, LinkedIn text too long)
+   fail the run and nothing is published. Softer ones (an item based on a feed
+   snippet only) go in the run summary. On success it writes
+   `src/content/weekly/YYYY-MM-DD.md` and `data/linkedin/YYYY-MM-DD.txt`.
+4. The GitHub Action `weekly.yml` runs every Tuesday at 11:00 UTC (7am EDT /
+   6am EST). It commits the edition to `main`, starts the deploy, waits for the
+   page to go live, then runs `scripts/weekly-linkedin.mjs`, which posts to
+   LinkedIn and writes the post URL into the edition's `linkedin:` frontmatter
+   (shown on the page as "Also on LinkedIn"). That field also marks the edition
+   as posted, so a re-run never double-posts.
 
-**Weekly routine:** the draft PR arrives Monday morning ET. Review and edit
-it Monday evening, then merge and post to LinkedIn (can be scheduled for
-Tuesday 12:00am ET).
+**Weekly routine:** none. To test without publishing, run the workflow from the
+Actions tab with `dry_run` ticked: the edition appears in the run summary only.
+To retry a failed LinkedIn post, run the workflow again with the same `date`.
 
 **Run it by hand**
 
@@ -120,16 +127,45 @@ node scripts/weekly-generate.mjs --date 2026-10-13
     only needed if the rule covers more than one workspace).
     `gh variable set NAME --body VALUE` works.
 - **Local runs** cannot use federation. Set `ANTHROPIC_API_KEY` in your shell
-  for those, or skip local runs and trigger the Action (it only opens a draft
-  PR). The key wins over federation if both are set.
-- Settings > Actions > General > Workflow permissions: enable "Allow GitHub
-  Actions to create and approve pull requests".
+  for those, or skip local runs and use the Action with `dry_run`. The key
+  wins over federation if both are set.
+- The Action pushes to `main` and starts the deploy itself, so it needs the
+  default workflow permissions to stay as they are (the workflow file asks
+  for `contents: write` and `actions: write`).
 - The Anthropic API is billed separately from a Claude.ai plan, so the
   organization needs prepaid credit. Set a spend cap in the console.
 - The model is `claude-sonnet-5-5` (override with `WEEKLY_MODEL`). A run is
-  two calls, about $0.10 to $0.20, so roughly $0.50 to $0.80 a month.
-- `weekly.yml` is manual (`workflow_dispatch`) until the schedule line is
-  uncommented.
+  two calls, about $0.10, so roughly $0.40 a month.
+
+**LinkedIn** (one-time setup, then a renewal about every 2 months)
+
+Posting uses LinkedIn's official API with a member token. LinkedIn access
+tokens last 60 days and cannot be refreshed automatically for a normal app, so
+the token has to be renewed by hand before it expires. The workflow prints a
+warning 14 days before `LINKEDIN_TOKEN_EXPIRES` and fails with a clear message
+if the token is dead (the site edition is still published first).
+
+1. Create an app at <https://www.linkedin.com/developers/apps> (it asks for a
+   LinkedIn Company Page to associate it with). On the Products tab, add
+   "Share on LinkedIn" and "Sign In with LinkedIn using OpenID Connect".
+2. Developer portal > Tools > Token generator: create a token for your app
+   with the scopes `openid`, `profile` and `w_member_social`.
+3. Find your author URN. In PowerShell, without pasting the token anywhere
+   else:
+   ```powershell
+   $env:LINKEDIN_ACCESS_TOKEN = Read-Host "Token"
+   node scripts/linkedin-whoami.mjs
+   ```
+4. Store it:
+   ```sh
+   gh secret set LINKEDIN_ACCESS_TOKEN                       # prompts for the value
+   gh variable set LINKEDIN_AUTHOR_URN --body "urn:li:person:<id>"
+   gh variable set LINKEDIN_TOKEN_EXPIRES --body "YYYY-MM-DD"  # 60 days from today
+   ```
+5. To renew: repeat steps 2 and 4 (the secret and the expiry date).
+
+Until these exist, the LinkedIn step prints a warning and is skipped. The
+edition is still published.
 
 **Editing the sources:** change `scripts/weekly-sources.mjs`. Check any new
 feed with `curl` first, since some sites return 403 or HTML instead of RSS.
