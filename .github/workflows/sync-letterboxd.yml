@@ -1,10 +1,11 @@
 name: Sync Letterboxd
 
-# Pulls new Letterboxd activity into data/letterboxd.json once a day. If
-# anything changed, it commits the file and triggers a fresh deploy.
+# Pulls new Letterboxd activity into data/letterboxd.json several times a day
+# (GitHub's scheduler often delays or drops runs, so one slot isn't reliable).
+# If anything changed, it commits the file and triggers a fresh deploy.
 on:
   schedule:
-    - cron: "17 11 * * *"
+    - cron: "17 5,11,17,23 * * *"
   workflow_dispatch:
 
 permissions:

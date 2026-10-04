@@ -177,7 +177,9 @@ The Weekly tab is not in the navigation yet. Add `{ label: "Weekly", href:
 `scripts/sync-letterboxd.mjs` reads the public feed for `infi56` and merges it
 into `data/letterboxd.json`. Letterboxd only publishes the latest ~50 entries,
 so the script keeps everything already saved. The GitHub Action
-`sync-letterboxd.yml` runs it daily, commits any change, and triggers a deploy.
+`sync-letterboxd.yml` runs it four times a day (05:17, 11:17, 17:17 and 23:17
+UTC, since GitHub's scheduler often delays or drops runs), commits any change,
+and triggers a deploy.
 Run it by hand with `npm run sync:letterboxd`.
 
 ## Export résumé image
