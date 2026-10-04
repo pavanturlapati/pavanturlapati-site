@@ -2,6 +2,7 @@
 title: "OpenAI computer use: I let an AI agent run my Jira tests in a real browser"
 description: "A one-day experiment with OpenAI's computer-use agent and GPT-6.1 Sol: plain-English tests from Jira, run with no browser or infrastructure of mine, with screenshots as proof."
 date: 2026-10-03
+linkedin: "https://www.linkedin.com/feed/update/urn:li:share:7512357802116444160/"
 ---
 
 ## Project name
