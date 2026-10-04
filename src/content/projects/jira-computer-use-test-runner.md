@@ -33,6 +33,12 @@ I use Playwright, and it is great, but every test is code that has to be written
 
 ## Approach
 
+The diagram shows how the pieces fit together. A small Node.js script on my machine talks to Jira and to OpenAI. The browser and the AI agent both run on OpenAI's side.
+
+![Architecture diagram. Test issues are fetched from Jira with a JQL query by a local Node.js runner. The runner sends one step at a time to an OpenAI hosted agent session, which uses GPT-6.1 Sol and the computer use tool to drive an OpenAI-hosted browser on a public demo site. The verdict and a screenshot come back to the runner, which writes JSON and HTML reports and attaches them to a Jira execution issue. Settings and secrets live in a local config file that is never committed.](/projects/jira-computer-use-test-runner/architecture.svg)
+
+In more detail:
+
 1. **Write the tests in Jira.** Each test is an issue with a label and a numbered list in the description. Each line is one step, for example: *Verify the page shows the message "You logged into a secure area!"*.
 2. **Fetch.** A JQL query pulls the tests into a local `tests.json`. The Jira description format is converted to plain steps.
 3. **Run.** Each test gets its own browser session. The steps go to the agent one at a time, and it answers each with a pass or fail and a short note on what it saw.
