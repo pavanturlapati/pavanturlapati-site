@@ -7,12 +7,16 @@ export default defineConfig({
   trailingSlash: "always",
   integrations: [sitemap()],
   // Renamed sections. Keep old links working, including individual posts.
+  // The old blog and writing sections are now Articles; /journal/ is new.
   redirects: {
     "/feed/": "/projects/",
     "/watching/": "/hobbies/",
-    "/writing/": "/blog/",
-    "/writing/tag/[tag]": "/blog/tag/[tag]",
-    "/writing/[slug]": "/blog/[slug]",
+    "/blog/": "/articles/",
+    "/blog/tag/[tag]": "/articles/tag/[tag]",
+    "/blog/[slug]": "/articles/[slug]",
+    "/writing/": "/articles/",
+    "/writing/tag/[tag]": "/articles/tag/[tag]",
+    "/writing/[slug]": "/articles/[slug]",
     "/notes/": "/opinion/",
     "/notes/[slug]": "/opinion/[slug]",
   },

@@ -1,11 +1,18 @@
 ---
 import Base from "../layouts/Base.astro";
-import { getArticles, getFilms, getNotes, getProjects } from "../lib/content";
+import {
+  getArticles,
+  getFilms,
+  getJournal,
+  getNotes,
+  getProjects,
+} from "../lib/content";
 import { excerpt, formatDate, stars } from "../lib/format";
 import { site } from "../config";
 
-const [articles, notes, projects] = await Promise.all([
+const [articles, journal, notes, projects] = await Promise.all([
   getArticles(),
+  getJournal(),
   getNotes(),
   getProjects(),
 ]);
@@ -27,10 +34,17 @@ const reviews = getFilms()
 
 const latest: Item[] = [
   ...articles.map((entry) => ({
-    kind: "Blog",
+    kind: "Article",
     date: entry.data.date,
     title: entry.data.title,
-    href: `/blog/${entry.id}/`,
+    href: `/articles/${entry.id}/`,
+    summary: entry.data.description,
+  })),
+  ...journal.map((entry) => ({
+    kind: "Journal",
+    date: entry.data.date,
+    title: entry.data.title,
+    href: `/journal/${entry.id}/`,
     summary: entry.data.description,
   })),
   ...notes.map((entry) => ({

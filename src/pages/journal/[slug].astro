@@ -1,12 +1,12 @@
 ---
 import { render } from "astro:content";
 import Base from "../../layouts/Base.astro";
-import { getArticles } from "../../lib/content";
+import { getJournal } from "../../lib/content";
 import { formatDate } from "../../lib/format";
 
 export async function getStaticPaths() {
-  const articles = await getArticles();
-  return articles.map((entry) => ({
+  const entries = await getJournal();
+  return entries.map((entry) => ({
     params: { slug: entry.id },
     props: { entry },
   }));
@@ -23,7 +23,7 @@ const { title, description, date, tags, linkedin } = entry.data;
   type="article"
   published={date.toISOString()}
 >
-  <p class="back"><a href="/blog/">← All posts</a></p>
+  <p class="back"><a href="/journal/">← Journal</a></p>
   <article>
     <header>
       <h1>{title}</h1>
@@ -33,7 +33,7 @@ const { title, description, date, tags, linkedin } = entry.data;
           tags.map((tag) => (
             <>
               {" · "}
-              <a href={`/blog/tag/${tag}/`}>{tag}</a>
+              <a href={`/journal/tag/${tag}/`}>{tag}</a>
             </>
           ))
         }

@@ -18,6 +18,16 @@ const newestFirst = <T extends { id: string; data: { date: Date } }>(
 export const getArticles = async () =>
   (await getCollection("articles", published)).sort(newestFirst);
 
+export const getJournal = async () =>
+  (await getCollection("journal", published)).sort(newestFirst);
+
+/** Archive order is the file order; the Quotes page shuffles it anyway. */
+export const getQuotes = async () =>
+  (await getCollection("quotes")).map((entry) => ({
+    id: entry.data.id,
+    text: entry.data.text,
+  }));
+
 export const getNotes = async () =>
   (await getCollection("notes", published)).sort(newestFirst);
 

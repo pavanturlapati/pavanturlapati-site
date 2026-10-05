@@ -19,15 +19,15 @@ export async function getStaticPaths() {
 const { tag, tagged, allTags } = Astro.props;
 ---
 
-<Base title={`Blog: ${tag}`} description={`Blog posts tagged ${tag}.`}>
-  <h1>Blog</h1>
+<Base title={`Articles: ${tag}`} description={`Articles tagged ${tag}.`}>
+  <h1>Articles</h1>
   <ul class="tag-list" aria-label="Filter by tag">
-    <li><a href="/blog/">all</a></li>
+    <li><a href="/articles/">all</a></li>
     {
       allTags.map((t) => (
         <li>
           <a
-            href={`/blog/tag/${t}/`}
+            href={`/articles/tag/${t}/`}
             aria-current={t === tag ? "page" : undefined}
           >
             {t}
@@ -46,7 +46,7 @@ const { tag, tagged, allTags } = Astro.props;
             </time>
           </div>
           <h2>
-            <a href={`/blog/${entry.id}/`}>{entry.data.title}</a>
+            <a href={`/articles/${entry.id}/`}>{entry.data.title}</a>
           </h2>
           <p>{entry.data.description}</p>
         </li>

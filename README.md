@@ -1,6 +1,6 @@
 # pt-site
 
-Personal website for Pavan Turlapati: a blog, short opinions, project write-ups,
+Personal website for Pavan Turlapati: articles, a personal journal, short opinions, a wall of quotes, project write-ups,
 a weekly bulletin, a Hobbies page (starting with a Letterboxd film log), and a résumé. Built with [Astro](https://astro.build)
 as a fully static site, hosted free on GitHub Pages at
 <https://pavanturlapati.com>.
@@ -22,15 +22,17 @@ npm run build    # production build into dist/
 
 ## Add content
 
-Everything is a Markdown file. Commit and push to `main`, and the site
-redeploys itself.
+Everything is a Markdown file (quotes are one JSON file). Commit and push to
+`main`, and the site redeploys itself.
 
 | What | Where | Frontmatter |
 |---|---|---|
-| Blog post | `src/content/articles/<slug>.md` | `title`, `description`, `date`, `tags`, optional `linkedin`, `draft` |
+| Article (professional) | `src/content/articles/<slug>.md` | `title`, `description`, `date`, `tags`, optional `linkedin`, `draft` |
+| Journal entry (personal, including stories) | `src/content/journal/<slug>.md` | `title`, `description`, `date`, `tags`, optional `linkedin`, `draft` |
 | Opinion | `src/content/notes/YYYY-MM-DD-<slug>.md` | `date`, optional `x`, `draft` |
 | Project | `src/content/projects/<slug>.md` | `title`, `description`, `date`, optional `linkedin`, `draft` |
 | Weekly edition | `src/content/weekly/YYYY-MM-DD.md` | `title`, `description`, `date`, optional `linkedin`, `draft` |
+| Quote | `src/content/quotes.json` | `id`, `text`, optional `category`, `favorite`, `date` |
 
 - A note has no title. Its text is the body of the file.
 - A project write-up follows a fixed outline (`templates/project.md`): Project
@@ -40,12 +42,14 @@ redeploys itself.
   Before publishing, check that it has no client or employer names, no IDs or
   keys, no revenue figures and no links to private repos (generic docs links
   are fine), and that any numbers are real or marked as estimates.
-- `tags` must come from the list in `src/config.ts` (`articleTags`). Add a tag
-  there first. A typo fails the build rather than silently creating a new tag.
+- `tags` must come from the lists in `src/config.ts` (`articleTags` for
+  articles, `journalTags` for the journal). Add a tag there first. A typo fails
+  the build rather than silently creating a new tag. Stories go in the journal
+  with the `story` tag.
 - Unknown frontmatter keys also fail the build, so a typo like `drafft: true`
   can't publish a draft by accident.
 - `draft: true` entries show in `npm run dev` but never in a production build.
-- After sharing on LinkedIn or X, paste the post URL into `linkedin:` (blog posts) or `x:` (opinions) and the site links to it.
+- After sharing on LinkedIn or X, paste the post URL into `linkedin:` (articles, journal) or `x:` (opinions) and the site links to it.
 
 Example note:
 
@@ -57,7 +61,25 @@ date: 2026-10-01
 A test that never fails is not a safety net. It's decoration.
 ```
 
-Projects live at `/projects/`. The old `/feed/` address redirects there.
+Projects live at `/projects/`. The old `/feed/` address redirects there. The
+old `/blog/` and `/writing/` addresses redirect to `/articles/`.
+
+## Quotes
+
+`/quotes/` shows a few of the quotes in `src/content/quotes.json` at a time
+(`quoteSetSize` in `src/config.ts`, currently 5), in a random layout. "More
+quotes" shows another set without a page reload and goes through the whole
+archive before repeating one. Add a quote by appending an object with the next
+unused `id` and the `text`. `category` is optional, must come from
+`quoteCategories` in `src/config.ts`, and is not shown. There is deliberately no
+author field. A wrong or unknown field fails the build.
+
+The selection and layout rules are in `src/lib/quotes.ts`. Randomness happens
+in the browser; the page is also rendered with one set at build time for
+search engines and visitors without JavaScript.
+
+The navigation groups Journal, Opinion, Quotes and Hobbies under **Personal**
+(`nav` in `src/config.ts`).
 
 ## Weekly Mashup
 

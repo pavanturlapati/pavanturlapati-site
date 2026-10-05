@@ -1,0 +1,51 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getJournal } from "../../lib/content";
+import { formatDate } from "../../lib/format";
+
+const entries = await getJournal();
+const usedTags = [...new Set(entries.flatMap((entry) => entry.data.tags))].sort();
+---
+
+<Base
+  title="Journal"
+  description="Personal writing on Vedanta, life and stories."
+>
+  <h1>Journal</h1>
+  <p class="lede">Personal writing on Vedanta, life and the occasional story.</p>
+
+  {
+    usedTags.length > 0 && (
+      <ul class="tag-list" aria-label="Filter by tag">
+        {usedTags.map((tag) => (
+          <li>
+            <a href={`/journal/tag/${tag}/`}>{tag}</a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  {
+    entries.length === 0 ? (
+      <p class="empty">Nothing here yet.</p>
+    ) : (
+      <ul class="entries">
+        {entries.map((entry) => (
+          <li class="entry">
+            <div class="meta">
+              <time datetime={entry.data.date.toISOString()}>
+                {formatDate(entry.data.date)}
+              </time>
+              {entry.data.draft && <span class="badge">Draft</span>}
+            </div>
+            <h2>
+              <a href={`/journal/${entry.id}/`}>{entry.data.title}</a>
+            </h2>
+            <p>{entry.data.description}</p>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</Base>

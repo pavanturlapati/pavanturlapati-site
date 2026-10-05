@@ -1,9 +1,12 @@
 ---
 import { nav, site } from "../config";
+import type { NavGroup, NavLink } from "../config";
 
 const path = Astro.url.pathname;
 const isCurrent = (href: string) =>
   href.startsWith("/") && (path === href || path.startsWith(href));
+const isGroup = (item: NavLink | NavGroup): item is NavGroup =>
+  "children" in item;
 ---
 
 <header class="site-header">
@@ -12,18 +15,64 @@ const isCurrent = (href: string) =>
     <nav class="site-nav" aria-label="Primary">
       <ul>
         {
-          nav.map((item) => (
-            <li>
-              <a
-                href={item.href}
-                aria-current={isCurrent(item.href) ? "page" : undefined}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))
+          nav.map((item) =>
+            isGroup(item) ? (
+              <li class="nav-group">
+                <details>
+                  <summary
+                    class:list={[
+                      { "is-current": item.children.some((c) => isCurrent(c.href)) },
+                    ]}
+                  >
+                    {item.label}
+                  </summary>
+                  <ul class="nav-sub">
+                    {item.children.map((child) => (
+                      <li>
+                        <a
+                          href={child.href}
+                          aria-current={isCurrent(child.href) ? "page" : undefined}
+                        >
+                          {child.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              </li>
+            ) : (
+              <li>
+                <a
+                  href={item.href}
+                  aria-current={isCurrent(item.href) ? "page" : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ),
+          )
         }
       </ul>
     </nav>
   </div>
 </header>
+
+<script>
+  // Close an open menu on outside click or Escape.
+  const groups = document.querySelectorAll<HTMLDetailsElement>(
+    ".site-nav details",
+  );
+  document.addEventListener("click", (event) => {
+    groups.forEach((group) => {
+      if (group.open && !group.contains(event.target as Node)) group.open = false;
+    });
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    groups.forEach((group) => {
+      if (!group.open) return;
+      group.open = false;
+      group.querySelector("summary")?.focus();
+    });
+  });
+</script>

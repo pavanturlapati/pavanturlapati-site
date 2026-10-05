@@ -173,6 +173,76 @@ p {
   text-underline-offset: 0.3em;
 }
 
+/* Dropdown group ("Personal") */
+
+.nav-group {
+  position: relative;
+}
+
+.nav-group summary {
+  cursor: pointer;
+  color: var(--muted);
+  list-style: none;
+}
+
+.nav-group summary::-webkit-details-marker {
+  display: none;
+}
+
+.nav-group summary::after {
+  content: " \25BE";
+  font-size: 0.8em;
+}
+
+.nav-group summary:hover,
+.nav-group summary.is-current,
+.nav-group details[open] > summary {
+  color: var(--ink);
+}
+
+.nav-group summary.is-current {
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+
+.site-nav .nav-sub {
+  position: absolute;
+  z-index: 5;
+  top: 100%;
+  left: -0.75rem;
+  min-width: 9.5rem;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 0;
+  margin-top: 0.4rem;
+  padding: 0.35rem 0;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.nav-sub a {
+  display: block;
+  padding: 0.4rem 0.75rem;
+}
+
+@media (max-width: 40rem) {
+  /* On small screens the list opens in place instead of floating. */
+  .site-nav .nav-sub {
+    position: static;
+    min-width: 0;
+    margin: 0.25rem 0 0;
+    padding: 0 0 0 0.75rem;
+    border: 0;
+    border-left: 2px solid var(--line);
+    border-radius: 0;
+  }
+
+  .nav-sub a {
+    padding: 0.35rem 0.5rem;
+  }
+}
+
 .site-footer {
   border-top: 1px solid var(--line);
   padding-block: 1.5rem 2.5rem;
@@ -428,7 +498,149 @@ p {
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
+    animation: none !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Quotes wall */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.wall-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.wall {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 3.5rem 4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.quote {
+  min-width: 0;
+  margin-top: calc(var(--offset, 0) * 0.9rem);
+  font-family: Georgia, "Times New Roman", serif;
+  overflow-wrap: break-word;
+}
+
+.quote blockquote {
+  margin: 0;
+}
+
+.quote p {
+  margin: 0;
+}
+
+.quote[data-align="start"] {
+  text-align: left;
+}
+
+.quote[data-align="center"] {
+  text-align: center;
+}
+
+.quote[data-align="end"] {
+  text-align: right;
+}
+
+.quote-lg {
+  flex: 0 1 100%;
+  max-width: 40rem;
+  margin-inline: auto;
+  font-size: clamp(1.75rem, 1.2rem + 2.5vw, 2.75rem);
+  line-height: 1.3;
+}
+
+.quote-md {
+  flex: 0 1 24rem;
+  font-size: clamp(1.3rem, 1.1rem + 1vw, 1.7rem);
+  line-height: 1.4;
+}
+
+.quote-sm {
+  flex: 0 1 18rem;
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.wall[data-animate] .quote {
+  animation: quote-in 0.5s ease both;
+}
+
+.wall[data-animate] .quote:nth-child(2) {
+  animation-delay: 0.06s;
+}
+
+.wall[data-animate] .quote:nth-child(3) {
+  animation-delay: 0.12s;
+}
+
+.wall[data-animate] .quote:nth-child(4) {
+  animation-delay: 0.18s;
+}
+
+.wall[data-animate] .quote:nth-child(5) {
+  animation-delay: 0.24s;
+}
+
+@keyframes quote-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+}
+
+.wall-more {
+  margin: 4rem 0 0;
+  text-align: center;
+}
+
+.wall-button {
+  min-height: 2.75rem;
+  padding: 0.5rem 1.25rem;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 1rem;
+  color: var(--accent);
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.wall-button:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+@media (max-width: 40rem) {
+  .wall {
+    gap: 2.5rem;
+  }
+
+  .quote {
+    flex-basis: 100%;
+    margin-top: 0;
+  }
+
+  .quote-lg {
+    max-width: none;
   }
 }
 

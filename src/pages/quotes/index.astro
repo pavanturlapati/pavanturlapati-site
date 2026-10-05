@@ -1,0 +1,114 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getQuotes } from "../../lib/content";
+import { assignLayout, pickSet } from "../../lib/quotes";
+import { quoteSetSize } from "../../config";
+
+const quotes = await getQuotes();
+
+// Rendered at build time so crawlers and visitors without JavaScript see real
+// quotes. The script below replaces this set with a fresh random one.
+const placed = assignLayout(pickSet(quotes, quoteSetSize).set);
+
+// "<" is escaped so a quote can never close the script tag.
+const data = JSON.stringify({ quotes, size: quoteSetSize }).replace(
+  /</g,
+  "\\u003c",
+);
+---
+
+<Base
+  title="My Quotes"
+  description="A few of my own quotes, shown a handful at a time."
+  wide
+>
+  <h1 class="wall-title">My Quotes</h1>
+
+  {
+    quotes.length === 0 ? (
+      <p class="empty">No quotes yet.</p>
+    ) : (
+      <>
+        <ul class="wall" id="wall">
+          {placed.map((q) => (
+            <li
+              class={`quote quote-${q.size}`}
+              data-align={q.align}
+              style={`--offset:${q.offset}`}
+            >
+              <blockquote>
+                <p>{q.text}</p>
+              </blockquote>
+            </li>
+          ))}
+        </ul>
+
+        {quotes.length > quoteSetSize && (
+          <p class="wall-more">
+            <button type="button" id="wall-more" class="wall-button">
+              More quotes <span aria-hidden="true">→</span>
+            </button>
+          </p>
+        )}
+
+        <p id="wall-status" class="visually-hidden" aria-live="polite" />
+        <script is:inline type="application/json" id="quotes-data" set:html={data} />
+      </>
+    )
+  }
+</Base>
+
+<script>
+  import { assignLayout, pickSet } from "../../lib/quotes";
+  import type { Placed, Quote } from "../../lib/quotes";
+
+  const wall = document.getElementById("wall");
+  const more = document.getElementById("wall-more");
+  const status = document.getElementById("wall-status");
+  const raw = document.getElementById("quotes-data")?.textContent;
+
+  if (wall && raw) {
+    const { quotes, size } = JSON.parse(raw) as { quotes: Quote[]; size: number };
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    // Quote text goes in as textContent, never as HTML.
+    const render = (items: Placed[]) => {
+      wall.replaceChildren(
+        ...items.map((q) => {
+          const li = document.createElement("li");
+          li.className = `quote quote-${q.size}`;
+          li.dataset.align = q.align;
+          li.style.setProperty("--offset", String(q.offset));
+          const block = document.createElement("blockquote");
+          const p = document.createElement("p");
+          p.textContent = q.text;
+          block.append(p);
+          li.append(block);
+          return li;
+        }),
+      );
+    };
+
+    let { set, cycle } = pickSet(quotes, size);
+    render(assignLayout(set));
+
+    more?.addEventListener("click", () => {
+      ({ set, cycle } = pickSet(quotes, size, cycle));
+      wall.dataset.animate = "";
+      render(assignLayout(set));
+
+      if (status) {
+        status.textContent = "";
+        requestAnimationFrame(() => {
+          status.textContent = "Showing a new set of quotes.";
+        });
+      }
+      if (wall.getBoundingClientRect().top < 0) {
+        wall.scrollIntoView({
+          behavior: reduceMotion.matches ? "auto" : "smooth",
+          block: "start",
+        });
+      }
+    });
+  }
+</script>
