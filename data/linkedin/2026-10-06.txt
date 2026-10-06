@@ -1,0 +1,11 @@
+This week's stories share one question: who is accountable when automated systems act on their own?
+
+- Simon Willison comments on OpenAI's GPT 6.1 Sol
+- Matthew Green on how AI agents could spread a worm
+- McDonald's faces a lawsuit over AI price recommendations
+
+Plus 7 more across AI, QSR and testing, each with the source and why it matters. Full edition below.
+
+https://pavanturlapati.com/weekly/2026-10-06/
+
+AI-generated from public sources.
