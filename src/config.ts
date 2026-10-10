@@ -17,6 +17,20 @@ export const site = {
 export const vedantaUrl = "https://vedanta.pavanturlapati.com/";
 
 /**
+ * Analytics. Leave an ID empty to turn that tool off. Neither is loaded in
+ * `npm run dev`, only in production builds.
+ *
+ * - cloudflareToken: Cloudflare dashboard > Analytics & Logs > Web analytics >
+ *   Add a site > the `token` inside the snippet's data-cf-beacon.
+ * - googleMeasurementId: Google Analytics 4 > Admin > Data streams > Web >
+ *   Measurement ID (looks like G-XXXXXXXXXX).
+ */
+export const analytics = {
+  cloudflareToken: "",
+  googleMeasurementId: "",
+} as const;
+
+/**
  * Allowed tags. A fixed list means a typo fails the build instead of
  * silently creating a new tag. Add a tag here before using it.
  *
