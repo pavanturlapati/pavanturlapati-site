@@ -47,7 +47,7 @@ That's useful. But it isn't testing yet. A good tester asks the questions no pro
 
 AI can produce combinations. **Only someone who understands the product, the user, and the risk can decide which of those combinations matter.**
 
-An AI is only as good as the context it's given, and providing that context *is* the tester's skill.
+Providing context is one essential skill. Validating assumptions, defining expected behavior, and evaluating evidence are equally important.
 
 ## What changes: the format
 
@@ -70,7 +70,7 @@ The goal is the same as it always was: express quality expectations in a form th
 
 This is the part I feel most strongly about. Some things AI doesn't replace, because they are not tasks. They are qualities of the person:
 
-**Curiosity.** The instinct to ask "what if?" and "why does it work this way?" AI answers questions well, but it doesn't wonder about the ones nobody asked.
+**Curiosity.** The instinct to ask "what if?" and "why does it work this way?" AI can propose questions we haven't considered; the tester must assess which ones matter and whether the answers are trustworthy.
 
 **Understanding the product.** Knowing what the product is for, what the business is trying to achieve, and which parts are fragile, not from documentation, but from living with it.
 
@@ -78,7 +78,7 @@ This is the part I feel most strongly about. Some things AI doesn't replace, bec
 
 **A definition of quality.** Quality is not "all tests passed." It's a judgment about what matters, to whom, and what level of risk is acceptable right now. AI can inform that judgment, but it can't own it.
 
-**Problem solving and innovation.** When something unexpected happens, or when a new kind of product needs a new way of testing, someone has to figure it out. AI works with what it has seen. People work on what hasn't been seen yet.
+**Problem solving and innovation.** When something unexpected happens, or when a new kind of product needs a new way of testing, someone has to figure it out. People bring context, judgment, and accountability to unfamiliar problems, often working alongside AI to explore them.
 
 ## So what is the skill now?
 
