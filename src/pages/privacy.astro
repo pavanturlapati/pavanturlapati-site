@@ -1,0 +1,81 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, analytics } from "../config";
+
+const hasCloudflare = Boolean(analytics.cloudflareToken);
+const hasGoogle = Boolean(analytics.googleMeasurementId);
+---
+
+<Base
+  title="Privacy"
+  description="What this website collects about visitors, and the choices you have."
+>
+  <h1>Privacy</h1>
+  <div class="prose">
+    <p>
+      This is a personal website. I collect as little as I can, and I don't
+      sell or share data with advertisers. There are no ads and no accounts.
+    </p>
+
+    <h2>What is collected</h2>
+    {
+      !hasCloudflare && !hasGoogle && (
+        <p>This site does not currently use any analytics.</p>
+      )
+    }
+    {
+      hasCloudflare && (
+        <p>
+          <strong>Cloudflare Web Analytics.</strong> Counts visits and page
+          views to understand which pages are read. It does not use cookies,
+          does not track you across sites, and does not build a profile of you.
+        </p>
+      )
+    }
+    {
+      hasGoogle && (
+        <>
+          <p>
+            <strong>Google Analytics.</strong> Used to see how many people
+            visit, which pages they read and for how long, and roughly where
+            visitors are from (country or city level), along with browser and
+            device type. It sets cookies in your browser.
+          </p>
+          <p>
+            Google Analytics loads <strong>only if you click Accept</strong> on
+            the banner. If you decline, it never loads. Your choice is stored
+            in your own browser, and nowhere else.
+          </p>
+          <p>
+            <button type="button" class="button" id="reset-consent">
+              Change your choice
+            </button>
+          </p>
+        </>
+      )
+    }
+
+    <h2>Other things to know</h2>
+    <ul>
+      <li>
+        Links to other sites (LinkedIn, GitHub and so on) are governed by
+        those sites' own privacy policies.
+      </li>
+      <li>
+        The Vedanta study notes at
+        <a href="https://vedanta.pavanturlapati.com/">vedanta.pavanturlapati.com</a>
+        are a separate site with its own privacy page.
+      </li>
+      <li>
+        The site is hosted on GitHub Pages, which may keep standard server
+        logs, such as IP addresses, under GitHub's own policy.
+      </li>
+    </ul>
+
+    <h2>Questions</h2>
+    <p>
+      Email me at <a href={`mailto:${site.email}`}>{site.email}</a>.
+    </p>
+    <p><em>Last updated: October 2026.</em></p>
+  </div>
+</Base>

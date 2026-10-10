@@ -1,0 +1,89 @@
+---
+import { analytics } from "../config";
+---
+
+{
+  analytics.googleMeasurementId && import.meta.env.PROD && (
+    <div
+      id="consent-banner"
+      class="consent-banner"
+      role="region"
+      aria-label="Cookie consent"
+      data-ga-id={analytics.googleMeasurementId}
+      hidden
+    >
+      <p>
+        I use Google Analytics, only if you allow it, to see which pages are
+        read. <a href="/privacy/">Privacy</a>
+      </p>
+      <div class="consent-actions">
+        <button type="button" class="button" data-consent="granted">Accept</button>
+        <button type="button" class="button" data-consent="denied">Decline</button>
+      </div>
+    </div>
+  )
+}
+
+<script>
+  const KEY = "pt-analytics-consent";
+  const banner = document.getElementById("consent-banner");
+  const gaId = banner?.dataset.gaId;
+
+  function read(): string | null {
+    try {
+      return localStorage.getItem(KEY);
+    } catch {
+      return null;
+    }
+  }
+
+  function write(value: string | null) {
+    try {
+      if (value === null) localStorage.removeItem(KEY);
+      else localStorage.setItem(KEY, value);
+    } catch {
+      /* storage blocked: the choice just won't persist */
+    }
+  }
+
+  function loadGoogle() {
+    if (!gaId || document.getElementById("ga-script")) return;
+    const s = document.createElement("script");
+    s.id = "ga-script";
+    s.async = true;
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+    document.head.appendChild(s);
+    const w = window as any;
+    w.dataLayer = w.dataLayer || [];
+    w.gtag = function () {
+      w.dataLayer.push(arguments);
+    };
+    w.gtag("js", new Date());
+    w.gtag("config", gaId);
+  }
+
+  function show() {
+    if (banner) banner.hidden = false;
+  }
+
+  if (banner && gaId) {
+    const saved = read();
+    if (saved === "granted") loadGoogle();
+    else if (saved !== "denied") show();
+
+    banner.querySelectorAll<HTMLButtonElement>("[data-consent]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const choice = btn.dataset.consent!;
+        write(choice);
+        banner.hidden = true;
+        if (choice === "granted") loadGoogle();
+      });
+    });
+  }
+
+  // "Change your choice" button on the privacy page.
+  document.getElementById("reset-consent")?.addEventListener("click", () => {
+    write(null);
+    location.reload();
+  });
+</script>
