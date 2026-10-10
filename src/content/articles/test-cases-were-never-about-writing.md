@@ -3,6 +3,7 @@ title: "Test Cases Were Never About Writing. AI Changes the Format, Not the Skil
 description: "AI can now write and run test cases. So what does the tester still bring? Why curiosity, product understanding, and user empathy remain the core of testing, starting from a simple textbox."
 date: 2026-10-10
 tags: ["quality"]
+linkedin: "https://www.linkedin.com/feed/update/urn:li:share:7514761416868945920/"
 ---
 
 My first technical article as a testing engineer was about how to test a textbox.
