@@ -26,7 +26,7 @@ export const vedantaUrl = "https://vedanta.pavanturlapati.com/";
  *   Measurement ID (looks like G-XXXXXXXXXX).
  */
 export const analytics = {
-  cloudflareToken: "",
+  cloudflareToken: "d6b46aa9d7a745c28b1a653f863fa3dc",
   googleMeasurementId: "",
 } as const;
 
