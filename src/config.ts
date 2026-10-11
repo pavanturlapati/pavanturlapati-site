@@ -27,7 +27,7 @@ export const vedantaUrl = "https://vedanta.pavanturlapati.com/";
  */
 export const analytics = {
   cloudflareToken: "d6b46aa9d7a745c28b1a653f863fa3dc",
-  googleMeasurementId: "",
+  googleMeasurementId: "G-4D70KGSQWE",
 } as const;
 
 /**
