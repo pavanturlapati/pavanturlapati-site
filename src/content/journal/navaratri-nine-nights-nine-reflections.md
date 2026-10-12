@@ -14,3 +14,4 @@ Each day I am writing one reflection on my Vedanta site, and I will keep adding 
 - [**Navaratri series hub**](https://vedanta.pavanturlapati.com/reflections/navaratri/) has every article in one place and is updated as new days are published.
 - [Navaratri: Nine Nights, Two Ways of Understanding](https://vedanta.pavanturlapati.com/reflections/navaratri-nine-nights-vedanta-and-tradition/) is the introduction.
 - [Day 1: Shailaputri and the Foundation](https://vedanta.pavanturlapati.com/reflections/navaratri-day-1-shailaputri-foundation/) asks what it means to begin on firm ground.
+- [Day 2: Brahmacharini and Steady Effort](https://vedanta.pavanturlapati.com/reflections/navaratri-day-2-brahmacharini-steady-effort/) looks at the story of Parvati's penance and *tapas* as the steady training of the mind.
