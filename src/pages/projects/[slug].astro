@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { title, description, date, linkedin, draft } = entry.data;
+const { title, description, date, linkedin, image, draft } = entry.data;
 ---
 
 <Base
@@ -22,6 +22,7 @@ const { title, description, date, linkedin, draft } = entry.data;
   description={description}
   type="article"
   published={date.toISOString()}
+  image={image}
 >
   <p class="back"><a href="/projects/">← All projects</a></p>
   <article>

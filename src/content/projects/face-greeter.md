@@ -2,6 +2,7 @@
 title: "Face Greeter: a door that knows you"
 description: "A free browser app that recognises you through your webcam and opens an animated door with a spoken, time-aware greeting. Nothing leaves your device."
 date: 2026-10-12
+image: "/og/face-greeter.png"
 ---
 
 ## Project name
@@ -35,7 +36,7 @@ I wanted to build a small, simulated version of face recognition to see how far 
 4. **Match.** A live face is compared with everyone enrolled, and the closest person under a distance threshold wins. The app must see the same person on three frames in a row before it greets them.
 5. **Greet.** The door animation opens, the greeting is spoken, and the same person isn't greeted again for 30 seconds.
 
-The enrolment screen also asks you to turn left, right, up and down. Those poses are not saved. They are a joke, and the app admits it at the end.
+The enrolment screen also asks you to turn left, right, up and down. Those poses are not saved.
 
 ## Benefits
 

@@ -71,6 +71,8 @@ const projects = defineCollection({
     date: z.coerce.date(),
     /** URL of the LinkedIn post, if this write-up was also shared there. */
     linkedin: z.url().optional(),
+    /** Share image for this write-up, e.g. "/og/face-greeter.png" (file in public/, 1200x630). */
+    image: z.string().startsWith("/").optional(),
     draft: z.boolean().default(false),
   }),
 });

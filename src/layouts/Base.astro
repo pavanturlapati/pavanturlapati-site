@@ -13,6 +13,8 @@ interface Props {
   published?: string;
   /** Use a wider content column (for the résumé poster). */
   wide?: boolean;
+  /** Site-relative path to a share image (e.g. "/og/foo.png"), 1200x630. Defaults to the site card. */
+  image?: string;
 }
 
 const {
@@ -21,10 +23,13 @@ const {
   type = "website",
   published,
   wide = false,
+  image,
 } = Astro.props;
 
 const fullTitle = title ? `${title} — ${site.name}` : site.title;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(image ?? "/og-image.png", Astro.site).href;
+const ogImageHeight = image ? "630" : "628";
 
 const isProd = import.meta.env.PROD;
 const cfToken = isProd ? analytics.cloudflareToken : "";
@@ -50,9 +55,9 @@ const cfToken = isProd ? analytics.cloudflareToken : "";
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content={type} />
-    <meta property="og:image" content={new URL("/og-image.png", Astro.site).href} />
+    <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="628" />
+    <meta property="og:image:height" content={ogImageHeight} />
     {published && <meta property="article:published_time" content={published} />}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="generator" content={Astro.generator} />
