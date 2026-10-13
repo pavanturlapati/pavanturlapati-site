@@ -1,0 +1,11 @@
+This week's stories share a theme: as AI models get more capable, the focus turns to cost and control.
+
+- Google launches Gemini 4 Argon with a new introductory price
+- Amex proposes a way to verify what an AI agent was authorized to buy
+- Experiment: a test harness lifted a cheaper model from 3 to 10 of 10 runs
+
+Plus 6 more across AI, QSR and testing, each with the source and why it matters. Full edition below.
+
+https://pavanturlapati.com/weekly/2026-10-13/
+
+AI-generated from public sources.
