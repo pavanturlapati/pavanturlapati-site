@@ -33,64 +33,72 @@ const reviews = getFilms()
   .filter((film) => film.kind === "review" && film.review)
   .slice(0, 3);
 
-// Max items shown per category; anything not listed gets DEFAULT_LIMIT.
-const LIMITS: Record<string, number> = { Article: 4 };
-const DEFAULT_LIMIT = 2;
+// Tech content leads. Everything else goes in a small, compact "Elsewhere"
+// list at the bottom, with at most one item per category and three overall.
+const PROJECT_LIMIT = 3;
+const ARTICLE_LIMIT = 4;
+const ELSEWHERE_LIMIT = 3;
 
-const all: Item[] = [
-  ...articles.map((entry) => ({
+const toItem = {
+  article: (entry: (typeof articles)[number]): Item => ({
     kind: "Article",
     date: entry.data.date,
     title: entry.data.title,
     href: `/articles/${entry.id}/`,
     summary: entry.data.description,
-  })),
-  ...journal.map((entry) => ({
-    kind: "Journal",
-    date: entry.data.date,
-    title: entry.data.title,
-    href: `/journal/${entry.id}/`,
-    summary: entry.data.description,
-  })),
-  ...notes.map((entry) => ({
-    kind: "Opinion",
-    date: entry.data.date,
-    title: excerpt(entry.body ?? "", 110),
-    href: `/opinion/${entry.id}/`,
-  })),
-  ...projects.map((entry) => ({
+  }),
+  project: (entry: (typeof projects)[number]): Item => ({
     kind: "Project",
     date: entry.data.date,
     title: entry.data.title,
     href: `/projects/${entry.id}/`,
     summary: entry.data.description,
-  })),
-  ...reviews.map((film) => ({
-    kind: "Film",
-    date: new Date(film.publishedAt),
-    title: `${film.title}${film.year ? ` (${film.year})` : ""} ${stars(film.rating)}`.trim(),
-    href: "/hobbies/",
-    summary: film.review ?? undefined,
-  })),
-  ...getVedantaPosts().map((post) => ({
-    kind: new URL(post.url).pathname.startsWith("/articles/")
-      ? "Vedanta Article"
-      : "Vedanta",
-    date: new Date(post.publishedAt),
-    title: post.title,
-    href: post.url,
-    summary: post.description,
-    external: true,
-  })),
-].sort((a, b) => b.date.getTime() - a.date.getTime());
+  }),
+};
 
-// `all` is newest-first, so keeping the first N per kind keeps the latest N.
-const counts = new Map<string, number>();
-const latest = all.filter((item) => {
-  const seen = counts.get(item.kind) ?? 0;
-  counts.set(item.kind, seen + 1);
-  return seen < (LIMITS[item.kind] ?? DEFAULT_LIMIT);
-});
+const featuredProjects = projects.slice(0, PROJECT_LIMIT).map(toItem.project);
+const featuredArticles = articles.slice(0, ARTICLE_LIMIT).map(toItem.article);
+
+const newestFirst = (a: Item, b: Item) => b.date.getTime() - a.date.getTime();
+const firstOf = (items: Item[]) => items.sort(newestFirst).slice(0, 1);
+
+const elsewhere: Item[] = [
+  ...firstOf(
+    journal.map((entry) => ({
+      kind: "Journal",
+      date: entry.data.date,
+      title: entry.data.title,
+      href: `/journal/${entry.id}/`,
+    })),
+  ),
+  ...firstOf(
+    notes.map((entry) => ({
+      kind: "Opinion",
+      date: entry.data.date,
+      title: excerpt(entry.body ?? "", 110),
+      href: `/opinion/${entry.id}/`,
+    })),
+  ),
+  ...firstOf(
+    reviews.map((film) => ({
+      kind: "Film",
+      date: new Date(film.publishedAt),
+      title: `${film.title}${film.year ? ` (${film.year})` : ""} ${stars(film.rating)}`.trim(),
+      href: "/hobbies/",
+    })),
+  ),
+  ...firstOf(
+    getVedantaPosts().map((post) => ({
+      kind: "Vedanta",
+      date: new Date(post.publishedAt),
+      title: post.title,
+      href: post.url,
+      external: true,
+    })),
+  ),
+]
+  .sort(newestFirst)
+  .slice(0, ELSEWHERE_LIMIT);
 ---
 
 <Base>
@@ -101,21 +109,49 @@ const latest = all.filter((item) => {
     <a href="/resume/">résumé</a> or <a href={`mailto:${site.email}`}>email me</a>.
   </p>
 
-  <h2>Latest</h2>
   {
-    latest.length === 0 ? (
-      <p class="empty">Nothing published yet.</p>
-    ) : (
-      <ul class="entries">
-        {latest.map((item) => (
-          <li class="entry">
-            <div class="meta">
+    [
+      { heading: "Projects", href: "/projects/", items: featuredProjects },
+      { heading: "Articles", href: "/articles/", items: featuredArticles },
+    ]
+      .filter((section) => section.items.length > 0)
+      .map((section) => (
+        <section class="home-section">
+          <div class="section-head">
+            <h2>{section.heading}</h2>
+            <a class="muted" href={section.href}>
+              All {section.heading.toLowerCase()} →
+            </a>
+          </div>
+          <ul class="entries">
+            {section.items.map((item) => (
+              <li class="entry">
+                <div class="meta">
+                  <time datetime={item.date.toISOString()}>
+                    {formatDate(item.date)}
+                  </time>
+                </div>
+                <h3>
+                  <a href={item.href}>{item.title}</a>
+                </h3>
+                {item.summary && <p>{excerpt(item.summary, 180)}</p>}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+  }
+
+  {
+    elsewhere.length > 0 && (
+      <section class="home-section">
+        <div class="section-head">
+          <h2>Elsewhere</h2>
+        </div>
+        <ul class="compact-list">
+          {elsewhere.map((item) => (
+            <li>
               <span class="badge">{item.kind}</span>
-              <time datetime={item.date.toISOString()}>
-                {formatDate(item.date)}
-              </time>
-            </div>
-            <h3>
               <a
                 href={item.href}
                 {...(item.external
@@ -124,11 +160,13 @@ const latest = all.filter((item) => {
               >
                 {item.title}
               </a>
-            </h3>
-            {item.summary && <p>{excerpt(item.summary, 180)}</p>}
-          </li>
-        ))}
-      </ul>
+              <time class="meta" datetime={item.date.toISOString()}>
+                {formatDate(item.date)}
+              </time>
+            </li>
+          ))}
+        </ul>
+      </section>
     )
   }
 </Base>
