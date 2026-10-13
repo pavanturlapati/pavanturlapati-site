@@ -1,0 +1,36 @@
+name: Sync Vedanta
+
+# Pulls new posts from vedanta.pavanturlapati.com into data/vedanta.json.
+# If anything changed, it commits the file and triggers a fresh deploy.
+on:
+  schedule:
+    - cron: "37 5,11,17,23 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Fetch Vedanta feed
+        run: node scripts/sync-vedanta.mjs
+
+      - name: Commit and redeploy if changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -n "$(git status --porcelain data/vedanta.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/vedanta.json
+            git commit -m "Sync Vedanta"
+            git push
+            gh workflow run deploy.yml
+          else
+            echo "No new Vedanta posts."
+          fi

@@ -1,5 +1,6 @@
 import { getCollection } from "astro:content";
 import films from "../../data/letterboxd.json";
+import vedanta from "../../data/vedanta.json";
 
 /**
  * Drafts are visible in `npm run dev` for previewing, and always excluded
@@ -50,6 +51,17 @@ export type Film = {
   review: string | null;
   publishedAt: string;
 };
+
+export type VedantaPost = {
+  id: string;
+  title: string;
+  description: string;
+  url: string;
+  publishedAt: string;
+};
+
+/** Posts from vedanta.pavanturlapati.com, kept up to date by scripts/sync-vedanta.mjs. */
+export const getVedantaPosts = (): VedantaPost[] => vedanta as VedantaPost[];
 
 /** Letterboxd history, kept up to date by scripts/sync-letterboxd.mjs. */
 export const getFilms = (): Film[] => films as Film[];

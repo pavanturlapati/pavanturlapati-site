@@ -6,6 +6,7 @@ import {
   getJournal,
   getNotes,
   getProjects,
+  getVedantaPosts,
 } from "../lib/content";
 import { excerpt, formatDate, stars } from "../lib/format";
 import { site } from "../config";
@@ -32,7 +33,11 @@ const reviews = getFilms()
   .filter((film) => film.kind === "review" && film.review)
   .slice(0, 3);
 
-const latest: Item[] = [
+// Max items shown per category; anything not listed gets DEFAULT_LIMIT.
+const LIMITS: Record<string, number> = { Article: 4 };
+const DEFAULT_LIMIT = 2;
+
+const all: Item[] = [
   ...articles.map((entry) => ({
     kind: "Article",
     date: entry.data.date,
@@ -67,9 +72,25 @@ const latest: Item[] = [
     href: "/hobbies/",
     summary: film.review ?? undefined,
   })),
-]
-  .sort((a, b) => b.date.getTime() - a.date.getTime())
-  .slice(0, 10);
+  ...getVedantaPosts().map((post) => ({
+    kind: new URL(post.url).pathname.startsWith("/articles/")
+      ? "Vedanta Article"
+      : "Vedanta",
+    date: new Date(post.publishedAt),
+    title: post.title,
+    href: post.url,
+    summary: post.description,
+    external: true,
+  })),
+].sort((a, b) => b.date.getTime() - a.date.getTime());
+
+// `all` is newest-first, so keeping the first N per kind keeps the latest N.
+const counts = new Map<string, number>();
+const latest = all.filter((item) => {
+  const seen = counts.get(item.kind) ?? 0;
+  counts.set(item.kind, seen + 1);
+  return seen < (LIMITS[item.kind] ?? DEFAULT_LIMIT);
+});
 ---
 
 <Base>
