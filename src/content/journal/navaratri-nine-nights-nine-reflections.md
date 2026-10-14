@@ -17,3 +17,4 @@ Each day I am writing one reflection on my Vedanta site, and I will keep adding 
 - [Day 1: Shailaputri and the Foundation](https://vedanta.pavanturlapati.com/reflections/navaratri-day-1-shailaputri-foundation/) asks what it means to begin on firm ground.
 - [Day 2: Brahmacharini and Steady Effort](https://vedanta.pavanturlapati.com/reflections/navaratri-day-2-brahmacharini-steady-effort/) looks at the story of Parvati's penance and *tapas* as the steady training of the mind.
 - [Day 3: Chandraghanta and Calm Courage](https://vedanta.pavanturlapati.com/reflections/navaratri-day-3-chandraghanta-calm-courage/) looks at two traditional stories and at fearlessness as a calm, steady mind.
+- [Day 4: Kushmanda and the Source of Light](https://vedanta.pavanturlapati.com/reflections/navaratri-day-4-kushmanda-source-of-light/) looks at the cosmic egg created by a smile and at the idea that our light is borrowed.
