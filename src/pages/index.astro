@@ -7,15 +7,17 @@ import {
   getNotes,
   getProjects,
   getVedantaPosts,
+  getWeekly,
 } from "../lib/content";
 import { excerpt, formatDate, stars } from "../lib/format";
 import { site } from "../config";
 
-const [articles, journal, notes, projects] = await Promise.all([
+const [articles, journal, notes, projects, weekly] = await Promise.all([
   getArticles(),
   getJournal(),
   getNotes(),
   getProjects(),
+  getWeekly(),
 ]);
 
 type Item = {
@@ -37,6 +39,7 @@ const reviews = getFilms()
 // list at the bottom, with at most one item per category and three overall.
 const PROJECT_LIMIT = 3;
 const ARTICLE_LIMIT = 4;
+const WEEKLY_LIMIT = 2;
 const ELSEWHERE_LIMIT = 3;
 
 const toItem = {
@@ -58,6 +61,13 @@ const toItem = {
 
 const featuredProjects = projects.slice(0, PROJECT_LIMIT).map(toItem.project);
 const featuredArticles = articles.slice(0, ARTICLE_LIMIT).map(toItem.article);
+const featuredWeekly: Item[] = weekly.slice(0, WEEKLY_LIMIT).map((entry) => ({
+  kind: "Weekly",
+  date: entry.data.date,
+  title: entry.data.title,
+  href: `/weekly/${entry.id}/`,
+  summary: entry.data.description,
+}));
 
 const newestFirst = (a: Item, b: Item) => b.date.getTime() - a.date.getTime();
 const firstOf = (items: Item[]) => items.sort(newestFirst).slice(0, 1);
@@ -112,6 +122,12 @@ const elsewhere: Item[] = [
   {
     [
       { heading: "Projects", href: "/projects/", items: featuredProjects },
+      {
+        heading: "Weekly Mashup",
+        href: "/weekly/",
+        label: "All editions",
+        items: featuredWeekly,
+      },
       { heading: "Articles", href: "/articles/", items: featuredArticles },
     ]
       .filter((section) => section.items.length > 0)
@@ -120,7 +136,7 @@ const elsewhere: Item[] = [
           <div class="section-head">
             <h2>{section.heading}</h2>
             <a class="muted" href={section.href}>
-              All {section.heading.toLowerCase()} →
+              {section.label ?? `All ${section.heading.toLowerCase()}`} →
             </a>
           </div>
           <ul class="entries">
