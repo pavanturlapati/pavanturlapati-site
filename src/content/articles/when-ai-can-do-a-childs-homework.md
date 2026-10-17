@@ -4,6 +4,7 @@ description: "A parent's call to action: powerful AI is now in every child's han
 date: 2026-10-17
 tags: ["ai", "education"]
 image: "/og/children-ai-learning.png"
+linkedin: "https://www.linkedin.com/feed/update/urn:li:activity:7517084167424090112/"
 ---
 
 *A parent's view on AI and children, and a call to action for families, teachers, schools, AI companies, governments and society.*
