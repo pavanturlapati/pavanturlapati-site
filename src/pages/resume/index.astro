@@ -49,7 +49,6 @@ const projects = [
   "Cloudflare Browser Run proof of concept",
   "Automated Scrum Master with Power Automate and SharePoint",
   "Agentic API and web automation, including OpenAI computer use",
-  "Claude AI certification (in progress)",
 ];
 
 const aiTools = [
@@ -132,13 +131,17 @@ const tech = [
 ];
 
 const certifications = [
-  "Professional Scrum Master I",
-  "Certified SAFe 5 DevOps Practitioner",
-  "ISTQB Certified Tester, Foundation Level",
-  "Tricentis Tosca credentials",
-  "Copado Robotic Testing",
-  "Google Cloud Fundamentals",
-  "AWS Business Professional",
+  {
+    name: "Claude Certified Associate, Foundations (Anthropic)",
+    url: "https://www.credly.com/badges/914bf9dd-4bde-42cc-ade5-18231c42a8e7",
+  },
+  { name: "Professional Scrum Master I" },
+  { name: "Certified SAFe 5 DevOps Practitioner" },
+  { name: "ISTQB Certified Tester, Foundation Level" },
+  { name: "Tricentis Tosca credentials" },
+  { name: "Copado Robotic Testing" },
+  { name: "Google Cloud Fundamentals" },
+  { name: "AWS Business Professional" },
 ];
 
 const journey = [
@@ -423,7 +426,19 @@ const value = [
             <li class="p-degree">
               B.Tech, Electronics and Communication Engineering
             </li>
-            {certifications.map((item) => <li>{item}</li>)}
+            {
+                          certifications.map((item) => (
+                            <li>
+                              {item.url ? (
+                                <a href={item.url} target="_blank" rel="noopener">
+                                  {item.name}
+                                </a>
+                              ) : (
+                                item.name
+                              )}
+                            </li>
+                          ))
+                        }
           </ul>
         </section>
       </div>
