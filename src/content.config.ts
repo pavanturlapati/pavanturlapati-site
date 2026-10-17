@@ -18,6 +18,8 @@ const articles = defineCollection({
     tags: z.array(z.enum(articleTags)).default([]),
     /** URL of the LinkedIn post, if this article was also shared there. */
     linkedin: z.url().optional(),
+    /** Share image, e.g. "/og/foo.png" (file in public/, 1200x630). */
+    image: z.string().startsWith("/").optional(),
     draft: z.boolean().default(false),
   }),
 });

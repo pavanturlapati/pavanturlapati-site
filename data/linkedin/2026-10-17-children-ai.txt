@@ -1,0 +1,26 @@
+No account. No sign-up. Just a text box.
+
+That is all it takes for anyone, including a school-going child, to start using one of the most powerful technologies ever built. And even with an account, a child can simply pick up a parent's logged-in phone, and the AI will assume it is talking to an adult.
+
+As a parent, that stopped me. A child who is still learning what effort and understanding are for can now get a polished answer to almost anything in seconds.
+
+So I keep asking: did the child learn, or did the child just get the result?
+
+And with teachers and parents stretched thin, who really has the time to check?
+
+This isn't about any one company. It's about every AI provider. I don't think the answer is banning AI. I think it is shared responsibility, and AI companies have to go first:
+
+- Every under-18 account linked to a parent or guardian, by default
+- Guest mode and adult accounts that notice a likely minor and ask a parent to approve
+- AI that mentors instead of just answering, with the parent's agreement
+- Parents kept in the loop on key moments, like being asked before a party or a sleepover
+
+Parents, teachers, schools, governments and society each have a role too. I've set out my suggestions in the article.
+
+The test I'd apply: after using AI, is the child more capable of the next task alone, or only of submitting this one?
+
+Should every under-18 AI account be linked to a parent? I'd like to hear what you think.
+
+Full article: https://pavanturlapati.com/articles/when-ai-can-do-a-childs-homework/
+
+#AI #Parenting #Education #AILiteracy #ResponsibleAI

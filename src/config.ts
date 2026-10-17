@@ -36,7 +36,7 @@ export const analytics = {
  *
  * Articles are professional writing; the journal is personal writing.
  */
-export const articleTags = ["technical", "quality", "leadership"] as const;
+export const articleTags = ["technical", "quality", "leadership", "ai", "education"] as const;
 
 export const journalTags = ["vedanta", "life", "story"] as const;
 
