@@ -21,7 +21,7 @@ No account. No sign-up. Just a text box.
 
 That is how a person can start using one of the most powerful technologies ever built. Several AI assistants now offer some form of guest or logged-out access, usually with a more limited experience. Anyone can open such a tool, including a teenager, or a child in primary school.
 
-As a parent, that stopped me. A child who is still learning what effort, honesty and understanding are for now has a tool that can explain, write, solve and build almost anything in seconds. The answer arrives polished and convincing.
+As a parent, that stopped me. A child is still learning why effort, honesty and understanding matter, yet now has a tool that can explain, write, solve and build almost anything in seconds. The answer arrives polished and convincing.
 
 So here is the question that worries me: **did the child learn, or did the child simply obtain the result?**
 
