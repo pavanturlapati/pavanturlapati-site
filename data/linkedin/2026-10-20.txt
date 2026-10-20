@@ -1,0 +1,11 @@
+This week's stories share one thread: who gets access to what, and who checks the work.
+
+- OpenCode says attackers hit its Console platform, running up charges on users' AI accounts
+- Microsoft launches Guardian Agents, arguing agents should be treated like insider threats
+- Claude Code team describes code review as continuous, not a final gate
+
+Plus 7 more across AI, QSR and testing, each with the source and why it matters. Full edition below.
+
+https://pavanturlapati.com/weekly/2026-10-20/
+
+AI-generated from public sources.
