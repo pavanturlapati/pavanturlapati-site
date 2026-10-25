@@ -1,0 +1,259 @@
+{
+  "username": "ptspam",
+  "profileUrl": "https://www.chess.com/member/ptspam",
+  "followers": 4,
+  "joinedAt": "2024-05-27T20:20:18.000Z",
+  "ratings": {
+    "rapid": {
+      "rating": 692,
+      "best": 804,
+      "win": 1747,
+      "loss": 1705,
+      "draw": 118
+    },
+    "blitz": {
+      "rating": 151,
+      "best": 318,
+      "win": 5,
+      "loss": 9,
+      "draw": 0
+    },
+    "bullet": {
+      "rating": 188,
+      "best": null,
+      "win": 0,
+      "loss": 3,
+      "draw": 0
+    },
+    "daily": {
+      "rating": 526,
+      "best": 615,
+      "win": 5,
+      "loss": 10,
+      "draw": 0
+    }
+  },
+  "tactics": 1518,
+  "games": [
+    {
+      "url": "https://www.chess.com/game/live/185921041304",
+      "endedAt": "2026-10-25T13:21:51.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 692,
+      "opponent": "MasternikG",
+      "opponentRating": 688,
+      "opening": "Caro Kann Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/185899201138",
+      "endedAt": "2026-10-25T03:17:06.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 701,
+      "opponent": "Eyp_80",
+      "opponentRating": 668,
+      "opening": "Kings Pawn Opening Kings Knight Variation"
+    },
+    {
+      "url": "https://www.chess.com/game/live/185880132994",
+      "endedAt": "2026-10-24T18:26:05.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "loss",
+      "rating": 693,
+      "opponent": "Deepakupp",
+      "opponentRating": 695,
+      "opening": "Philidor Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/185876378434",
+      "endedAt": "2026-10-24T17:05:50.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 701,
+      "opponent": "Ajanberii",
+      "opponentRating": 709,
+      "opening": "Center Game Accepted Normal Variation"
+    },
+    {
+      "url": "https://www.chess.com/game/live/185864383960",
+      "endedAt": "2026-10-24T13:21:26.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 709,
+      "opponent": "jitu28292",
+      "opponentRating": 703,
+      "opening": "Kings Pawn Opening Tortoise Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/185862308188",
+      "endedAt": "2026-10-24T12:36:30.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 701,
+      "opponent": "chrissie257",
+      "opponentRating": 704,
+      "opening": "Kings Pawn Opening Kings Knight Variation"
+    },
+    {
+      "url": "https://www.chess.com/game/live/185843799768",
+      "endedAt": "2026-10-24T03:48:37.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 693,
+      "opponent": "Deanski540",
+      "opponentRating": 698,
+      "opening": "Queens Pawn Opening Torre Attack"
+    },
+    {
+      "url": "https://www.chess.com/game/live/185843430358",
+      "endedAt": "2026-10-24T03:38:15.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 684,
+      "opponent": "rami_998",
+      "opponentRating": 668,
+      "opening": "Sicilian Defense Old Sicilian Variation"
+    },
+    {
+      "url": "https://www.chess.com/game/live/185832844972",
+      "endedAt": "2026-10-23T21:39:51.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "loss",
+      "rating": 676,
+      "opponent": "Forkbo",
+      "opponentRating": 713,
+      "opening": "Kings Pawn Opening Kings Knight Variation"
+    },
+    {
+      "url": "https://www.chess.com/game/live/185832613856",
+      "endedAt": "2026-10-23T21:22:18.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 683,
+      "opponent": "musomo",
+      "opponentRating": 690,
+      "opening": "Kings Pawn Opening Kings Knight Variation"
+    },
+    {
+      "url": "https://www.chess.com/game/live/185819513732",
+      "endedAt": "2026-10-23T17:07:36.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 674,
+      "opponent": "Shreyas1832",
+      "opponentRating": 659,
+      "opening": "Kings Pawn Opening Kings Knight Variation"
+    },
+    {
+      "url": "https://www.chess.com/game/live/185818998224",
+      "endedAt": "2026-10-23T16:49:10.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 666,
+      "opponent": "natewa9445",
+      "opponentRating": 641,
+      "opening": "Scandinavian Defense Mieses Kotrc Main Line"
+    },
+    {
+      "url": "https://www.chess.com/game/live/185785828006",
+      "endedAt": "2026-10-23T03:35:49.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 658,
+      "opponent": "Juandavidoved",
+      "opponentRating": 661,
+      "opening": "Center Game Accepted Normal Variation"
+    },
+    {
+      "url": "https://www.chess.com/game/live/185785395754",
+      "endedAt": "2026-10-23T03:32:18.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 666,
+      "opponent": "Lebedev2088",
+      "opponentRating": 651,
+      "opening": "Kings Pawn Opening Kings Knight Variation"
+    },
+    {
+      "url": "https://www.chess.com/game/live/185777892086",
+      "endedAt": "2026-10-22T22:49:18.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 658,
+      "opponent": "tailor06",
+      "opponentRating": 661,
+      "opening": "Scandinavian Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/185720093310",
+      "endedAt": "2026-10-21T22:20:20.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "loss",
+      "rating": 666,
+      "opponent": "nap1970",
+      "opponentRating": 691,
+      "opening": "Italian Game Two Knights Modern Bishops Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/185672324378",
+      "endedAt": "2026-10-21T03:45:59.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 674,
+      "opponent": "0_sahilk",
+      "opponentRating": 672,
+      "opening": "Kings Pawn Opening Kings Knight Variation"
+    },
+    {
+      "url": "https://www.chess.com/game/live/185671776106",
+      "endedAt": "2026-10-21T03:25:53.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 666,
+      "opponent": "krit123ab",
+      "opponentRating": 652,
+      "opening": "Center Game"
+    },
+    {
+      "url": "https://www.chess.com/game/live/185660061502",
+      "endedAt": "2026-10-20T20:42:18.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 658,
+      "opponent": "learner0178",
+      "opponentRating": 672,
+      "opening": "Kings Pawn Opening Kings Knight Variation"
+    },
+    {
+      "url": "https://www.chess.com/game/live/185631573992",
+      "endedAt": "2026-10-20T11:18:18.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 666,
+      "opponent": "Chetu8",
+      "opponentRating": 670,
+      "opening": "Alapin Sicilian Defense"
+    }
+  ]
+}

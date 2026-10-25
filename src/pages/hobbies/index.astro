@@ -1,9 +1,18 @@
 ---
 import Base from "../../layouts/Base.astro";
-import { getFilms } from "../../lib/content";
+import { getChess, getFilms } from "../../lib/content";
 import { formatDate, formatMonth, stars } from "../../lib/format";
 
 const films = getFilms();
+const chess = getChess();
+
+const modes = (
+  ["rapid", "blitz", "bullet", "daily"] as const
+)
+  .map((mode) => ({ mode, r: chess.ratings[mode] }))
+  .filter((m) => m.r && m.r.win + m.r.loss + m.r.draw > 0);
+
+const resultLabel = { win: "Won", loss: "Lost", draw: "Drew" } as const;
 
 /** Watched date when known, otherwise the date it was logged. */
 const dayOf = (film: (typeof films)[number]) =>
@@ -27,10 +36,60 @@ for (const film of sorted) {
 
 <Base
   title="Hobbies"
-  description="Things I do for fun, starting with the films I watch."
+  description="Things I do for fun: chess and the films I watch."
 >
   <h1>Hobbies</h1>
   <p class="lede">Things I do for fun, away from work.</p>
+
+  <h2>Chess</h2>
+  <p class="lede">
+    I'm learning chess. Live from
+    <a href={chess.profileUrl} rel="me noopener" target="_blank"
+      >Chess.com</a
+    >.
+  </p>
+
+  <ul class="chess-ratings">
+    {
+      modes.map(({ mode, r }) => (
+        <li>
+          <span class="chess-mode">{mode}</span>
+          <strong>{r!.rating}</strong>
+          <span class="meta">
+            {r!.win}W {r!.loss}L {r!.draw}D
+            {r!.best !== null && ` · best ${r!.best}`}
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <h3>Recent games</h3>
+  <ul class="entries">
+    {
+      chess.games.slice(0, 10).map((game) => (
+        <li class="film">
+          <div class="film-title">
+            <span class={`chess-result chess-${game.result}`}>
+              {resultLabel[game.result]}
+            </span>{" "}
+            as {game.color} vs
+            <a href={game.url} rel="noopener" target="_blank">
+              {game.opponent}
+            </a>
+            <span class="muted"> ({game.opponentRating})</span>
+            <span class="meta">
+              {" "}
+              · {game.timeClass}
+              {game.opening && ` · ${game.opening}`}
+              {" "}
+              · {formatDate(new Date(game.endedAt))}
+            </span>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
 
   <h2>Films</h2>
   <p class="lede">

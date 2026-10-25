@@ -1,6 +1,7 @@
 import { getCollection } from "astro:content";
 import films from "../../data/letterboxd.json";
 import vedanta from "../../data/vedanta.json";
+import chesscom from "../../data/chesscom.json";
 
 /**
  * Drafts are visible in `npm run dev` for previewing, and always excluded
@@ -52,6 +53,36 @@ export type Film = {
   publishedAt: string;
 };
 
+export type ChessRating = {
+  rating: number;
+  best: number | null;
+  win: number;
+  loss: number;
+  draw: number;
+};
+
+export type ChessGame = {
+  url: string;
+  endedAt: string;
+  timeClass: string;
+  color: "white" | "black";
+  result: "win" | "loss" | "draw";
+  rating: number;
+  opponent: string;
+  opponentRating: number;
+  opening: string | null;
+};
+
+export type ChessProfile = {
+  username: string;
+  profileUrl: string;
+  followers: number;
+  joinedAt: string;
+  ratings: Record<"rapid" | "blitz" | "bullet" | "daily", ChessRating | null>;
+  tactics: number | null;
+  games: ChessGame[];
+};
+
 export type VedantaPost = {
   id: string;
   title: string;
@@ -62,6 +93,9 @@ export type VedantaPost = {
 
 /** Posts from vedanta.pavanturlapati.com, kept up to date by scripts/sync-vedanta.mjs. */
 export const getVedantaPosts = (): VedantaPost[] => vedanta as VedantaPost[];
+
+/** Chess.com ratings and recent games, kept up to date by scripts/sync-chesscom.mjs. */
+export const getChess = (): ChessProfile => chesscom as ChessProfile;
 
 /** Letterboxd history, kept up to date by scripts/sync-letterboxd.mjs. */
 export const getFilms = (): Film[] => films as Film[];

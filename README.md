@@ -204,6 +204,15 @@ UTC, since GitHub's scheduler often delays or drops runs), commits any change,
 and triggers a deploy.
 Run it by hand with `npm run sync:letterboxd`.
 
+## Chess.com
+
+`scripts/sync-chesscom.mjs` reads the public Chess.com API for `ptspam` (profile,
+ratings and the last 20 games) and overwrites `data/chesscom.json`. The Hobbies
+page shows ratings and the 10 latest games. The GitHub Action
+`sync-chesscom.yml` runs it four times a day (05:43, 11:43, 17:43 and 23:43 UTC),
+commits any change and triggers a deploy. Run it by hand with
+`npm run sync:chesscom`.
+
 ## Export résumé image
 
 For LinkedIn's Featured section, the résumé page can be exported as a PNG:

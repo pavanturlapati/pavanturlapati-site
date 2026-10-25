@@ -12,6 +12,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "sync:letterboxd": "node scripts/sync-letterboxd.mjs",
+    "sync:chesscom": "node scripts/sync-chesscom.mjs",
     "sync:vedanta": "node scripts/sync-vedanta.mjs",
     "new:project": "node scripts/new-project.mjs",
     "weekly:collect": "node scripts/weekly-collect.mjs",
