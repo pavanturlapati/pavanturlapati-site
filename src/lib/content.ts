@@ -80,6 +80,16 @@ export type ChessProfile = {
   joinedAt: string;
   ratings: Record<"rapid" | "blitz" | "bullet" | "daily", ChessRating | null>;
   tactics: number | null;
+  totalGames: number;
+  rapidHistory: { date: string; rating: number }[];
+  openings: {
+    name: string;
+    color: "white" | "black";
+    games: number;
+    win: number;
+    loss: number;
+    draw: number;
+  }[];
   games: ChessGame[];
 };
 

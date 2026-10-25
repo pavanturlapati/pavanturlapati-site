@@ -207,8 +207,10 @@ Run it by hand with `npm run sync:letterboxd`.
 ## Chess.com
 
 `scripts/sync-chesscom.mjs` reads the public Chess.com API for `ptspam` (profile,
-ratings and the last 20 games) and overwrites `data/chesscom.json`. The Hobbies
-page shows ratings and the 10 latest games. The GitHub Action
+ratings and every monthly game archive, about 30 requests) and overwrites
+`data/chesscom.json`. The Hobbies page shows ratings, a rapid rating chart (plain
+SVG, drawn at build time), a strip of the last 30 results and the most played
+openings (families with at least 20 games, `MIN_OPENING_GAMES` in the script). The GitHub Action
 `sync-chesscom.yml` runs it four times a day (05:43, 11:43, 17:43 and 23:43 UTC),
 commits any change and triggers a deploy. Run it by hand with
 `npm run sync:chesscom`.

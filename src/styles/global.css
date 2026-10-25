@@ -480,9 +480,15 @@ p {
   list-style: none;
   margin: 0 0 1rem;
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.75rem;
+}
+
+@media (max-width: 600px) {
+  .chess-ratings {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .chess-ratings li {
@@ -506,16 +512,88 @@ p {
   color: var(--accent);
 }
 
-.chess-result {
-  font-weight: 600;
+.chess-chart {
+  margin: 0 0 1rem;
 }
 
-.chess-win {
-  color: #2e7d32;
+.chess-chart svg {
+  display: block;
+  width: 100%;
+  height: 160px;
+  overflow: visible;
 }
 
-.chess-loss {
-  color: #c62828;
+.chess-grid {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.chess-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.chess-axis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.3rem;
+}
+
+.chess-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 1rem;
+}
+
+.chess-form a {
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+}
+
+.chess-win-bg {
+  background: #2e7d32;
+}
+
+.chess-loss-bg {
+  background: #c62828;
+}
+
+.chess-draw-bg {
+  background: #808080;
+}
+
+.chess-openings {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .chess-openings {
+    grid-template-columns: 1fr;
+  }
+}
+
+.chess-openings table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.9rem;
+}
+
+.chess-openings th,
+.chess-openings td {
+  text-align: left;
+  padding: 0.3rem 0.4rem 0.3rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.chess-openings h4 {
+  margin: 0 0 0.3rem;
 }
 
 /* Résumé */
