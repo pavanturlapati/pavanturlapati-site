@@ -516,6 +516,63 @@ p {
   margin: 0 0 1rem;
 }
 
+.chess-plot {
+  position: relative;
+  touch-action: pan-y;
+  cursor: crosshair;
+}
+
+.chess-tick {
+  position: absolute;
+  left: 0;
+  transform: translateY(-100%);
+  font-size: 0.7rem;
+  pointer-events: none;
+}
+
+.chess-marker {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 1px dashed var(--muted, #888);
+  pointer-events: none;
+}
+
+.chess-marker::after {
+  content: "";
+  position: absolute;
+  top: var(--dot);
+  left: -5px;
+  width: 9px;
+  height: 9px;
+  margin-top: -4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.chess-tip {
+  position: absolute;
+  top: -2.1rem;
+  transform: translateX(-50%);
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg, #15161a);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.chess-tip.flip {
+  transform: translateX(-100%);
+}
+
+.chess-chart {
+  padding-top: 2.2rem;
+}
+
 .chess-chart svg {
   display: block;
   width: 100%;

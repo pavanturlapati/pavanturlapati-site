@@ -29,6 +29,8 @@ const y = (value: number) => H - ((value - lo) / (hi - lo)) * H;
 const linePoints = history
   .map((p) => `${x(p.date).toFixed(1)},${y(p.rating).toFixed(1)}`)
   .join(" ");
+const ticks = [lo, (lo + hi) / 2, hi];
+const plotData = JSON.stringify(history.map((p) => [p.date, p.rating]));
 const monthYear = (date: string) =>
   formatMonth(new Date(`${date}T00:00:00Z`));
 
@@ -101,6 +103,7 @@ for (const film of sorted) {
 
   <h3>Rapid rating over time</h3>
   <figure class="chess-chart">
+    <div class="chess-plot" data-points={plotData} data-lo={lo} data-hi={hi}>
     <svg
       viewBox={`0 0 ${W} ${H}`}
       preserveAspectRatio="none"
@@ -125,11 +128,71 @@ for (const film of sorted) {
         vector-effect="non-scaling-stroke"
       />
     </svg>
+    {
+      ticks.map((v) => (
+        <span
+          class="chess-tick meta"
+          style={`top:${(y(v) / H) * 100}%`}
+        >
+          {v}
+        </span>
+      ))
+    }
+    <div class="chess-marker" hidden></div>
+    <div class="chess-tip" role="status" hidden></div>
+    </div>
     <figcaption class="chess-axis meta">
       <span>{monthYear(history[0].date)} · {lo}–{hi}</span>
       <span>{monthYear(history[history.length - 1].date)}</span>
     </figcaption>
   </figure>
+
+  <script>
+    const plot = document.querySelector<HTMLElement>(".chess-plot");
+    if (plot) {
+      const points: [string, number][] = JSON.parse(plot.dataset.points ?? "[]");
+      const times = points.map(([d]) => new Date(d).getTime());
+      const t0 = times[0];
+      const span = Math.max(times[times.length - 1] - t0, 1);
+      const marker = plot.querySelector<HTMLElement>(".chess-marker")!;
+      const tip = plot.querySelector<HTMLElement>(".chess-tip")!;
+      const values = points.map(([, r]) => r);
+      const lo = Number(plot.dataset.lo);
+      const hi = Number(plot.dataset.hi);
+      const fmt = new Intl.DateTimeFormat("en-US", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+        timeZone: "UTC",
+      });
+
+      const show = (event: PointerEvent) => {
+        const box = plot.getBoundingClientRect();
+        const frac = Math.min(Math.max((event.clientX - box.left) / box.width, 0), 1);
+        const target = t0 + frac * span;
+        let best = 0;
+        for (let i = 1; i < times.length; i++) {
+          if (Math.abs(times[i] - target) < Math.abs(times[best] - target)) best = i;
+        }
+        const left = ((times[best] - t0) / span) * 100;
+        const top = (1 - (values[best] - lo) / (hi - lo)) * 100;
+        marker.hidden = false;
+        tip.hidden = false;
+        marker.style.left = `${left}%`;
+        marker.style.setProperty("--dot", `${top}%`);
+        tip.textContent = `${values[best]} \u00b7 ${fmt.format(new Date(times[best]))}`;
+        tip.style.left = `${left}%`;
+        tip.classList.toggle("flip", left > 70);
+      };
+      const hide = () => {
+        marker.hidden = true;
+        tip.hidden = true;
+      };
+      plot.addEventListener("pointermove", show);
+      plot.addEventListener("pointerdown", show);
+      plot.addEventListener("pointerleave", hide);
+    }
+  </script>
 
   <h3>Last {form.length} games</h3>
   <p class="meta">
