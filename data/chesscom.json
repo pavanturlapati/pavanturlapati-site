@@ -5,10 +5,10 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 692,
+      "rating": 684,
       "best": 804,
       "win": 1747,
-      "loss": 1705,
+      "loss": 1706,
       "draw": 119
     },
     "blitz": {
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3670,
+  "totalGames": 3671,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2763,6 +2763,10 @@
     {
       "date": "2026-10-25",
       "rating": 692
+    },
+    {
+      "date": "2026-10-26",
+      "rating": 684
     }
   ],
   "openings": [
@@ -2848,6 +2852,17 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/186000462208",
+      "endedAt": "2026-10-26T20:29:27.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "loss",
+      "rating": 684,
+      "opponent": "reaper0703",
+      "opponentRating": 708,
+      "opening": "Philidor Defense"
+    },
     {
       "url": "https://www.chess.com/game/live/185949319738",
       "endedAt": "2026-10-25T23:17:51.000Z",
@@ -3166,17 +3181,6 @@
       "opponent": "datguyisDA1",
       "opponentRating": 697,
       "opening": "Indian Game"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185608010826",
-      "endedAt": "2026-10-19T22:40:29.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 681,
-      "opponent": "ygo_velho",
-      "opponentRating": 668,
-      "opening": "Kings Pawn Opening"
     }
   ]
 }
