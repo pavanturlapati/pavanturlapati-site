@@ -9,7 +9,7 @@
       "best": 804,
       "win": 1747,
       "loss": 1705,
-      "draw": 118
+      "draw": 119
     },
     "blitz": {
       "rating": 151,
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3669,
+  "totalGames": 3670,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2849,6 +2849,17 @@
   ],
   "games": [
     {
+      "url": "https://www.chess.com/game/live/185949319738",
+      "endedAt": "2026-10-25T23:17:51.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "draw",
+      "rating": 692,
+      "opponent": "Joni52000",
+      "opponentRating": 704,
+      "opening": "Philidor Defense"
+    },
+    {
       "url": "https://www.chess.com/game/live/185921041304",
       "endedAt": "2026-10-25T13:21:51.000Z",
       "timeClass": "rapid",
@@ -3165,17 +3176,6 @@
       "rating": 681,
       "opponent": "ygo_velho",
       "opponentRating": 668,
-      "opening": "Kings Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185607688382",
-      "endedAt": "2026-10-19T22:30:51.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "win",
-      "rating": 673,
-      "opponent": "ddpresto",
-      "opponentRating": 637,
       "opening": "Kings Pawn Opening"
     }
   ]
