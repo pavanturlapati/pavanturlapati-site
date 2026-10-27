@@ -7,8 +7,8 @@
     "rapid": {
       "rating": 684,
       "best": 804,
-      "win": 1747,
-      "loss": 1706,
+      "win": 1748,
+      "loss": 1707,
       "draw": 119
     },
     "blitz": {
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3671,
+  "totalGames": 3673,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2766,6 +2766,10 @@
     },
     {
       "date": "2026-10-26",
+      "rating": 676
+    },
+    {
+      "date": "2026-10-27",
       "rating": 684
     }
   ],
@@ -2852,6 +2856,28 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/186008530408",
+      "endedAt": "2026-10-27T00:04:40.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 684,
+      "opponent": "sahib040",
+      "opponentRating": 656,
+      "opening": "Philidor Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186008466868",
+      "endedAt": "2026-10-26T23:53:44.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "loss",
+      "rating": 676,
+      "opponent": "pinkbear0_0",
+      "opponentRating": 709,
+      "opening": "Indian Game..."
+    },
     {
       "url": "https://www.chess.com/game/live/186000462208",
       "endedAt": "2026-10-26T20:29:27.000Z",
@@ -3159,28 +3185,6 @@
       "opponent": "eibronater",
       "opponentRating": 699,
       "opening": "Kings Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185614612438",
-      "endedAt": "2026-10-20T02:50:04.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 681,
-      "opponent": "Shivaputra1",
-      "opponentRating": 663,
-      "opening": "Bishops Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185608332514",
-      "endedAt": "2026-10-19T22:44:40.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "loss",
-      "rating": 673,
-      "opponent": "datguyisDA1",
-      "opponentRating": 697,
-      "opening": "Indian Game"
     }
   ]
 }
