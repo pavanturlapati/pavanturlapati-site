@@ -5,9 +5,9 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 692,
+      "rating": 700,
       "best": 804,
-      "win": 1749,
+      "win": 1750,
       "loss": 1707,
       "draw": 119
     },
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3674,
+  "totalGames": 3675,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2774,7 +2774,7 @@
     },
     {
       "date": "2026-10-28",
-      "rating": 692
+      "rating": 700
     }
   ],
   "openings": [
@@ -2797,8 +2797,8 @@
     {
       "name": "Center Game",
       "color": "white",
-      "games": 122,
-      "win": 61,
+      "games": 123,
+      "win": 62,
       "loss": 58,
       "draw": 3
     },
@@ -2860,6 +2860,17 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/186095287882",
+      "endedAt": "2026-10-28T13:25:59.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 700,
+      "opponent": "Cristi1s",
+      "opponentRating": 694,
+      "opening": "Center Game"
+    },
     {
       "url": "https://www.chess.com/game/live/186072547372",
       "endedAt": "2026-10-28T03:00:45.000Z",
@@ -3178,17 +3189,6 @@
       "opponent": "Asfak_Achu",
       "opponentRating": 690,
       "opening": "Kings Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185629956210",
-      "endedAt": "2026-10-20T10:25:03.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "draw",
-      "rating": 673,
-      "opponent": "Mrabdellah1",
-      "opponentRating": 683,
-      "opening": "Caro Kann Defense"
     }
   ]
 }
