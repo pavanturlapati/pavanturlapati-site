@@ -5,9 +5,9 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 684,
+      "rating": 692,
       "best": 804,
-      "win": 1748,
+      "win": 1749,
       "loss": 1707,
       "draw": 119
     },
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3673,
+  "totalGames": 3674,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2771,6 +2771,10 @@
     {
       "date": "2026-10-27",
       "rating": 684
+    },
+    {
+      "date": "2026-10-28",
+      "rating": 692
     }
   ],
   "openings": [
@@ -2817,8 +2821,8 @@
     {
       "name": "Kings Pawn Opening",
       "color": "black",
-      "games": 432,
-      "win": 192,
+      "games": 433,
+      "win": 193,
       "loss": 223,
       "draw": 17
     },
@@ -2856,6 +2860,17 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/186072547372",
+      "endedAt": "2026-10-28T03:00:45.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 692,
+      "opponent": "Carlosaugusto12",
+      "opponentRating": 657,
+      "opening": "Kings Pawn Opening"
+    },
     {
       "url": "https://www.chess.com/game/live/186008530408",
       "endedAt": "2026-10-27T00:04:40.000Z",
@@ -3174,17 +3189,6 @@
       "opponent": "Mrabdellah1",
       "opponentRating": 683,
       "opening": "Caro Kann Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185615025694",
-      "endedAt": "2026-10-20T03:08:39.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "loss",
-      "rating": 673,
-      "opponent": "eibronater",
-      "opponentRating": 699,
-      "opening": "Kings Pawn Opening"
     }
   ]
 }
