@@ -2,6 +2,7 @@
 title: "The Little Robot and the Lost Star: my first steps in AI-assisted animation"
 description: "Turning a story idea into a 15-second cartoon with OpenAI, Claude, Zed and Blender. An early hands-on experiment in making videos with AI."
 date: 2026-10-28
+linkedin: "https://www.linkedin.com/feed/update/urn:li:activity:7521418897565159424/"
 image: "/projects/little-robot-and-the-lost-star/ending.png"
 ---
 
