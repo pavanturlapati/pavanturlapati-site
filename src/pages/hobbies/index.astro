@@ -1,294 +1,66 @@
 ---
 import Base from "../../layouts/Base.astro";
-import { getChess, getFilms } from "../../lib/content";
-import { formatDate, formatMonth, stars } from "../../lib/format";
+import { getAnimation, getChess, getFilms } from "../../lib/content";
 
-const films = getFilms();
+const episodes = await getAnimation();
+const latestEpisode = episodes[0];
 const chess = getChess();
-
-const modes = (
-  ["rapid", "blitz", "bullet", "daily"] as const
-)
-  .map((mode) => ({ mode, r: chess.ratings[mode] }))
-  .filter((m) => m.r && m.r.win + m.r.loss + m.r.draw > 0);
-
-const resultLabel = { win: "Won", loss: "Lost", draw: "Drew" } as const;
-
-// Rapid rating chart, drawn as plain SVG at build time (no JavaScript).
-const W = 600;
-const H = 160;
-const history = chess.rapidHistory;
-const ratingsOnly = history.map((p) => p.rating);
-const lo = Math.floor((Math.min(...ratingsOnly) - 20) / 50) * 50;
-const hi = Math.ceil((Math.max(...ratingsOnly) + 20) / 50) * 50;
-const t0 = new Date(history[0].date).getTime();
-const t1 = new Date(history[history.length - 1].date).getTime();
-const x = (date: string) =>
-  ((new Date(date).getTime() - t0) / Math.max(t1 - t0, 1)) * W;
-const y = (value: number) => H - ((value - lo) / (hi - lo)) * H;
-const linePoints = history
-  .map((p) => `${x(p.date).toFixed(1)},${y(p.rating).toFixed(1)}`)
-  .join(" ");
-const ticks = [lo, (lo + hi) / 2, hi];
-const plotData = JSON.stringify(history.map((p) => [p.date, p.rating]));
-const monthYear = (date: string) =>
-  formatMonth(new Date(`${date}T00:00:00Z`));
-
-// Oldest game first, so the strip reads left to right like a timeline.
-const form = [...chess.games].reverse();
-const recent = chess.games;
-const recentWins = recent.filter((g) => g.result === "win").length;
-
-const pct = (o: { win: number; games: number }) =>
-  Math.round((o.win / o.games) * 100);
-const openingsFor = (color: "white" | "black") =>
-  chess.openings.filter((o) => o.color === color);
-
-/** Watched date when known, otherwise the date it was logged. */
-const dayOf = (film: (typeof films)[number]) =>
-  film.watchedDate ?? film.publishedAt.slice(0, 10);
-
-const sorted = [...films].sort(
-  (a, b) =>
-    dayOf(b).localeCompare(dayOf(a)) ||
-    b.publishedAt.localeCompare(a.publishedAt),
-);
-
-// Group by month, preserving the sorted order.
-const groups: { label: string; films: typeof films }[] = [];
-for (const film of sorted) {
-  const label = formatMonth(new Date(`${dayOf(film)}T00:00:00Z`));
-  const last = groups[groups.length - 1];
-  if (last && last.label === label) last.films.push(film);
-  else groups.push({ label, films: [film] });
-}
+const films = getFilms();
+const latestFilm = [...films].sort((a, b) =>
+  (b.watchedDate ?? b.publishedAt.slice(0, 10)).localeCompare(a.watchedDate ?? a.publishedAt.slice(0, 10)) ||
+  b.publishedAt.localeCompare(a.publishedAt)
+)[0];
 ---
 
-<Base
-  title="Hobbies"
-  description="Things I do for fun: chess and the films I watch."
->
+<Base title="Hobbies" description="Things I do for fun: making animated stories, learning chess, and watching movies.">
   <h1>Hobbies</h1>
   <p class="lede">Things I do for fun, away from work.</p>
+  <p>A place for the stories I make, the games I learn from, and the films I enjoy.</p>
 
-  <h2>Chess</h2>
-  <p class="lede">
-    I'm learning chess. Live from{" "}
-    <a href={chess.profileUrl} rel="me noopener" target="_blank"
-      >Chess.com</a
-    >.
-  </p>
+  <div class="hobby-cards">
+    <section class="animation-card">
+      {latestEpisode && (
+        <a href="/hobbies/animation/" aria-label="Explore my animations">
+          <img src={latestEpisode.data.image} alt={latestEpisode.data.imageAlt} width="960" height="540" />
+        </a>
+      )}
+      <div class="card-body">
+        <h2><a href="/hobbies/animation/">Animation</a></h2>
+        <p>Small animated stories, starting with Bobo and Little Star. I'm learning to bring ideas to life, one video at a time.</p>
+        <p class="meta">{episodes.length} {episodes.length === 1 ? "story" : "stories"}{latestEpisode && ` · Latest: ${latestEpisode.data.title}`}</p>
+        <a href="/hobbies/animation/">Watch the stories →</a>
+      </div>
+    </section>
 
-  <ul class="chess-ratings">
-    {
-      modes.map(({ mode, r }) => (
-        <li>
-          <span class="chess-mode">{mode}</span>
-          <strong>{r!.rating}</strong>
-          <span class="meta">
-            {r!.win}W {r!.loss}L {r!.draw}D
-          </span>
-          {r!.best !== null && <span class="meta">best {r!.best}</span>}
-        </li>
-      ))
-    }
-  </ul>
+    <section>
+      <div class="card-body">
+        <span class="hobby-symbol" aria-hidden="true">♞</span>
+        <h2><a href="/hobbies/chess/">Chess</a></h2>
+        <p>Learning through practice: my ratings, recent games, and the openings I play most.</p>
+        <p class="meta">{chess.totalGames.toLocaleString("en-US")} games played{chess.ratings.rapid && ` · Rapid rating: ${chess.ratings.rapid.rating}`}</p>
+        <a href="/hobbies/chess/">Follow my chess journey →</a>
+      </div>
+    </section>
 
-  <p class="meta">
-    {chess.totalGames.toLocaleString("en-US")} games played since {
-      monthYear(chess.joinedAt.slice(0, 10))
-    }. Puzzle rating peaked at {chess.tactics}, a different scale from game
-    ratings.
-  </p>
-
-  <h3>Rapid rating over time</h3>
-  <figure class="chess-chart">
-    <div class="chess-plot" data-points={plotData} data-lo={lo} data-hi={hi}>
-    <svg
-      viewBox={`0 0 ${W} ${H}`}
-      preserveAspectRatio="none"
-      role="img"
-      aria-label={`Rapid rating from ${ratingsOnly[0]} in ${monthYear(history[0].date)} to ${ratingsOnly[ratingsOnly.length - 1]} now`}
-    >
-      {
-        [lo, (lo + hi) / 2, hi].map((v) => (
-          <line
-            x1="0"
-            x2={W}
-            y1={y(v)}
-            y2={y(v)}
-            class="chess-grid"
-            vector-effect="non-scaling-stroke"
-          />
-        ))
-      }
-      <polyline
-        points={linePoints}
-        class="chess-line"
-        vector-effect="non-scaling-stroke"
-      />
-    </svg>
-    {
-      ticks.map((v) => (
-        <span
-          class="chess-tick meta"
-          style={`top:${(y(v) / H) * 100}%`}
-        >
-          {v}
-        </span>
-      ))
-    }
-    <div class="chess-marker" hidden></div>
-    <div class="chess-tip" role="status" hidden></div>
-    </div>
-    <figcaption class="chess-axis meta">
-      <span>{monthYear(history[0].date)} · {lo}–{hi}</span>
-      <span>{monthYear(history[history.length - 1].date)}</span>
-    </figcaption>
-  </figure>
-
-  <script>
-    const plot = document.querySelector<HTMLElement>(".chess-plot");
-    if (plot) {
-      const points: [string, number][] = JSON.parse(plot.dataset.points ?? "[]");
-      const times = points.map(([d]) => new Date(d).getTime());
-      const t0 = times[0];
-      const span = Math.max(times[times.length - 1] - t0, 1);
-      const marker = plot.querySelector<HTMLElement>(".chess-marker")!;
-      const tip = plot.querySelector<HTMLElement>(".chess-tip")!;
-      const values = points.map(([, r]) => r);
-      const lo = Number(plot.dataset.lo);
-      const hi = Number(plot.dataset.hi);
-      const fmt = new Intl.DateTimeFormat("en-US", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-        timeZone: "UTC",
-      });
-
-      const show = (event: PointerEvent) => {
-        const box = plot.getBoundingClientRect();
-        const frac = Math.min(Math.max((event.clientX - box.left) / box.width, 0), 1);
-        const target = t0 + frac * span;
-        let best = 0;
-        for (let i = 1; i < times.length; i++) {
-          if (Math.abs(times[i] - target) < Math.abs(times[best] - target)) best = i;
-        }
-        const left = ((times[best] - t0) / span) * 100;
-        const top = (1 - (values[best] - lo) / (hi - lo)) * 100;
-        marker.hidden = false;
-        tip.hidden = false;
-        marker.style.left = `${left}%`;
-        marker.style.setProperty("--dot", `${top}%`);
-        tip.textContent = `${values[best]} \u00b7 ${fmt.format(new Date(times[best]))}`;
-        tip.style.left = `${left}%`;
-        tip.classList.toggle("flip", left > 70);
-      };
-      const hide = () => {
-        marker.hidden = true;
-        tip.hidden = true;
-      };
-      plot.addEventListener("pointermove", show);
-      plot.addEventListener("pointerdown", show);
-      plot.addEventListener("pointerleave", hide);
-    }
-  </script>
-
-  <h3>Last {form.length} games</h3>
-  <p class="meta">
-    Won {recentWins} of the last {recent.length}. Oldest on the left; each
-    square opens the game on Chess.com.
-  </p>
-  <div class="chess-form">
-    {
-      form.map((game) => (
-        <a
-          href={game.url}
-          rel="noopener"
-          target="_blank"
-          class={`chess-${game.result}-bg`}
-          title={`${resultLabel[game.result]} as ${game.color} vs ${game.opponent} (${game.opponentRating}), ${game.timeClass}, ${formatDate(new Date(game.endedAt))}`}
-          aria-label={`${resultLabel[game.result]} vs ${game.opponent}`}
-        />
-      ))
-    }
+    <section>
+      <div class="card-body">
+        <span class="hobby-symbol" aria-hidden="true">▶</span>
+        <h2><a href="/hobbies/movies/">Movies</a></h2>
+        <p>My film diary, with ratings and reviews from Letterboxd.</p>
+        <p class="meta">{films.length} films logged{latestFilm && ` · Latest: ${latestFilm.title}`}</p>
+        <a href="/hobbies/movies/">Browse the film diary →</a>
+      </div>
+    </section>
   </div>
-
-  <h3>Openings I play most</h3>
-  <div class="chess-openings">
-    {
-      (["white", "black"] as const).map((color) => (
-        <div>
-          <h4 class="chess-mode">As {color}</h4>
-          <table>
-            <thead>
-              <tr>
-                <th>Opening</th>
-                <th>Games</th>
-                <th>Win %</th>
-              </tr>
-            </thead>
-            <tbody>
-              {openingsFor(color).map((o) => (
-                <tr>
-                  <td>{o.name}</td>
-                  <td>{o.games}</td>
-                  <td>{pct(o)}%</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ))
-    }
-  </div>
-
-  <h2>Films</h2>
-  <p class="lede">
-    Films I've watched, straight from
-    <a href="https://letterboxd.com/infi56/" rel="me noopener" target="_blank"
-      >Letterboxd</a
-    >. {films.length} logged so far.
-  </p>
-
-  {
-    groups.length === 0 ? (
-      <p class="empty">No films logged yet.</p>
-    ) : (
-      groups.map((group) => (
-        <section>
-          <h3>{group.label}</h3>
-          <ul class="entries">
-            {group.films.map((film) => (
-              <li class="film">
-                <div class="film-title">
-                  <a href={film.url} rel="noopener" target="_blank">
-                    {film.title}
-                  </a>
-                  {film.year && <span class="muted"> ({film.year})</span>}{" "}
-                  {film.rating !== null && (
-                    <span
-                      class="film-rating"
-                      aria-label={`${film.rating} out of 5`}
-                    >
-                      {stars(film.rating)}
-                    </span>
-                  )}
-                  {film.liked && <span aria-label="liked"> ♥</span>}
-                  {film.rewatch && <span class="badge">Rewatch</span>}
-                  {film.watchedDate && (
-                    <span class="meta">
-                      {" "}
-                      · {formatDate(new Date(`${film.watchedDate}T00:00:00Z`))}
-                    </span>
-                  )}
-                </div>
-                {film.review && <blockquote>{film.review}</blockquote>}
-              </li>
-            ))}
-          </ul>
-        </section>
-      ))
-    )
-  }
 </Base>
+
+<style>
+  .hobby-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+  section { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .animation-card { grid-column: 1 / -1; }
+  .card-body { padding: 1.25rem; }
+  h2 { margin-top: 0; }
+  img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+  .hobby-symbol { display: block; font: 2rem system-ui, sans-serif; color: var(--accent); margin-bottom: 0.75rem; }
+  @media (max-width: 32rem) { .hobby-cards { grid-template-columns: 1fr; } }
+</style>

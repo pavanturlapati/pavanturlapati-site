@@ -1,0 +1,222 @@
+---
+import Base from "../../layouts/Base.astro";
+import HobbiesNav from "../../components/HobbiesNav.astro";
+import { getChess } from "../../lib/content";
+import { formatDate, formatMonth } from "../../lib/format";
+
+const chess = getChess();
+
+const modes = (
+  ["rapid", "blitz", "bullet", "daily"] as const
+)
+  .map((mode) => ({ mode, r: chess.ratings[mode] }))
+  .filter((m) => m.r && m.r.win + m.r.loss + m.r.draw > 0);
+
+const resultLabel = { win: "Won", loss: "Lost", draw: "Drew" } as const;
+
+// Rapid rating chart, drawn as plain SVG at build time (no JavaScript).
+const W = 600;
+const H = 160;
+const history = chess.rapidHistory;
+const ratingsOnly = history.map((p) => p.rating);
+const lo = Math.floor((Math.min(...ratingsOnly) - 20) / 50) * 50;
+const hi = Math.ceil((Math.max(...ratingsOnly) + 20) / 50) * 50;
+const t0 = new Date(history[0].date).getTime();
+const t1 = new Date(history[history.length - 1].date).getTime();
+const x = (date: string) =>
+  ((new Date(date).getTime() - t0) / Math.max(t1 - t0, 1)) * W;
+const y = (value: number) => H - ((value - lo) / (hi - lo)) * H;
+const linePoints = history
+  .map((p) => `${x(p.date).toFixed(1)},${y(p.rating).toFixed(1)}`)
+  .join(" ");
+const ticks = [lo, (lo + hi) / 2, hi];
+const plotData = JSON.stringify(history.map((p) => [p.date, p.rating]));
+const monthYear = (date: string) =>
+  formatMonth(new Date(`${date}T00:00:00Z`));
+
+// Oldest game first, so the strip reads left to right like a timeline.
+const form = [...chess.games].reverse();
+const recent = chess.games;
+const recentWins = recent.filter((g) => g.result === "win").length;
+
+const pct = (o: { win: number; games: number }) =>
+  Math.round((o.win / o.games) * 100);
+const openingsFor = (color: "white" | "black") =>
+  chess.openings.filter((o) => o.color === color);
+---
+
+<Base title="Chess" description="My chess ratings, recent games, and openings.">
+  <p><a href="/hobbies/">← Hobbies</a></p>
+  <h1>Chess</h1>
+  <HobbiesNav />
+  <p class="lede">
+    I'm learning chess. Live from{" "}
+    <a href={chess.profileUrl} rel="me noopener" target="_blank"
+      >Chess.com</a
+    >.
+  </p>
+
+  <ul class="chess-ratings">
+    {
+      modes.map(({ mode, r }) => (
+        <li>
+          <span class="chess-mode">{mode}</span>
+          <strong>{r!.rating}</strong>
+          <span class="meta">
+            {r!.win}W {r!.loss}L {r!.draw}D
+          </span>
+          {r!.best !== null && <span class="meta">best {r!.best}</span>}
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="meta">
+    {chess.totalGames.toLocaleString("en-US")} games played since {
+      monthYear(chess.joinedAt.slice(0, 10))
+    }. Puzzle rating peaked at {chess.tactics}, a different scale from game
+    ratings.
+  </p>
+
+  <h2>Rapid rating over time</h2>
+  <figure class="chess-chart">
+    <div class="chess-plot" data-points={plotData} data-lo={lo} data-hi={hi}>
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      preserveAspectRatio="none"
+      role="img"
+      aria-label={`Rapid rating from ${ratingsOnly[0]} in ${monthYear(history[0].date)} to ${ratingsOnly[ratingsOnly.length - 1]} now`}
+    >
+      {
+        [lo, (lo + hi) / 2, hi].map((v) => (
+          <line
+            x1="0"
+            x2={W}
+            y1={y(v)}
+            y2={y(v)}
+            class="chess-grid"
+            vector-effect="non-scaling-stroke"
+          />
+        ))
+      }
+      <polyline
+        points={linePoints}
+        class="chess-line"
+        vector-effect="non-scaling-stroke"
+      />
+    </svg>
+    {
+      ticks.map((v) => (
+        <span
+          class="chess-tick meta"
+          style={`top:${(y(v) / H) * 100}%`}
+        >
+          {v}
+        </span>
+      ))
+    }
+    <div class="chess-marker" hidden></div>
+    <div class="chess-tip" role="status" hidden></div>
+    </div>
+    <figcaption class="chess-axis meta">
+      <span>{monthYear(history[0].date)} · {lo}–{hi}</span>
+      <span>{monthYear(history[history.length - 1].date)}</span>
+    </figcaption>
+  </figure>
+
+  <script>
+    const plot = document.querySelector<HTMLElement>(".chess-plot");
+    if (plot) {
+      const points: [string, number][] = JSON.parse(plot.dataset.points ?? "[]");
+      const times = points.map(([d]) => new Date(d).getTime());
+      const t0 = times[0];
+      const span = Math.max(times[times.length - 1] - t0, 1);
+      const marker = plot.querySelector<HTMLElement>(".chess-marker")!;
+      const tip = plot.querySelector<HTMLElement>(".chess-tip")!;
+      const values = points.map(([, r]) => r);
+      const lo = Number(plot.dataset.lo);
+      const hi = Number(plot.dataset.hi);
+      const fmt = new Intl.DateTimeFormat("en-US", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+        timeZone: "UTC",
+      });
+
+      const show = (event: PointerEvent) => {
+        const box = plot.getBoundingClientRect();
+        const frac = Math.min(Math.max((event.clientX - box.left) / box.width, 0), 1);
+        const target = t0 + frac * span;
+        let best = 0;
+        for (let i = 1; i < times.length; i++) {
+          if (Math.abs(times[i] - target) < Math.abs(times[best] - target)) best = i;
+        }
+        const left = ((times[best] - t0) / span) * 100;
+        const top = (1 - (values[best] - lo) / (hi - lo)) * 100;
+        marker.hidden = false;
+        tip.hidden = false;
+        marker.style.left = `${left}%`;
+        marker.style.setProperty("--dot", `${top}%`);
+        tip.textContent = `${values[best]} \u00b7 ${fmt.format(new Date(times[best]))}`;
+        tip.style.left = `${left}%`;
+        tip.classList.toggle("flip", left > 70);
+      };
+      const hide = () => {
+        marker.hidden = true;
+        tip.hidden = true;
+      };
+      plot.addEventListener("pointermove", show);
+      plot.addEventListener("pointerdown", show);
+      plot.addEventListener("pointerleave", hide);
+    }
+  </script>
+
+  <h2>Last {form.length} games</h2>
+  <p class="meta">
+    Won {recentWins} of the last {recent.length}. Oldest on the left; each
+    square opens the game on Chess.com.
+  </p>
+  <div class="chess-form">
+    {
+      form.map((game) => (
+        <a
+          href={game.url}
+          rel="noopener"
+          target="_blank"
+          class={`chess-${game.result}-bg`}
+          title={`${resultLabel[game.result]} as ${game.color} vs ${game.opponent} (${game.opponentRating}), ${game.timeClass}, ${formatDate(new Date(game.endedAt))}`}
+          aria-label={`${resultLabel[game.result]} vs ${game.opponent}`}
+        />
+      ))
+    }
+  </div>
+
+  <h2>Openings I play most</h2>
+  <div class="chess-openings">
+    {
+      (["white", "black"] as const).map((color) => (
+        <div>
+          <h3 class="chess-mode">As {color}</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Opening</th>
+                <th>Games</th>
+                <th>Win %</th>
+              </tr>
+            </thead>
+            <tbody>
+              {openingsFor(color).map((o) => (
+                <tr>
+                  <td>{o.name}</td>
+                  <td>{o.games}</td>
+                  <td>{pct(o)}%</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ))
+    }
+  </div>
+</Base>

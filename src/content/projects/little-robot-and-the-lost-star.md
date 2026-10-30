@@ -10,7 +10,7 @@ image: "/projects/little-robot-and-the-lost-star/ending.png"
 
 **The Little Robot and the Lost Star**: a 15-second animated story about a little robot helping a lost star find its way back to the sky.
 
-[Watch the video on YouTube](https://youtu.be/KNfL0bkvcYg).
+[Watch the video on YouTube](https://youtu.be/KNfL0bkvcYg), or visit its [Animation episode page](/hobbies/animation/little-robot-and-the-lost-star/).
 
 ![The little blue robot waves goodbye as the happy star returns to the evening sky.](/projects/little-robot-and-the-lost-star/ending.png)
 

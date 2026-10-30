@@ -9,7 +9,7 @@ image: "/projects/bobo-and-the-thirsty-flower/ending.png"
 
 **Bobo and the Thirsty Flower**: a 60-second animated story in which Bobo and Little Star discover a drooping flower, give it water, wait for it to recover, and welcome a butterfly to the garden.
 
-[Watch the video on YouTube](https://youtu.be/5C7E0lRaI4w).
+[Watch the video on YouTube](https://youtu.be/5C7E0lRaI4w), or visit its [Animation episode page](/hobbies/animation/bobo-and-the-thirsty-flower/).
 
 <iframe
   src="https://www.youtube-nocookie.com/embed/5C7E0lRaI4w"

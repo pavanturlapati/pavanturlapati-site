@@ -79,6 +79,22 @@ const projects = defineCollection({
   }),
 });
 
+/** Watch-first animation episodes; production write-ups remain in projects. */
+const animation = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/animation" }),
+  schema: z.strictObject({
+    title: z.string().min(1),
+    description: z.string().min(1),
+    date: z.coerce.date(),
+    youtubeId: z.string().regex(/^[A-Za-z0-9_-]{11}$/),
+    duration: z.string().min(1),
+    image: z.string().startsWith("/"),
+    imageAlt: z.string().min(1),
+    project: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+    draft: z.boolean().default(false),
+  }),
+});
+
 /** Weekly Mashup, one file per edition: src/content/weekly/YYYY-MM-DD.md */
 const weekly = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/weekly" }),
@@ -93,4 +109,4 @@ const weekly = defineCollection({
   }),
 });
 
-export const collections = { articles, journal, quotes, notes, projects, weekly };
+export const collections = { articles, journal, quotes, notes, projects, animation, weekly };

@@ -1,0 +1,49 @@
+---
+import { render } from "astro:content";
+import Base from "../../../layouts/Base.astro";
+import HobbiesNav from "../../../components/HobbiesNav.astro";
+import { getAnimation } from "../../../lib/content";
+import { formatDate } from "../../../lib/format";
+
+export async function getStaticPaths() {
+  return (await getAnimation()).map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, description, date, image, youtubeId, duration, project, draft } = entry.data;
+---
+
+<Base title={title} description={description} image={image} type="article" published={date.toISOString()}>
+  <p class="back"><a href="/hobbies/animation/">← All animations</a></p>
+  <HobbiesNav />
+  <article>
+    <header>
+      <h1>{title}</h1>
+      <p class="meta"><time datetime={date.toISOString()}>{formatDate(date)}</time> · {duration} {draft && <span class="badge">Draft</span>}</p>
+    </header>
+    <iframe
+      src={`https://www.youtube-nocookie.com/embed/${youtubeId}`}
+      title={title}
+      width="960"
+      height="540"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+    <p><a href={`https://youtu.be/${youtubeId}`} target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></p>
+    <div class="prose"><Content /></div>
+    <aside>
+      <h2>Behind the scenes</h2>
+      <p>Curious about the tools, animation process, and lessons learned? <a href={`/projects/${project}/`}>Read how I made it →</a></p>
+    </aside>
+  </article>
+</Base>
+
+<style>
+  iframe { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border: 0; border-radius: 8px; margin-bottom: 1rem; }
+  aside { margin-top: 2rem; border-top: 1px solid var(--line); }
+</style>

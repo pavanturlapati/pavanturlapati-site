@@ -36,6 +36,9 @@ export const getNotes = async () =>
 export const getProjects = async () =>
   (await getCollection("projects", published)).sort(newestFirst);
 
+export const getAnimation = async () =>
+  (await getCollection("animation", published)).sort(newestFirst);
+
 export const getWeekly = async () =>
   (await getCollection("weekly", published)).sort(newestFirst);
 

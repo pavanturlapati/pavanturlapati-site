@@ -1,0 +1,44 @@
+---
+import Base from "../../../layouts/Base.astro";
+import HobbiesNav from "../../../components/HobbiesNav.astro";
+import { getAnimation } from "../../../lib/content";
+import { formatDate } from "../../../lib/format";
+
+const episodes = await getAnimation();
+---
+
+<Base title="Animation" description="Small animated stories I make for the joy of bringing ideas to life. Watch Bobo and Little Star, and follow my animation journey.">
+  <p class="back"><a href="/hobbies/">← Hobbies</a></p>
+  <h1>Animation</h1>
+  <HobbiesNav />
+  <p class="lede">Small stories, made with curiosity and a love of bringing ideas to life.</p>
+  <p>I'm learning animation one story at a time. Meet Bobo and Little Star, watch their adventures, and explore how each video came together.</p>
+  {episodes.length === 0 ? <p class="empty">The first story is on its way.</p> : (
+    <ul class="episodes">
+      {episodes.map((entry) => (
+        <li>
+          <a class="episode-image" href={`/hobbies/animation/${entry.id}/`} aria-label={`Watch ${entry.data.title}`}>
+            <img src={entry.data.image} alt={entry.data.imageAlt} width="960" height="540" loading="lazy" />
+            <span class="watch">Watch · {entry.data.duration}</span>
+          </a>
+          <div class="meta">
+            <time datetime={entry.data.date.toISOString()}>{formatDate(entry.data.date)}</time>
+            {entry.data.draft && <span class="badge">Draft</span>}
+          </div>
+          <h2><a href={`/hobbies/animation/${entry.id}/`}>{entry.data.title}</a></h2>
+          <p>{entry.data.description}</p>
+          <a href={`/projects/${entry.data.project}/`}>How I made it →</a>
+        </li>
+      ))}
+    </ul>
+  )}
+</Base>
+
+<style>
+  .episodes { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; gap: 2.5rem; }
+  .episodes li { border-bottom: 1px solid var(--line); padding-bottom: 2rem; }
+  .episode-image { display: block; position: relative; margin-bottom: 1rem; }
+  img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; }
+  .watch { position: absolute; bottom: 0.75rem; left: 0.75rem; padding: 0.25rem 0.65rem; border-radius: 4px; background: var(--bg); color: var(--ink); font: 0.875rem system-ui, sans-serif; }
+  h2 { margin-top: 0.5rem; }
+</style>

@@ -30,7 +30,7 @@ type Item = {
 };
 
 // Only the three most recent reviews with text appear here; every watch is
-// on /hobbies/.
+// on /hobbies/movies/.
 const reviews = getFilms()
   .filter((film) => film.kind === "review" && film.review)
   .slice(0, 3);
@@ -94,7 +94,7 @@ const elsewhere: Item[] = [
       kind: "Film",
       date: new Date(film.publishedAt),
       title: `${film.title}${film.year ? ` (${film.year})` : ""} ${stars(film.rating)}`.trim(),
-      href: "/hobbies/",
+      href: "/hobbies/movies/",
     })),
   ),
   ...firstOf(

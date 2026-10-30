@@ -1,7 +1,7 @@
 # pt-site
 
 Personal website for Pavan Turlapati: articles, a personal journal, short opinions, a wall of quotes, project write-ups,
-a weekly bulletin, a Hobbies page (starting with a Letterboxd film log), and a résumé. Built with [Astro](https://astro.build)
+a weekly bulletin, a Hobbies hub for Animation, Chess and Movies, and a résumé. Built with [Astro](https://astro.build)
 as a fully static site, hosted free on GitHub Pages at
 <https://pavanturlapati.com>.
 
@@ -31,6 +31,7 @@ Everything is a Markdown file (quotes are one JSON file). Commit and push to
 | Journal entry (personal, including stories) | `src/content/journal/<slug>.md` | `title`, `description`, `date`, `tags`, optional `linkedin`, `draft` |
 | Opinion | `src/content/notes/YYYY-MM-DD-<slug>.md` | `date`, optional `x`, `draft` |
 | Project | `src/content/projects/<slug>.md` | `title`, `description`, `date`, optional `linkedin`, `draft` |
+| Animation episode | `src/content/animation/<slug>.md` | `title`, `description`, `date`, `youtubeId`, `duration`, `image`, `imageAlt`, `project`, optional `draft` |
 | Weekly edition | `src/content/weekly/YYYY-MM-DD.md` | `title`, `description`, `date`, optional `linkedin`, `draft` |
 | Quote | `src/content/quotes.json` | `id`, `text`, optional `category`, `favorite`, `date` |
 
@@ -79,7 +80,20 @@ in the browser; the page is also rendered with one set at build time for
 search engines and visitors without JavaScript.
 
 The navigation groups Journal, Opinion, Quotes and Hobbies under **Personal**
-(`nav` in `src/config.ts`).
+(`nav` in `src/config.ts`). Hobbies is a landing page linking to:
+
+- `/hobbies/animation/`: newest-first video gallery and individual episode pages.
+- `/hobbies/chess/`: Chess.com ratings, progress, recent games and openings.
+- `/hobbies/movies/`: Letterboxd film diary, ratings and reviews. The old
+  `/watching/` URL redirects here.
+
+To add an animation, create `src/content/animation/<slug>.md` using an existing
+entry as a model. `youtubeId` is the video's 11-character ID, `duration` is a
+readable label such as `1 minute`, and `image` points to a local image in
+`public/`. `project` is the slug of its behind-the-scenes article in Projects.
+The short Markdown body introduces the story; keep the detailed production
+write-up in Projects. Both the gallery and Hobbies preview update automatically.
+Use `draft: true` to keep an episode out of the production site.
 
 ## Weekly Mashup
 

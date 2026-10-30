@@ -10,7 +10,7 @@ export default defineConfig({
   // The old blog and writing sections are now Articles; /journal/ is new.
   redirects: {
     "/feed/": "/projects/",
-    "/watching/": "/hobbies/",
+    "/watching/": "/hobbies/movies/",
     "/blog/": "/articles/",
     "/blog/tag/[tag]": "/articles/tag/[tag]",
     "/blog/[slug]": "/articles/[slug]",
