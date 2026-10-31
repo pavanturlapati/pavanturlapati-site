@@ -5,10 +5,10 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 700,
+      "rating": 676,
       "best": 804,
-      "win": 1750,
-      "loss": 1707,
+      "win": 1751,
+      "loss": 1711,
       "draw": 119
     },
     "blitz": {
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3675,
+  "totalGames": 3680,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2775,14 +2775,18 @@
     {
       "date": "2026-10-28",
       "rating": 700
+    },
+    {
+      "date": "2026-10-31",
+      "rating": 676
     }
   ],
   "openings": [
     {
       "name": "Kings Pawn Opening",
       "color": "white",
-      "games": 630,
-      "win": 337,
+      "games": 631,
+      "win": 338,
       "loss": 274,
       "draw": 19
     },
@@ -2821,9 +2825,9 @@
     {
       "name": "Kings Pawn Opening",
       "color": "black",
-      "games": 433,
+      "games": 435,
       "win": 193,
-      "loss": 223,
+      "loss": 225,
       "draw": 17
     },
     {
@@ -2860,6 +2864,61 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/186256881012",
+      "endedAt": "2026-10-31T03:23:51.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "loss",
+      "rating": 676,
+      "opponent": "the-real-ismail",
+      "opponentRating": 709,
+      "opening": "Kings Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186256779558",
+      "endedAt": "2026-10-31T03:12:06.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 684,
+      "opponent": "TarcioNirvana",
+      "opponentRating": 656,
+      "opening": "Kings Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186256572360",
+      "endedAt": "2026-10-31T03:08:21.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "loss",
+      "rating": 676,
+      "opponent": "matojeni",
+      "opponentRating": 683,
+      "opening": "Philidor Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186256170172",
+      "endedAt": "2026-10-31T03:01:09.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "loss",
+      "rating": 684,
+      "opponent": "bakank",
+      "opponentRating": 701,
+      "opening": "Kings Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186255679660",
+      "endedAt": "2026-10-31T02:47:14.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 692,
+      "opponent": "sctbirch",
+      "opponentRating": 721,
+      "opening": "Caro Kann Defense"
+    },
     {
       "url": "https://www.chess.com/game/live/186095287882",
       "endedAt": "2026-10-28T13:25:59.000Z",
@@ -3133,61 +3192,6 @@
       "rating": 658,
       "opponent": "learner0178",
       "opponentRating": 672,
-      "opening": "Kings Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185631573992",
-      "endedAt": "2026-10-20T11:18:18.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 666,
-      "opponent": "Chetu8",
-      "opponentRating": 670,
-      "opening": "Alapin Sicilian Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185631387526",
-      "endedAt": "2026-10-20T10:59:12.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "loss",
-      "rating": 657,
-      "opponent": "Abhinand_777",
-      "opponentRating": 682,
-      "opening": "Kings Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185630926718",
-      "endedAt": "2026-10-20T10:54:35.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "win",
-      "rating": 665,
-      "opponent": "Sheshupandit",
-      "opponentRating": 650,
-      "opening": "Kings Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185630729578",
-      "endedAt": "2026-10-20T10:44:22.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "loss",
-      "rating": 657,
-      "opponent": "kikirce08",
-      "opponentRating": 701,
-      "opening": "Kings Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185630101536",
-      "endedAt": "2026-10-20T10:39:47.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "loss",
-      "rating": 665,
-      "opponent": "Asfak_Achu",
-      "opponentRating": 690,
       "opening": "Kings Pawn Opening"
     }
   ]
