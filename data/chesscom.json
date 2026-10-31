@@ -7,8 +7,8 @@
     "rapid": {
       "rating": 676,
       "best": 804,
-      "win": 1751,
-      "loss": 1711,
+      "win": 1752,
+      "loss": 1712,
       "draw": 119
     },
     "blitz": {
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3680,
+  "totalGames": 3682,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2785,9 +2785,9 @@
     {
       "name": "Kings Pawn Opening",
       "color": "white",
-      "games": 631,
+      "games": 632,
       "win": 338,
-      "loss": 274,
+      "loss": 275,
       "draw": 19
     },
     {
@@ -2825,8 +2825,8 @@
     {
       "name": "Kings Pawn Opening",
       "color": "black",
-      "games": 435,
-      "win": 193,
+      "games": 436,
+      "win": 194,
       "loss": 225,
       "draw": 17
     },
@@ -2864,6 +2864,28 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/186278315638",
+      "endedAt": "2026-10-31T13:14:09.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 676,
+      "opponent": "GiulianoGiulio73",
+      "opponentRating": 675,
+      "opening": "Kings Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186278027016",
+      "endedAt": "2026-10-31T12:53:32.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 684,
+      "opponent": "hskkvs",
+      "opponentRating": 671,
+      "opening": "Kings Pawn Opening"
+    },
     {
       "url": "https://www.chess.com/game/live/186256881012",
       "endedAt": "2026-10-31T03:23:51.000Z",
@@ -3169,28 +3191,6 @@
       "result": "win",
       "rating": 674,
       "opponent": "0_sahilk",
-      "opponentRating": 672,
-      "opening": "Kings Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185671776106",
-      "endedAt": "2026-10-21T03:25:53.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 666,
-      "opponent": "krit123ab",
-      "opponentRating": 652,
-      "opening": "Center Game"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185660061502",
-      "endedAt": "2026-10-20T20:42:18.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "loss",
-      "rating": 658,
-      "opponent": "learner0178",
       "opponentRating": 672,
       "opening": "Kings Pawn Opening"
     }
