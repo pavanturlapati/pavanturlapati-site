@@ -5,9 +5,9 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 661,
+      "rating": 684,
       "best": 804,
-      "win": 1754,
+      "win": 1757,
       "loss": 1716,
       "draw": 119
     },
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3688,
+  "totalGames": 3691,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2783,6 +2783,10 @@
     {
       "date": "2026-11-01",
       "rating": 661
+    },
+    {
+      "date": "2026-11-02",
+      "rating": 684
     }
   ],
   "openings": [
@@ -2853,8 +2857,8 @@
     {
       "name": "Scandinavian Defense",
       "color": "black",
-      "games": 105,
-      "win": 51,
+      "games": 106,
+      "win": 52,
       "loss": 52,
       "draw": 2
     },
@@ -2868,6 +2872,39 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/186396421270",
+      "endedAt": "2026-11-02T13:05:40.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 684,
+      "opponent": "michaeltedinger",
+      "opponentRating": 651,
+      "opening": "Alekhines Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186377652350",
+      "endedAt": "2026-11-02T04:50:45.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 676,
+      "opponent": "flower_gambit",
+      "opponentRating": 645,
+      "opening": "Queens Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186377574194",
+      "endedAt": "2026-11-02T04:42:07.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 668,
+      "opponent": "yolo_gaurangi",
+      "opponentRating": 630,
+      "opening": "Scandinavian Defense"
+    },
     {
       "url": "https://www.chess.com/game/live/186352617994",
       "endedAt": "2026-11-01T17:55:56.000Z",
@@ -3164,39 +3201,6 @@
       "opponent": "rami_998",
       "opponentRating": 668,
       "opening": "Sicilian Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185832844972",
-      "endedAt": "2026-10-23T21:39:51.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "loss",
-      "rating": 676,
-      "opponent": "Forkbo",
-      "opponentRating": 713,
-      "opening": "Kings Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185832613856",
-      "endedAt": "2026-10-23T21:22:18.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 683,
-      "opponent": "musomo",
-      "opponentRating": 690,
-      "opening": "Kings Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185819513732",
-      "endedAt": "2026-10-23T17:07:36.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "win",
-      "rating": 674,
-      "opponent": "Shreyas1832",
-      "opponentRating": 659,
-      "opening": "Kings Pawn Opening"
     }
   ]
 }
