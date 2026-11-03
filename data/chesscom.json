@@ -5,10 +5,10 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 694,
+      "rating": 686,
       "best": 804,
-      "win": 1759,
-      "loss": 1717,
+      "win": 1762,
+      "loss": 1721,
       "draw": 119
     },
     "blitz": {
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3694,
+  "totalGames": 3701,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2787,22 +2787,26 @@
     {
       "date": "2026-11-02",
       "rating": 694
+    },
+    {
+      "date": "2026-11-03",
+      "rating": 686
     }
   ],
   "openings": [
     {
       "name": "Kings Pawn Opening",
       "color": "white",
-      "games": 634,
+      "games": 635,
       "win": 339,
-      "loss": 276,
+      "loss": 277,
       "draw": 19
     },
     {
       "name": "Scandinavian Defense",
       "color": "white",
-      "games": 232,
-      "win": 118,
+      "games": 233,
+      "win": 119,
       "loss": 106,
       "draw": 8
     },
@@ -2841,8 +2845,8 @@
     {
       "name": "Nimzowitsch Defense",
       "color": "black",
-      "games": 304,
-      "win": 146,
+      "games": 305,
+      "win": 147,
       "loss": 149,
       "draw": 9
     },
@@ -2857,8 +2861,8 @@
     {
       "name": "Scandinavian Defense",
       "color": "black",
-      "games": 107,
-      "win": 52,
+      "games": 108,
+      "win": 53,
       "loss": 53,
       "draw": 2
     },
@@ -2872,6 +2876,83 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/186447795866",
+      "endedAt": "2026-11-03T08:48:35.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 686,
+      "opponent": "SoorajSingh05",
+      "opponentRating": 703,
+      "opening": "Queens Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186444517790",
+      "endedAt": "2026-11-03T07:11:09.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 694,
+      "opponent": "kimkisoo",
+      "opponentRating": 678,
+      "opening": "Nimzowitsch Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186443922320",
+      "endedAt": "2026-11-03T07:07:02.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 686,
+      "opponent": "brasujo",
+      "opponentRating": 690,
+      "opening": "Scandinavian Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186443695002",
+      "endedAt": "2026-11-03T06:49:54.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 678,
+      "opponent": "mike6800",
+      "opponentRating": 649,
+      "opening": "Scandinavian Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186443288378",
+      "endedAt": "2026-11-03T06:36:59.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "loss",
+      "rating": 670,
+      "opponent": "MDYE2",
+      "opponentRating": 697,
+      "opening": "Philidor Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186443060044",
+      "endedAt": "2026-11-03T06:30:51.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 678,
+      "opponent": "arilius_Aril_jenius",
+      "opponentRating": 688,
+      "opening": "Kings Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186441019718",
+      "endedAt": "2026-11-03T05:35:42.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 686,
+      "opponent": "C1_nar",
+      "opponentRating": 695,
+      "opening": "Sicilian Defense"
+    },
     {
       "url": "https://www.chess.com/game/live/186429755400",
       "endedAt": "2026-11-02T23:30:30.000Z",
@@ -3124,83 +3205,6 @@
       "opponent": "pinkbear0_0",
       "opponentRating": 709,
       "opening": "Indian Game..."
-    },
-    {
-      "url": "https://www.chess.com/game/live/186000462208",
-      "endedAt": "2026-10-26T20:29:27.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "loss",
-      "rating": 684,
-      "opponent": "reaper0703",
-      "opponentRating": 708,
-      "opening": "Philidor Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185949319738",
-      "endedAt": "2026-10-25T23:17:51.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "draw",
-      "rating": 692,
-      "opponent": "Joni52000",
-      "opponentRating": 704,
-      "opening": "Philidor Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185921041304",
-      "endedAt": "2026-10-25T13:21:51.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "loss",
-      "rating": 692,
-      "opponent": "MasternikG",
-      "opponentRating": 688,
-      "opening": "Caro Kann Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185899201138",
-      "endedAt": "2026-10-25T03:17:06.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 701,
-      "opponent": "Eyp_80",
-      "opponentRating": 668,
-      "opening": "Kings Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185880132994",
-      "endedAt": "2026-10-24T18:26:05.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "loss",
-      "rating": 693,
-      "opponent": "Deepakupp",
-      "opponentRating": 695,
-      "opening": "Philidor Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185876378434",
-      "endedAt": "2026-10-24T17:05:50.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "loss",
-      "rating": 701,
-      "opponent": "Ajanberii",
-      "opponentRating": 709,
-      "opening": "Center Game"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185864383960",
-      "endedAt": "2026-10-24T13:21:26.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 709,
-      "opponent": "jitu28292",
-      "opponentRating": 703,
-      "opening": "Kings Pawn Opening"
     }
   ]
 }
