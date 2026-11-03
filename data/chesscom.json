@@ -5,10 +5,10 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 686,
+      "rating": 670,
       "best": 804,
       "win": 1762,
-      "loss": 1721,
+      "loss": 1723,
       "draw": 119
     },
     "blitz": {
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3701,
+  "totalGames": 3703,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2790,7 +2790,7 @@
     },
     {
       "date": "2026-11-03",
-      "rating": 686
+      "rating": 670
     }
   ],
   "openings": [
@@ -2821,9 +2821,9 @@
     {
       "name": "French Defense",
       "color": "white",
-      "games": 108,
+      "games": 109,
       "win": 52,
-      "loss": 53,
+      "loss": 54,
       "draw": 3
     },
     {
@@ -2853,9 +2853,9 @@
     {
       "name": "Queens Pawn Opening",
       "color": "black",
-      "games": 153,
+      "games": 154,
       "win": 83,
-      "loss": 69,
+      "loss": 70,
       "draw": 1
     },
     {
@@ -2876,6 +2876,28 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/186474815650",
+      "endedAt": "2026-11-03T17:31:41.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 670,
+      "opponent": "Biren51160",
+      "opponentRating": 676,
+      "opening": "French Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186474615750",
+      "endedAt": "2026-11-03T17:26:38.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "loss",
+      "rating": 678,
+      "opponent": "FabianSau",
+      "opponentRating": 692,
+      "opening": "Queens Pawn Opening"
+    },
     {
       "url": "https://www.chess.com/game/live/186447795866",
       "endedAt": "2026-11-03T08:48:35.000Z",
@@ -3183,28 +3205,6 @@
       "opponent": "Carlosaugusto12",
       "opponentRating": 657,
       "opening": "Kings Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186008530408",
-      "endedAt": "2026-10-27T00:04:40.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 684,
-      "opponent": "sahib040",
-      "opponentRating": 656,
-      "opening": "Philidor Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186008466868",
-      "endedAt": "2026-10-26T23:53:44.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "loss",
-      "rating": 676,
-      "opponent": "pinkbear0_0",
-      "opponentRating": 709,
-      "opening": "Indian Game..."
     }
   ]
 }
