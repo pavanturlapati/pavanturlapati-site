@@ -5,10 +5,10 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 684,
+      "rating": 694,
       "best": 804,
-      "win": 1757,
-      "loss": 1716,
+      "win": 1759,
+      "loss": 1717,
       "draw": 119
     },
     "blitz": {
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3691,
+  "totalGames": 3694,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2786,15 +2786,15 @@
     },
     {
       "date": "2026-11-02",
-      "rating": 684
+      "rating": 694
     }
   ],
   "openings": [
     {
       "name": "Kings Pawn Opening",
       "color": "white",
-      "games": 633,
-      "win": 338,
+      "games": 634,
+      "win": 339,
       "loss": 276,
       "draw": 19
     },
@@ -2857,9 +2857,9 @@
     {
       "name": "Scandinavian Defense",
       "color": "black",
-      "games": 106,
+      "games": 107,
       "win": 52,
-      "loss": 52,
+      "loss": 53,
       "draw": 2
     },
     {
@@ -2872,6 +2872,39 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/186429755400",
+      "endedAt": "2026-11-02T23:30:30.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 694,
+      "opponent": "Eirh1853",
+      "opponentRating": 672,
+      "opening": "English Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186429614098",
+      "endedAt": "2026-11-02T23:16:09.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 686,
+      "opponent": "Dkost8852",
+      "opponentRating": 692,
+      "opening": "Kings Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186413346322",
+      "endedAt": "2026-11-02T17:54:09.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "loss",
+      "rating": 677,
+      "opponent": "67six-seven67676767677676",
+      "opponentRating": 714,
+      "opening": "Scandinavian Defense"
+    },
     {
       "url": "https://www.chess.com/game/live/186396421270",
       "endedAt": "2026-11-02T13:05:40.000Z",
@@ -3168,39 +3201,6 @@
       "opponent": "jitu28292",
       "opponentRating": 703,
       "opening": "Kings Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185862308188",
-      "endedAt": "2026-10-24T12:36:30.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "win",
-      "rating": 701,
-      "opponent": "chrissie257",
-      "opponentRating": 704,
-      "opening": "Kings Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185843799768",
-      "endedAt": "2026-10-24T03:48:37.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "win",
-      "rating": 693,
-      "opponent": "Deanski540",
-      "opponentRating": 698,
-      "opening": "Queens Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/185843430358",
-      "endedAt": "2026-10-24T03:38:15.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 684,
-      "opponent": "rami_998",
-      "opponentRating": 668,
-      "opening": "Sicilian Defense"
     }
   ]
 }
