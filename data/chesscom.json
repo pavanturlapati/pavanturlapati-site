@@ -5,9 +5,9 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 670,
+      "rating": 694,
       "best": 804,
-      "win": 1762,
+      "win": 1765,
       "loss": 1723,
       "draw": 119
     },
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3703,
+  "totalGames": 3706,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2791,6 +2791,10 @@
     {
       "date": "2026-11-03",
       "rating": 670
+    },
+    {
+      "date": "2026-11-04",
+      "rating": 694
     }
   ],
   "openings": [
@@ -2861,8 +2865,8 @@
     {
       "name": "Scandinavian Defense",
       "color": "black",
-      "games": 108,
-      "win": 53,
+      "games": 109,
+      "win": 54,
       "loss": 53,
       "draw": 2
     },
@@ -2876,6 +2880,39 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/186501845572",
+      "endedAt": "2026-11-04T04:31:15.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 694,
+      "opponent": "DerfDey",
+      "opponentRating": 692,
+      "opening": "Queens Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186501519830",
+      "endedAt": "2026-11-04T04:18:11.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 686,
+      "opponent": "daniii-88",
+      "opponentRating": 684,
+      "opening": "Pirc Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186501276868",
+      "endedAt": "2026-11-04T04:07:36.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 678,
+      "opponent": "zero_blunder_001",
+      "opponentRating": 668,
+      "opening": "Scandinavian Defense"
+    },
     {
       "url": "https://www.chess.com/game/live/186474815650",
       "endedAt": "2026-11-03T17:31:41.000Z",
@@ -3171,39 +3208,6 @@
       "rating": 684,
       "opponent": "bakank",
       "opponentRating": 701,
-      "opening": "Kings Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186255679660",
-      "endedAt": "2026-10-31T02:47:14.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "loss",
-      "rating": 692,
-      "opponent": "sctbirch",
-      "opponentRating": 721,
-      "opening": "Caro Kann Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186095287882",
-      "endedAt": "2026-10-28T13:25:59.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 700,
-      "opponent": "Cristi1s",
-      "opponentRating": 694,
-      "opening": "Center Game"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186072547372",
-      "endedAt": "2026-10-28T03:00:45.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "win",
-      "rating": 692,
-      "opponent": "Carlosaugusto12",
-      "opponentRating": 657,
       "opening": "Kings Pawn Opening"
     }
   ]
