@@ -5,9 +5,9 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 694,
+      "rating": 710,
       "best": 804,
-      "win": 1765,
+      "win": 1767,
       "loss": 1723,
       "draw": 119
     },
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3706,
+  "totalGames": 3708,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2794,7 +2794,7 @@
     },
     {
       "date": "2026-11-04",
-      "rating": 694
+      "rating": 710
     }
   ],
   "openings": [
@@ -2880,6 +2880,28 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/186555957936",
+      "endedAt": "2026-11-04T23:40:14.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 710,
+      "opponent": "CorleoneTheMaster",
+      "opponentRating": 701,
+      "opening": "Grob Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186555666242",
+      "endedAt": "2026-11-04T23:27:20.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 702,
+      "opponent": "Jiwan1425473838",
+      "opponentRating": 698,
+      "opening": "Modern Defense"
+    },
     {
       "url": "https://www.chess.com/game/live/186501845572",
       "endedAt": "2026-11-04T04:31:15.000Z",
@@ -3186,28 +3208,6 @@
       "rating": 684,
       "opponent": "TarcioNirvana",
       "opponentRating": 656,
-      "opening": "Kings Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186256572360",
-      "endedAt": "2026-10-31T03:08:21.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "loss",
-      "rating": 676,
-      "opponent": "matojeni",
-      "opponentRating": 683,
-      "opening": "Philidor Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186256170172",
-      "endedAt": "2026-10-31T03:01:09.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "loss",
-      "rating": 684,
-      "opponent": "bakank",
-      "opponentRating": 701,
       "opening": "Kings Pawn Opening"
     }
   ]
