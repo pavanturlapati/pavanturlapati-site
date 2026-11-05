@@ -5,10 +5,10 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 710,
+      "rating": 695,
       "best": 804,
-      "win": 1767,
-      "loss": 1723,
+      "win": 1772,
+      "loss": 1730,
       "draw": 119
     },
     "blitz": {
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3708,
+  "totalGames": 3720,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2795,6 +2795,10 @@
     {
       "date": "2026-11-04",
       "rating": 710
+    },
+    {
+      "date": "2026-11-05",
+      "rating": 695
     }
   ],
   "openings": [
@@ -2825,8 +2829,8 @@
     {
       "name": "French Defense",
       "color": "white",
-      "games": 109,
-      "win": 52,
+      "games": 110,
+      "win": 53,
       "loss": 54,
       "draw": 3
     },
@@ -2849,37 +2853,169 @@
     {
       "name": "Nimzowitsch Defense",
       "color": "black",
-      "games": 305,
-      "win": 147,
-      "loss": 149,
+      "games": 309,
+      "win": 149,
+      "loss": 151,
       "draw": 9
     },
     {
       "name": "Queens Pawn Opening",
       "color": "black",
-      "games": 154,
-      "win": 83,
+      "games": 155,
+      "win": 84,
       "loss": 70,
       "draw": 1
     },
     {
       "name": "Scandinavian Defense",
       "color": "black",
-      "games": 109,
-      "win": 54,
+      "games": 110,
+      "win": 55,
       "loss": 53,
       "draw": 2
     },
     {
       "name": "Indian Game",
       "color": "black",
-      "games": 103,
+      "games": 104,
       "win": 42,
-      "loss": 54,
+      "loss": 55,
       "draw": 7
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/186573028854",
+      "endedAt": "2026-11-05T08:22:45.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 695,
+      "opponent": "Nikitail_Volkovgambit",
+      "opponentRating": 727,
+      "opening": "Colle System"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186572463536",
+      "endedAt": "2026-11-05T08:14:57.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "loss",
+      "rating": 703,
+      "opponent": "Salamooza",
+      "opponentRating": 703,
+      "opening": "Indian Game"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186571150016",
+      "endedAt": "2026-11-05T07:43:43.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 711,
+      "opponent": "athhennaa",
+      "opponentRating": 716,
+      "opening": "Queens Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186570779784",
+      "endedAt": "2026-11-05T07:24:22.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "loss",
+      "rating": 702,
+      "opponent": "Jorsie1",
+      "opponentRating": 704,
+      "opening": "Nimzowitsch Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186568730194",
+      "endedAt": "2026-11-05T06:18:30.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 710,
+      "opponent": "trammm0123",
+      "opponentRating": 716,
+      "opening": "Queens Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186568348978",
+      "endedAt": "2026-11-05T06:13:00.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 718,
+      "opponent": "buttcrepe",
+      "opponentRating": 686,
+      "opening": "Nimzowitsch Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186567841006",
+      "endedAt": "2026-11-05T06:02:07.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 710,
+      "opponent": "mortezajafarzadeh5083",
+      "opponentRating": 705,
+      "opening": "French Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186567645616",
+      "endedAt": "2026-11-05T05:46:12.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "loss",
+      "rating": 702,
+      "opponent": "matein1994",
+      "opponentRating": 695,
+      "opening": "Nimzowitsch Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186567360618",
+      "endedAt": "2026-11-05T05:39:57.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 711,
+      "opponent": "thvuong",
+      "opponentRating": 726,
+      "opening": "Queens Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186567221266",
+      "endedAt": "2026-11-05T05:31:02.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 719,
+      "opponent": "MFOKA_NZIMA-4",
+      "opponentRating": 725,
+      "opening": "Scandinavian Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186566899548",
+      "endedAt": "2026-11-05T05:26:45.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 710,
+      "opponent": "voleper_20",
+      "opponentRating": 711,
+      "opening": "Englund Gambit"
+    },
+    {
+      "url": "https://www.chess.com/game/live/186566466466",
+      "endedAt": "2026-11-05T05:14:26.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 718,
+      "opponent": "shahaful",
+      "opponentRating": 696,
+      "opening": "Nimzowitsch Defense"
+    },
     {
       "url": "https://www.chess.com/game/live/186555957936",
       "endedAt": "2026-11-04T23:40:14.000Z",
@@ -3077,138 +3213,6 @@
       "opponent": "michaeltedinger",
       "opponentRating": 651,
       "opening": "Alekhines Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186377652350",
-      "endedAt": "2026-11-02T04:50:45.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 676,
-      "opponent": "flower_gambit",
-      "opponentRating": 645,
-      "opening": "Queens Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186377574194",
-      "endedAt": "2026-11-02T04:42:07.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "win",
-      "rating": 668,
-      "opponent": "yolo_gaurangi",
-      "opponentRating": 630,
-      "opening": "Scandinavian Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186352617994",
-      "endedAt": "2026-11-01T17:55:56.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "loss",
-      "rating": 661,
-      "opponent": "afudesign2",
-      "opponentRating": 666,
-      "opening": "Philidor Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186349372506",
-      "endedAt": "2026-11-01T16:59:45.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 669,
-      "opponent": "PrinceAlmighty",
-      "opponentRating": 639,
-      "opening": "Pirc Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186348746974",
-      "endedAt": "2026-11-01T16:42:48.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "loss",
-      "rating": 661,
-      "opponent": "napoleonjester",
-      "opponentRating": 688,
-      "opening": "Philidor Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186348428880",
-      "endedAt": "2026-11-01T16:33:18.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "win",
-      "rating": 669,
-      "opponent": "Murty_1",
-      "opponentRating": 665,
-      "opening": "Three Knights Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186343552588",
-      "endedAt": "2026-11-01T15:10:41.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "loss",
-      "rating": 661,
-      "opponent": "poojadoba333",
-      "opponentRating": 699,
-      "opening": "Kings Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186337118968",
-      "endedAt": "2026-11-01T13:02:50.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "loss",
-      "rating": 668,
-      "opponent": "ak47bharath",
-      "opponentRating": 685,
-      "opening": "Queens Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186278315638",
-      "endedAt": "2026-10-31T13:14:09.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "loss",
-      "rating": 676,
-      "opponent": "GiulianoGiulio73",
-      "opponentRating": 675,
-      "opening": "Kings Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186278027016",
-      "endedAt": "2026-10-31T12:53:32.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "win",
-      "rating": 684,
-      "opponent": "hskkvs",
-      "opponentRating": 671,
-      "opening": "Kings Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186256881012",
-      "endedAt": "2026-10-31T03:23:51.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "loss",
-      "rating": 676,
-      "opponent": "the-real-ismail",
-      "opponentRating": 709,
-      "opening": "Kings Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186256779558",
-      "endedAt": "2026-10-31T03:12:06.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 684,
-      "opponent": "TarcioNirvana",
-      "opponentRating": 656,
-      "opening": "Kings Pawn Opening"
     }
   ]
 }
