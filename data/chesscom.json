@@ -5,10 +5,10 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 695,
+      "rating": 687,
       "best": 804,
       "win": 1772,
-      "loss": 1730,
+      "loss": 1731,
       "draw": 119
     },
     "blitz": {
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3720,
+  "totalGames": 3721,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2799,6 +2799,10 @@
     {
       "date": "2026-11-05",
       "rating": 695
+    },
+    {
+      "date": "2026-11-06",
+      "rating": 687
     }
   ],
   "openings": [
@@ -2884,6 +2888,17 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/186684593606",
+      "endedAt": "2026-11-06T23:05:49.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 687,
+      "opponent": "sanose77",
+      "opponentRating": 699,
+      "opening": "Pirc Defense"
+    },
     {
       "url": "https://www.chess.com/game/live/186573028854",
       "endedAt": "2026-11-05T08:22:45.000Z",
@@ -3202,17 +3217,6 @@
       "opponent": "67six-seven67676767677676",
       "opponentRating": 714,
       "opening": "Scandinavian Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186396421270",
-      "endedAt": "2026-11-02T13:05:40.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 684,
-      "opponent": "michaeltedinger",
-      "opponentRating": 651,
-      "opening": "Alekhines Defense"
     }
   ]
 }
