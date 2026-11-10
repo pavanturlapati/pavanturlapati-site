@@ -5,9 +5,9 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 687,
+      "rating": 695,
       "best": 804,
-      "win": 1772,
+      "win": 1773,
       "loss": 1731,
       "draw": 119
     },
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3721,
+  "totalGames": 3722,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2803,6 +2803,10 @@
     {
       "date": "2026-11-06",
       "rating": 687
+    },
+    {
+      "date": "2026-11-09",
+      "rating": 695
     }
   ],
   "openings": [
@@ -2857,8 +2861,8 @@
     {
       "name": "Nimzowitsch Defense",
       "color": "black",
-      "games": 309,
-      "win": 149,
+      "games": 310,
+      "win": 150,
       "loss": 151,
       "draw": 9
     },
@@ -2888,6 +2892,17 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/186877958314",
+      "endedAt": "2026-11-09T22:46:36.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 695,
+      "opponent": "speedracer55",
+      "opponentRating": 664,
+      "opening": "Nimzowitsch Defense"
+    },
     {
       "url": "https://www.chess.com/game/live/186684593606",
       "endedAt": "2026-11-06T23:05:49.000Z",
@@ -3206,17 +3221,6 @@
       "opponent": "Dkost8852",
       "opponentRating": 692,
       "opening": "Kings Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186413346322",
-      "endedAt": "2026-11-02T17:54:09.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "loss",
-      "rating": 677,
-      "opponent": "67six-seven67676767677676",
-      "opponentRating": 714,
-      "opening": "Scandinavian Defense"
     }
   ]
 }
