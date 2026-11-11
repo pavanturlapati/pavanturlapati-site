@@ -5,9 +5,9 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 687,
+      "rating": 703,
       "best": 804,
-      "win": 1773,
+      "win": 1775,
       "loss": 1732,
       "draw": 119
     },
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3723,
+  "totalGames": 3725,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2810,7 +2810,7 @@
     },
     {
       "date": "2026-11-11",
-      "rating": 687
+      "rating": 703
     }
   ],
   "openings": [
@@ -2873,8 +2873,8 @@
     {
       "name": "Queens Pawn Opening",
       "color": "black",
-      "games": 155,
-      "win": 84,
+      "games": 156,
+      "win": 85,
       "loss": 70,
       "draw": 1
     },
@@ -2896,6 +2896,28 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/187016797492",
+      "endedAt": "2026-11-11T23:08:40.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 703,
+      "opponent": "Nassimgmd",
+      "opponentRating": 703,
+      "opening": "Queens Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/187016543204",
+      "endedAt": "2026-11-11T22:54:25.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 695,
+      "opponent": "jptupang",
+      "opponentRating": 671,
+      "opening": "Pirc Defense"
+    },
     {
       "url": "https://www.chess.com/game/live/186958319628",
       "endedAt": "2026-11-11T04:16:08.000Z",
@@ -3203,28 +3225,6 @@
       "opponent": "arilius_Aril_jenius",
       "opponentRating": 688,
       "opening": "Kings Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186441019718",
-      "endedAt": "2026-11-03T05:35:42.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "loss",
-      "rating": 686,
-      "opponent": "C1_nar",
-      "opponentRating": 695,
-      "opening": "Sicilian Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186429755400",
-      "endedAt": "2026-11-02T23:30:30.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "win",
-      "rating": 694,
-      "opponent": "Eirh1853",
-      "opponentRating": 672,
-      "opening": "English Opening"
     }
   ]
 }
