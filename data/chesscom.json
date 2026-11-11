@@ -5,10 +5,10 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 695,
+      "rating": 687,
       "best": 804,
       "win": 1773,
-      "loss": 1731,
+      "loss": 1732,
       "draw": 119
     },
     "blitz": {
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3722,
+  "totalGames": 3723,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2807,15 +2807,19 @@
     {
       "date": "2026-11-09",
       "rating": 695
+    },
+    {
+      "date": "2026-11-11",
+      "rating": 687
     }
   ],
   "openings": [
     {
       "name": "Kings Pawn Opening",
       "color": "white",
-      "games": 635,
+      "games": 636,
       "win": 339,
-      "loss": 277,
+      "loss": 278,
       "draw": 19
     },
     {
@@ -2892,6 +2896,17 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/186958319628",
+      "endedAt": "2026-11-11T04:16:08.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 687,
+      "opponent": "brendaenergy",
+      "opponentRating": 718,
+      "opening": "Kings Pawn Opening"
+    },
     {
       "url": "https://www.chess.com/game/live/186877958314",
       "endedAt": "2026-11-09T22:46:36.000Z",
@@ -3210,17 +3225,6 @@
       "opponent": "Eirh1853",
       "opponentRating": 672,
       "opening": "English Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186429614098",
-      "endedAt": "2026-11-02T23:16:09.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 686,
-      "opponent": "Dkost8852",
-      "opponentRating": 692,
-      "opening": "Kings Pawn Opening"
     }
   ]
 }
