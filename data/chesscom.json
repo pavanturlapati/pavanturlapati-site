@@ -5,10 +5,10 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 703,
+      "rating": 687,
       "best": 804,
       "win": 1775,
-      "loss": 1732,
+      "loss": 1734,
       "draw": 119
     },
     "blitz": {
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3725,
+  "totalGames": 3727,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2811,6 +2811,10 @@
     {
       "date": "2026-11-11",
       "rating": 703
+    },
+    {
+      "date": "2026-11-13",
+      "rating": 687
     }
   ],
   "openings": [
@@ -2833,9 +2837,9 @@
     {
       "name": "Center Game",
       "color": "white",
-      "games": 123,
+      "games": 124,
       "win": 62,
-      "loss": 58,
+      "loss": 59,
       "draw": 3
     },
     {
@@ -2896,6 +2900,28 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/187156290526",
+      "endedAt": "2026-11-13T22:26:53.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 687,
+      "opponent": "triggarey",
+      "opponentRating": 713,
+      "opening": "Queens Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/187149606086",
+      "endedAt": "2026-11-13T20:14:06.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 695,
+      "opponent": "yeomdd",
+      "opponentRating": 720,
+      "opening": "Center Game"
+    },
     {
       "url": "https://www.chess.com/game/live/187016797492",
       "endedAt": "2026-11-11T23:08:40.000Z",
@@ -3203,28 +3229,6 @@
       "opponent": "mike6800",
       "opponentRating": 649,
       "opening": "Scandinavian Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186443288378",
-      "endedAt": "2026-11-03T06:36:59.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "loss",
-      "rating": 670,
-      "opponent": "MDYE2",
-      "opponentRating": 697,
-      "opening": "Philidor Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186443060044",
-      "endedAt": "2026-11-03T06:30:51.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "loss",
-      "rating": 678,
-      "opponent": "arilius_Aril_jenius",
-      "opponentRating": 688,
-      "opening": "Kings Pawn Opening"
     }
   ]
 }
