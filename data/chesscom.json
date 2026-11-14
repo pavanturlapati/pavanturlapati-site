@@ -5,11 +5,11 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 687,
+      "rating": 679,
       "best": 804,
       "win": 1775,
-      "loss": 1734,
-      "draw": 119
+      "loss": 1735,
+      "draw": 120
     },
     "blitz": {
       "rating": 151,
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3727,
+  "totalGames": 3729,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2815,6 +2815,10 @@
     {
       "date": "2026-11-13",
       "rating": 687
+    },
+    {
+      "date": "2026-11-14",
+      "rating": 679
     }
   ],
   "openings": [
@@ -2885,10 +2889,10 @@
     {
       "name": "Scandinavian Defense",
       "color": "black",
-      "games": 110,
+      "games": 112,
       "win": 55,
-      "loss": 53,
-      "draw": 2
+      "loss": 54,
+      "draw": 3
     },
     {
       "name": "Indian Game",
@@ -2900,6 +2904,28 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/187165314228",
+      "endedAt": "2026-11-14T02:30:08.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "loss",
+      "rating": 679,
+      "opponent": "KarlHaupt",
+      "opponentRating": 685,
+      "opening": "Scandinavian Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/187162070490",
+      "endedAt": "2026-11-14T00:48:31.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "draw",
+      "rating": 687,
+      "opponent": "OINobodyIO",
+      "opponentRating": 706,
+      "opening": "Scandinavian Defense"
+    },
     {
       "url": "https://www.chess.com/game/live/187156290526",
       "endedAt": "2026-11-13T22:26:53.000Z",
@@ -3207,28 +3233,6 @@
       "opponent": "kimkisoo",
       "opponentRating": 678,
       "opening": "Nimzowitsch Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186443922320",
-      "endedAt": "2026-11-03T07:07:02.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "win",
-      "rating": 686,
-      "opponent": "brasujo",
-      "opponentRating": 690,
-      "opening": "Scandinavian Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186443695002",
-      "endedAt": "2026-11-03T06:49:54.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 678,
-      "opponent": "mike6800",
-      "opponentRating": 649,
-      "opening": "Scandinavian Defense"
     }
   ]
 }
