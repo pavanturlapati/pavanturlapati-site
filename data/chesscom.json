@@ -5,9 +5,9 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 679,
+      "rating": 687,
       "best": 804,
-      "win": 1775,
+      "win": 1776,
       "loss": 1735,
       "draw": 120
     },
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3729,
+  "totalGames": 3730,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2819,6 +2819,10 @@
     {
       "date": "2026-11-14",
       "rating": 679
+    },
+    {
+      "date": "2026-11-15",
+      "rating": 687
     }
   ],
   "openings": [
@@ -2904,6 +2908,17 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/187275993366",
+      "endedAt": "2026-11-15T17:09:31.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 687,
+      "opponent": "grumsher",
+      "opponentRating": 692,
+      "opening": "Queens Pawn Opening"
+    },
     {
       "url": "https://www.chess.com/game/live/187165314228",
       "endedAt": "2026-11-14T02:30:08.000Z",
@@ -3222,17 +3237,6 @@
       "opponent": "SoorajSingh05",
       "opponentRating": 703,
       "opening": "Queens Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186444517790",
-      "endedAt": "2026-11-03T07:11:09.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "win",
-      "rating": 694,
-      "opponent": "kimkisoo",
-      "opponentRating": 678,
-      "opening": "Nimzowitsch Defense"
     }
   ]
 }
