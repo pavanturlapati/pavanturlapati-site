@@ -5,10 +5,10 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 703,
+      "rating": 695,
       "best": 804,
       "win": 1778,
-      "loss": 1735,
+      "loss": 1736,
       "draw": 120
     },
     "blitz": {
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3732,
+  "totalGames": 3733,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2826,7 +2826,7 @@
     },
     {
       "date": "2026-11-16",
-      "rating": 703
+      "rating": 695
     }
   ],
   "openings": [
@@ -2897,9 +2897,9 @@
     {
       "name": "Scandinavian Defense",
       "color": "black",
-      "games": 113,
+      "games": 114,
       "win": 56,
-      "loss": 54,
+      "loss": 55,
       "draw": 3
     },
     {
@@ -2912,6 +2912,17 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/187329925284",
+      "endedAt": "2026-11-16T13:07:49.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "loss",
+      "rating": 695,
+      "opponent": "andryhadrochyha",
+      "opponentRating": 723,
+      "opening": "Scandinavian Defense"
+    },
     {
       "url": "https://www.chess.com/game/live/187304461016",
       "endedAt": "2026-11-16T03:04:04.000Z",
@@ -3230,17 +3241,6 @@
       "opponent": "zero_blunder_001",
       "opponentRating": 668,
       "opening": "Scandinavian Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186474815650",
-      "endedAt": "2026-11-03T17:31:41.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "loss",
-      "rating": 670,
-      "opponent": "Biren51160",
-      "opponentRating": 676,
-      "opening": "French Defense"
     }
   ]
 }
