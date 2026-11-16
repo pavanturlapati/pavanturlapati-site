@@ -5,9 +5,9 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 687,
+      "rating": 703,
       "best": 804,
-      "win": 1776,
+      "win": 1778,
       "loss": 1735,
       "draw": 120
     },
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3730,
+  "totalGames": 3732,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2823,6 +2823,10 @@
     {
       "date": "2026-11-15",
       "rating": 687
+    },
+    {
+      "date": "2026-11-16",
+      "rating": 703
     }
   ],
   "openings": [
@@ -2893,8 +2897,8 @@
     {
       "name": "Scandinavian Defense",
       "color": "black",
-      "games": 112,
-      "win": 55,
+      "games": 113,
+      "win": 56,
       "loss": 54,
       "draw": 3
     },
@@ -2908,6 +2912,28 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/187304461016",
+      "endedAt": "2026-11-16T03:04:04.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 703,
+      "opponent": "TomahawkTDF",
+      "opponentRating": 689,
+      "opening": "Queens Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/187303908784",
+      "endedAt": "2026-11-16T02:49:07.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 695,
+      "opponent": "Charubi10",
+      "opponentRating": 698,
+      "opening": "Scandinavian Defense"
+    },
     {
       "url": "https://www.chess.com/game/live/187275993366",
       "endedAt": "2026-11-15T17:09:31.000Z",
@@ -3215,28 +3241,6 @@
       "opponent": "Biren51160",
       "opponentRating": 676,
       "opening": "French Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186474615750",
-      "endedAt": "2026-11-03T17:26:38.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "loss",
-      "rating": 678,
-      "opponent": "FabianSau",
-      "opponentRating": 692,
-      "opening": "Queens Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186447795866",
-      "endedAt": "2026-11-03T08:48:35.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "loss",
-      "rating": 686,
-      "opponent": "SoorajSingh05",
-      "opponentRating": 703,
-      "opening": "Queens Pawn Opening"
     }
   ]
 }
