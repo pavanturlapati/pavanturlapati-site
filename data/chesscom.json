@@ -5,9 +5,9 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 703,
+      "rating": 719,
       "best": 804,
-      "win": 1779,
+      "win": 1781,
       "loss": 1736,
       "draw": 120
     },
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3734,
+  "totalGames": 3736,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2830,7 +2830,7 @@
     },
     {
       "date": "2026-11-17",
-      "rating": 703
+      "rating": 719
     }
   ],
   "openings": [
@@ -2861,8 +2861,8 @@
     {
       "name": "French Defense",
       "color": "white",
-      "games": 110,
-      "win": 53,
+      "games": 111,
+      "win": 54,
       "loss": 54,
       "draw": 3
     },
@@ -2916,6 +2916,28 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/187376874260",
+      "endedAt": "2026-11-17T03:44:50.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 719,
+      "opponent": "lucas_cc27",
+      "opponentRating": 704,
+      "opening": "Philidor Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/187376542806",
+      "endedAt": "2026-11-17T03:26:41.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 711,
+      "opponent": "Sharvennnn",
+      "opponentRating": 666,
+      "opening": "French Defense"
+    },
     {
       "url": "https://www.chess.com/game/live/187371331998",
       "endedAt": "2026-11-17T01:01:28.000Z",
@@ -3223,28 +3245,6 @@
       "opponent": "Jiwan1425473838",
       "opponentRating": 698,
       "opening": "Modern Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186501845572",
-      "endedAt": "2026-11-04T04:31:15.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 694,
-      "opponent": "DerfDey",
-      "opponentRating": 692,
-      "opening": "Queens Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186501519830",
-      "endedAt": "2026-11-04T04:18:11.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 686,
-      "opponent": "daniii-88",
-      "opponentRating": 684,
-      "opening": "Pirc Defense"
     }
   ]
 }
