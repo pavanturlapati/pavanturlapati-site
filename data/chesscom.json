@@ -5,9 +5,9 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 695,
+      "rating": 703,
       "best": 804,
-      "win": 1778,
+      "win": 1779,
       "loss": 1736,
       "draw": 120
     },
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3733,
+  "totalGames": 3734,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2827,6 +2827,10 @@
     {
       "date": "2026-11-16",
       "rating": 695
+    },
+    {
+      "date": "2026-11-17",
+      "rating": 703
     }
   ],
   "openings": [
@@ -2912,6 +2916,17 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/187371331998",
+      "endedAt": "2026-11-17T01:01:28.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 703,
+      "opponent": "COMO-SIEMPREE",
+      "opponentRating": 683,
+      "opening": "Kings Fianchetto Opening"
+    },
     {
       "url": "https://www.chess.com/game/live/187329925284",
       "endedAt": "2026-11-16T13:07:49.000Z",
@@ -3230,17 +3245,6 @@
       "opponent": "daniii-88",
       "opponentRating": 684,
       "opening": "Pirc Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186501276868",
-      "endedAt": "2026-11-04T04:07:36.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "win",
-      "rating": 678,
-      "opponent": "zero_blunder_001",
-      "opponentRating": 668,
-      "opening": "Scandinavian Defense"
     }
   ]
 }
