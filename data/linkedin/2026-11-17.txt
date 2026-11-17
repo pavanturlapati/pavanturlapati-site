@@ -1,0 +1,11 @@
+Trust and verification run through this week's stories, from AI guardrails to AI-written tests.
+
+- OpenAI introduces GPT-6.2 Astra and Sol
+- Martin Fowler's site: deterministic simulation testing for distributed systems
+- Tests as data: keeping AI-generated code honest
+
+Plus 7 more across AI, QSR and testing, each with the source and why it matters. Full edition below.
+
+https://pavanturlapati.com/weekly/2026-11-17/
+
+AI-generated from public sources.
