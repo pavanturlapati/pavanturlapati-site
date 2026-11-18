@@ -5,10 +5,10 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 703,
+      "rating": 695,
       "best": 804,
       "win": 1781,
-      "loss": 1738,
+      "loss": 1739,
       "draw": 120
     },
     "blitz": {
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3738,
+  "totalGames": 3739,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2834,7 +2834,7 @@
     },
     {
       "date": "2026-11-18",
-      "rating": 703
+      "rating": 695
     }
   ],
   "openings": [
@@ -2905,9 +2905,9 @@
     {
       "name": "Scandinavian Defense",
       "color": "black",
-      "games": 114,
+      "games": 115,
       "win": 56,
-      "loss": 55,
+      "loss": 56,
       "draw": 3
     },
     {
@@ -2920,6 +2920,17 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/187480173998",
+      "endedAt": "2026-11-18T14:36:54.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "loss",
+      "rating": 695,
+      "opponent": "Griffin-5",
+      "opponentRating": 731,
+      "opening": "Scandinavian Defense"
+    },
     {
       "url": "https://www.chess.com/game/live/187479855768",
       "endedAt": "2026-11-18T14:24:17.000Z",
@@ -3238,17 +3249,6 @@
       "opponent": "voleper_20",
       "opponentRating": 711,
       "opening": "Englund Gambit"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186566466466",
-      "endedAt": "2026-11-05T05:14:26.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "win",
-      "rating": 718,
-      "opponent": "shahaful",
-      "opponentRating": 696,
-      "opening": "Nimzowitsch Defense"
     }
   ]
 }
