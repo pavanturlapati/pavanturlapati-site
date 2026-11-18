@@ -5,10 +5,10 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 719,
+      "rating": 703,
       "best": 804,
       "win": 1781,
-      "loss": 1736,
+      "loss": 1738,
       "draw": 120
     },
     "blitz": {
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3736,
+  "totalGames": 3738,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2831,15 +2831,19 @@
     {
       "date": "2026-11-17",
       "rating": 719
+    },
+    {
+      "date": "2026-11-18",
+      "rating": 703
     }
   ],
   "openings": [
     {
       "name": "Kings Pawn Opening",
       "color": "white",
-      "games": 636,
+      "games": 637,
       "win": 339,
-      "loss": 278,
+      "loss": 279,
       "draw": 19
     },
     {
@@ -2916,6 +2920,28 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/187479855768",
+      "endedAt": "2026-11-18T14:24:17.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 703,
+      "opponent": "RIYU-1991",
+      "opponentRating": 718,
+      "opening": "Englund Gambit"
+    },
+    {
+      "url": "https://www.chess.com/game/live/187449556810",
+      "endedAt": "2026-11-18T03:45:38.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 711,
+      "opponent": "mr_divyansh_mishra",
+      "opponentRating": 735,
+      "opening": "Kings Pawn Opening"
+    },
     {
       "url": "https://www.chess.com/game/live/187376874260",
       "endedAt": "2026-11-17T03:44:50.000Z",
@@ -3223,28 +3249,6 @@
       "opponent": "shahaful",
       "opponentRating": 696,
       "opening": "Nimzowitsch Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186555957936",
-      "endedAt": "2026-11-04T23:40:14.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "win",
-      "rating": 710,
-      "opponent": "CorleoneTheMaster",
-      "opponentRating": 701,
-      "opening": "Grob Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186555666242",
-      "endedAt": "2026-11-04T23:27:20.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 702,
-      "opponent": "Jiwan1425473838",
-      "opponentRating": 698,
-      "opening": "Modern Defense"
     }
   ]
 }
