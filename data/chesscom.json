@@ -5,11 +5,11 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 695,
+      "rating": 710,
       "best": 804,
-      "win": 1781,
-      "loss": 1739,
-      "draw": 120
+      "win": 1784,
+      "loss": 1740,
+      "draw": 122
     },
     "blitz": {
       "rating": 151,
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3739,
+  "totalGames": 3745,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2835,6 +2835,10 @@
     {
       "date": "2026-11-18",
       "rating": 695
+    },
+    {
+      "date": "2026-11-19",
+      "rating": 710
     }
   ],
   "openings": [
@@ -2913,13 +2917,79 @@
     {
       "name": "Indian Game",
       "color": "black",
-      "games": 104,
+      "games": 105,
       "win": 42,
       "loss": 55,
-      "draw": 7
+      "draw": 8
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/187528511596",
+      "endedAt": "2026-11-19T06:58:33.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "draw",
+      "rating": 710,
+      "opponent": "riZKer",
+      "opponentRating": 703,
+      "opening": "Queens Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/187528149090",
+      "endedAt": "2026-11-19T06:40:15.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 710,
+      "opponent": "brandz-121",
+      "opponentRating": 731,
+      "opening": "Caro Kann Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/187527739268",
+      "endedAt": "2026-11-19T06:30:28.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 718,
+      "opponent": "aesese",
+      "opponentRating": 685,
+      "opening": "Queens Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/187527468432",
+      "endedAt": "2026-11-19T06:19:35.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 710,
+      "opponent": "MADHUSUDANMAHATO",
+      "opponentRating": 699,
+      "opening": "French Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/187527112934",
+      "endedAt": "2026-11-19T06:11:24.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 702,
+      "opponent": "breysanjaya",
+      "opponentRating": 662,
+      "opening": "Queens Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/187526433566",
+      "endedAt": "2026-11-19T06:02:36.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "draw",
+      "rating": 695,
+      "opponent": "robercik14",
+      "opponentRating": 713,
+      "opening": "Indian Game"
+    },
     {
       "url": "https://www.chess.com/game/live/187480173998",
       "endedAt": "2026-11-18T14:36:54.000Z",
@@ -3183,72 +3253,6 @@
       "opponent": "trammm0123",
       "opponentRating": 716,
       "opening": "Queens Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186568348978",
-      "endedAt": "2026-11-05T06:13:00.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "win",
-      "rating": 718,
-      "opponent": "buttcrepe",
-      "opponentRating": 686,
-      "opening": "Nimzowitsch Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186567841006",
-      "endedAt": "2026-11-05T06:02:07.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 710,
-      "opponent": "mortezajafarzadeh5083",
-      "opponentRating": 705,
-      "opening": "French Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186567645616",
-      "endedAt": "2026-11-05T05:46:12.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "loss",
-      "rating": 702,
-      "opponent": "matein1994",
-      "opponentRating": 695,
-      "opening": "Nimzowitsch Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186567360618",
-      "endedAt": "2026-11-05T05:39:57.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "loss",
-      "rating": 711,
-      "opponent": "thvuong",
-      "opponentRating": 726,
-      "opening": "Queens Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186567221266",
-      "endedAt": "2026-11-05T05:31:02.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "win",
-      "rating": 719,
-      "opponent": "MFOKA_NZIMA-4",
-      "opponentRating": 725,
-      "opening": "Scandinavian Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186566899548",
-      "endedAt": "2026-11-05T05:26:45.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "loss",
-      "rating": 710,
-      "opponent": "voleper_20",
-      "opponentRating": 711,
-      "opening": "Englund Gambit"
     }
   ]
 }
