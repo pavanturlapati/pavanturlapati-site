@@ -5,10 +5,10 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 710,
+      "rating": 718,
       "best": 804,
-      "win": 1784,
-      "loss": 1740,
+      "win": 1786,
+      "loss": 1741,
       "draw": 122
     },
     "blitz": {
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3745,
+  "totalGames": 3748,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2839,14 +2839,18 @@
     {
       "date": "2026-11-19",
       "rating": 710
+    },
+    {
+      "date": "2026-11-20",
+      "rating": 718
     }
   ],
   "openings": [
     {
       "name": "Kings Pawn Opening",
       "color": "white",
-      "games": 637,
-      "win": 339,
+      "games": 638,
+      "win": 340,
       "loss": 279,
       "draw": 19
     },
@@ -2893,9 +2897,9 @@
     {
       "name": "Nimzowitsch Defense",
       "color": "black",
-      "games": 310,
+      "games": 311,
       "win": 150,
-      "loss": 151,
+      "loss": 152,
       "draw": 9
     },
     {
@@ -2924,6 +2928,39 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/187596878704",
+      "endedAt": "2026-11-20T04:55:27.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 718,
+      "opponent": "Scoulton",
+      "opponentRating": 681,
+      "opening": "Kings Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/187596589008",
+      "endedAt": "2026-11-20T04:45:01.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "loss",
+      "rating": 711,
+      "opponent": "ruhan24321902",
+      "opponentRating": 747,
+      "opening": "Nimzowitsch Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/187596397942",
+      "endedAt": "2026-11-20T04:37:08.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 718,
+      "opponent": "kingdavid2506",
+      "opponentRating": 707,
+      "opening": "Italian Game"
+    },
     {
       "url": "https://www.chess.com/game/live/187528511596",
       "endedAt": "2026-11-19T06:58:33.000Z",
@@ -3220,39 +3257,6 @@
       "opponent": "Salamooza",
       "opponentRating": 703,
       "opening": "Indian Game"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186571150016",
-      "endedAt": "2026-11-05T07:43:43.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "win",
-      "rating": 711,
-      "opponent": "athhennaa",
-      "opponentRating": 716,
-      "opening": "Queens Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186570779784",
-      "endedAt": "2026-11-05T07:24:22.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "loss",
-      "rating": 702,
-      "opponent": "Jorsie1",
-      "opponentRating": 704,
-      "opening": "Nimzowitsch Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186568730194",
-      "endedAt": "2026-11-05T06:18:30.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "loss",
-      "rating": 710,
-      "opponent": "trammm0123",
-      "opponentRating": 716,
-      "opening": "Queens Pawn Opening"
     }
   ]
 }
