@@ -5,9 +5,9 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 726,
+      "rating": 742,
       "best": 804,
-      "win": 1787,
+      "win": 1789,
       "loss": 1741,
       "draw": 122
     },
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3749,
+  "totalGames": 3751,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2846,7 +2846,7 @@
     },
     {
       "date": "2026-11-21",
-      "rating": 726
+      "rating": 742
     }
   ],
   "openings": [
@@ -2901,8 +2901,8 @@
     {
       "name": "Nimzowitsch Defense",
       "color": "black",
-      "games": 311,
-      "win": 150,
+      "games": 312,
+      "win": 151,
       "loss": 152,
       "draw": 9
     },
@@ -2932,6 +2932,28 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/187671951256",
+      "endedAt": "2026-11-21T05:41:43.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 742,
+      "opponent": "Brutal024",
+      "opponentRating": 734,
+      "opening": "Queens Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/187669438390",
+      "endedAt": "2026-11-21T04:28:51.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 734,
+      "opponent": "mohsen221122",
+      "opponentRating": 712,
+      "opening": "Nimzowitsch Defense"
+    },
     {
       "url": "https://www.chess.com/game/live/187669024592",
       "endedAt": "2026-11-21T04:16:20.000Z",
@@ -3239,28 +3261,6 @@
       "opponent": "speedracer55",
       "opponentRating": 664,
       "opening": "Nimzowitsch Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186684593606",
-      "endedAt": "2026-11-06T23:05:49.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "loss",
-      "rating": 687,
-      "opponent": "sanose77",
-      "opponentRating": 699,
-      "opening": "Pirc Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186573028854",
-      "endedAt": "2026-11-05T08:22:45.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "loss",
-      "rating": 695,
-      "opponent": "Nikitail_Volkovgambit",
-      "opponentRating": 727,
-      "opening": "Colle System"
     }
   ]
 }
