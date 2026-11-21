@@ -5,9 +5,9 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 718,
+      "rating": 726,
       "best": 804,
-      "win": 1786,
+      "win": 1787,
       "loss": 1741,
       "draw": 122
     },
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3748,
+  "totalGames": 3749,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2843,6 +2843,10 @@
     {
       "date": "2026-11-20",
       "rating": 718
+    },
+    {
+      "date": "2026-11-21",
+      "rating": 726
     }
   ],
   "openings": [
@@ -2928,6 +2932,17 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/187669024592",
+      "endedAt": "2026-11-21T04:16:20.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 726,
+      "opponent": "moh-bakri",
+      "opponentRating": 726,
+      "opening": "Van t Kruijs Opening"
+    },
     {
       "url": "https://www.chess.com/game/live/187596878704",
       "endedAt": "2026-11-20T04:55:27.000Z",
@@ -3246,17 +3261,6 @@
       "opponent": "Nikitail_Volkovgambit",
       "opponentRating": 727,
       "opening": "Colle System"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186572463536",
-      "endedAt": "2026-11-05T08:14:57.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "loss",
-      "rating": 703,
-      "opponent": "Salamooza",
-      "opponentRating": 703,
-      "opening": "Indian Game"
     }
   ]
 }
