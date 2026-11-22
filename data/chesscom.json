@@ -5,9 +5,9 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 758,
+      "rating": 766,
       "best": 804,
-      "win": 1792,
+      "win": 1793,
       "loss": 1742,
       "draw": 122
     },
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3755,
+  "totalGames": 3756,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2850,7 +2850,7 @@
     },
     {
       "date": "2026-11-22",
-      "rating": 758
+      "rating": 766
     }
   ],
   "openings": [
@@ -2936,6 +2936,17 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/187782396048",
+      "endedAt": "2026-11-22T18:00:28.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 766,
+      "opponent": "HenryG0007",
+      "opponentRating": 747,
+      "opening": "Colle System"
+    },
     {
       "url": "https://www.chess.com/game/live/187741958640",
       "endedAt": "2026-11-22T05:09:44.000Z",
@@ -3254,17 +3265,6 @@
       "opponent": "triggarey",
       "opponentRating": 713,
       "opening": "Queens Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/187149606086",
-      "endedAt": "2026-11-13T20:14:06.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "loss",
-      "rating": 695,
-      "opponent": "yeomdd",
-      "opponentRating": 720,
-      "opening": "Center Game"
     }
   ]
 }
