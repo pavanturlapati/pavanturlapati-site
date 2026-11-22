@@ -5,9 +5,9 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 734,
+      "rating": 758,
       "best": 804,
-      "win": 1789,
+      "win": 1792,
       "loss": 1742,
       "draw": 122
     },
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3752,
+  "totalGames": 3755,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2850,7 +2850,7 @@
     },
     {
       "date": "2026-11-22",
-      "rating": 734
+      "rating": 758
     }
   ],
   "openings": [
@@ -2897,8 +2897,8 @@
     {
       "name": "Kings Pawn Opening",
       "color": "black",
-      "games": 436,
-      "win": 194,
+      "games": 437,
+      "win": 195,
       "loss": 225,
       "draw": 17
     },
@@ -2936,6 +2936,39 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/187741958640",
+      "endedAt": "2026-11-22T05:09:44.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 758,
+      "opponent": "Prashantnv",
+      "opponentRating": 729,
+      "opening": "Queens Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/187741328924",
+      "endedAt": "2026-11-22T04:51:19.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 750,
+      "opponent": "pauldulude1",
+      "opponentRating": 726,
+      "opening": "Kings Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/187740903824",
+      "endedAt": "2026-11-22T04:44:44.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 742,
+      "opponent": "Nickesh2",
+      "opponentRating": 716,
+      "opening": "Englund Gambit"
+    },
     {
       "url": "https://www.chess.com/game/live/187733369834",
       "endedAt": "2026-11-22T01:13:54.000Z",
@@ -3232,39 +3265,6 @@
       "opponent": "yeomdd",
       "opponentRating": 720,
       "opening": "Center Game"
-    },
-    {
-      "url": "https://www.chess.com/game/live/187016797492",
-      "endedAt": "2026-11-11T23:08:40.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "win",
-      "rating": 703,
-      "opponent": "Nassimgmd",
-      "opponentRating": 703,
-      "opening": "Queens Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/187016543204",
-      "endedAt": "2026-11-11T22:54:25.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 695,
-      "opponent": "jptupang",
-      "opponentRating": 671,
-      "opening": "Pirc Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/186958319628",
-      "endedAt": "2026-11-11T04:16:08.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "loss",
-      "rating": 687,
-      "opponent": "brendaenergy",
-      "opponentRating": 718,
-      "opening": "Kings Pawn Opening"
     }
   ]
 }
