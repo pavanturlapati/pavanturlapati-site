@@ -5,9 +5,9 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 766,
+      "rating": 774,
       "best": 804,
-      "win": 1793,
+      "win": 1794,
       "loss": 1742,
       "draw": 122
     },
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3756,
+  "totalGames": 3757,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2851,6 +2851,10 @@
     {
       "date": "2026-11-22",
       "rating": 766
+    },
+    {
+      "date": "2026-11-23",
+      "rating": 774
     }
   ],
   "openings": [
@@ -2921,8 +2925,8 @@
     {
       "name": "Scandinavian Defense",
       "color": "black",
-      "games": 115,
-      "win": 56,
+      "games": 116,
+      "win": 57,
       "loss": 56,
       "draw": 3
     },
@@ -2936,6 +2940,17 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/187807238840",
+      "endedAt": "2026-11-23T02:37:50.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 774,
+      "opponent": "rafaeltomaselli",
+      "opponentRating": 752,
+      "opening": "Scandinavian Defense"
+    },
     {
       "url": "https://www.chess.com/game/live/187782396048",
       "endedAt": "2026-11-22T18:00:28.000Z",
@@ -3254,17 +3269,6 @@
       "opponent": "OINobodyIO",
       "opponentRating": 706,
       "opening": "Scandinavian Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/187156290526",
-      "endedAt": "2026-11-13T22:26:53.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "loss",
-      "rating": 687,
-      "opponent": "triggarey",
-      "opponentRating": 713,
-      "opening": "Queens Pawn Opening"
     }
   ]
 }
