@@ -5,10 +5,10 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 774,
+      "rating": 766,
       "best": 804,
       "win": 1794,
-      "loss": 1742,
+      "loss": 1743,
       "draw": 122
     },
     "blitz": {
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3757,
+  "totalGames": 3758,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2854,7 +2854,7 @@
     },
     {
       "date": "2026-11-23",
-      "rating": 774
+      "rating": 766
     }
   ],
   "openings": [
@@ -2893,9 +2893,9 @@
     {
       "name": "Nimzowitsch Defense",
       "color": "white",
-      "games": 87,
+      "games": 88,
       "win": 55,
-      "loss": 31,
+      "loss": 32,
       "draw": 1
     },
     {
@@ -2940,6 +2940,17 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/187811168952",
+      "endedAt": "2026-11-23T04:27:49.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 766,
+      "opponent": "vedprakash102",
+      "opponentRating": 780,
+      "opening": "Nimzowitsch Defense"
+    },
     {
       "url": "https://www.chess.com/game/live/187807238840",
       "endedAt": "2026-11-23T02:37:50.000Z",
@@ -3257,17 +3268,6 @@
       "rating": 679,
       "opponent": "KarlHaupt",
       "opponentRating": 685,
-      "opening": "Scandinavian Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/187162070490",
-      "endedAt": "2026-11-14T00:48:31.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "draw",
-      "rating": 687,
-      "opponent": "OINobodyIO",
-      "opponentRating": 706,
       "opening": "Scandinavian Defense"
     }
   ]
