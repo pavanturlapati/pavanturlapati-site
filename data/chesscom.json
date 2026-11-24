@@ -5,10 +5,10 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 766,
+      "rating": 751,
       "best": 804,
       "win": 1794,
-      "loss": 1743,
+      "loss": 1745,
       "draw": 122
     },
     "blitz": {
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3758,
+  "totalGames": 3760,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2855,6 +2855,10 @@
     {
       "date": "2026-11-23",
       "rating": 766
+    },
+    {
+      "date": "2026-11-24",
+      "rating": 751
     }
   ],
   "openings": [
@@ -2909,9 +2913,9 @@
     {
       "name": "Nimzowitsch Defense",
       "color": "black",
-      "games": 312,
+      "games": 313,
       "win": 151,
-      "loss": 152,
+      "loss": 153,
       "draw": 9
     },
     {
@@ -2940,6 +2944,28 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/187885435342",
+      "endedAt": "2026-11-24T04:53:59.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 751,
+      "opponent": "saheel_18",
+      "opponentRating": 751,
+      "opening": "Pirc Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/187885126546",
+      "endedAt": "2026-11-24T04:37:04.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "loss",
+      "rating": 759,
+      "opponent": "BrentJeoff",
+      "opponentRating": 797,
+      "opening": "Nimzowitsch Defense"
+    },
     {
       "url": "https://www.chess.com/game/live/187811168952",
       "endedAt": "2026-11-23T04:27:49.000Z",
@@ -3246,28 +3272,6 @@
       "rating": 695,
       "opponent": "Charubi10",
       "opponentRating": 698,
-      "opening": "Scandinavian Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/187275993366",
-      "endedAt": "2026-11-15T17:09:31.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 687,
-      "opponent": "grumsher",
-      "opponentRating": 692,
-      "opening": "Queens Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/187165314228",
-      "endedAt": "2026-11-14T02:30:08.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "loss",
-      "rating": 679,
-      "opponent": "KarlHaupt",
-      "opponentRating": 685,
       "opening": "Scandinavian Defense"
     }
   ]
