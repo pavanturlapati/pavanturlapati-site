@@ -1,0 +1,11 @@
+Agents are speeding up both software delivery and attacks, and the basics decide how that goes.
+
+- Claude Ship adds agents that review, fix and approve code changes
+- UK NCSC reports a marked rise in AI-driven attacks on old weaknesses
+- Fowler's fragments: code health, agent pace and verification as the bottleneck
+
+Plus 7 more across AI, QSR and testing, each with the source and why it matters. Full edition below.
+
+https://pavanturlapati.com/weekly/2026-11-24/
+
+AI-generated from public sources.
