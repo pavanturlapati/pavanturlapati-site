@@ -5,10 +5,10 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 751,
+      "rating": 743,
       "best": 804,
       "win": 1794,
-      "loss": 1745,
+      "loss": 1746,
       "draw": 122
     },
     "blitz": {
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3760,
+  "totalGames": 3761,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2858,7 +2858,7 @@
     },
     {
       "date": "2026-11-24",
-      "rating": 751
+      "rating": 743
     }
   ],
   "openings": [
@@ -2944,6 +2944,17 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/187944214344",
+      "endedAt": "2026-11-24T21:31:35.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "loss",
+      "rating": 743,
+      "opponent": "usaahoff",
+      "opponentRating": 761,
+      "opening": "Italian Game"
+    },
     {
       "url": "https://www.chess.com/game/live/187885435342",
       "endedAt": "2026-11-24T04:53:59.000Z",
@@ -3262,17 +3273,6 @@
       "opponent": "TomahawkTDF",
       "opponentRating": 689,
       "opening": "Queens Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/187303908784",
-      "endedAt": "2026-11-16T02:49:07.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "win",
-      "rating": 695,
-      "opponent": "Charubi10",
-      "opponentRating": 698,
-      "opening": "Scandinavian Defense"
     }
   ]
 }
