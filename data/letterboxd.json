@@ -1,5 +1,18 @@
 [
   {
+    "id": "letterboxd-watch-1603283259",
+    "kind": "watch",
+    "title": "Clayface",
+    "year": 2026,
+    "rating": 3.5,
+    "watchedDate": "2026-11-25",
+    "rewatch": false,
+    "liked": false,
+    "url": "https://letterboxd.com/infi56/film/clayface/",
+    "review": null,
+    "publishedAt": "2026-11-26T06:12:01.000Z"
+  },
+  {
     "id": "letterboxd-watch-1601843506",
     "kind": "watch",
     "title": "The Hunger Games: Sunrise on the Reaping",
