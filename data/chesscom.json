@@ -5,10 +5,10 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 743,
+      "rating": 751,
       "best": 804,
-      "win": 1794,
-      "loss": 1746,
+      "win": 1797,
+      "loss": 1748,
       "draw": 122
     },
     "blitz": {
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3761,
+  "totalGames": 3766,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2859,6 +2859,18 @@
     {
       "date": "2026-11-24",
       "rating": 743
+    },
+    {
+      "date": "2026-11-25",
+      "rating": 751
+    },
+    {
+      "date": "2026-11-26",
+      "rating": 743
+    },
+    {
+      "date": "2026-11-27",
+      "rating": 751
     }
   ],
   "openings": [
@@ -2913,9 +2925,9 @@
     {
       "name": "Nimzowitsch Defense",
       "color": "black",
-      "games": 313,
-      "win": 151,
-      "loss": 153,
+      "games": 315,
+      "win": 152,
+      "loss": 154,
       "draw": 9
     },
     {
@@ -2944,6 +2956,61 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/188104711848",
+      "endedAt": "2026-11-27T01:06:50.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 751,
+      "opponent": "Kongensvej",
+      "opponentRating": 731,
+      "opening": "Nimzowitsch Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/188089534118",
+      "endedAt": "2026-11-26T19:59:59.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 743,
+      "opponent": "Oxathwa",
+      "opponentRating": 738,
+      "opening": "Queens Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/187963449936",
+      "endedAt": "2026-11-25T05:53:54.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "loss",
+      "rating": 751,
+      "opponent": "terribleltigo",
+      "opponentRating": 768,
+      "opening": "Nimzowitsch Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/187962351692",
+      "endedAt": "2026-11-25T05:22:36.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 759,
+      "opponent": "Jock21",
+      "opponentRating": 722,
+      "opening": "Queens Pawn Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/187961600406",
+      "endedAt": "2026-11-25T05:05:27.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "win",
+      "rating": 751,
+      "opponent": "sureshptaut",
+      "opponentRating": 723,
+      "opening": "Queens Pawn Opening"
+    },
     {
       "url": "https://www.chess.com/game/live/187944214344",
       "endedAt": "2026-11-24T21:31:35.000Z",
@@ -3218,61 +3285,6 @@
       "opponent": "mr_divyansh_mishra",
       "opponentRating": 735,
       "opening": "Kings Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/187376874260",
-      "endedAt": "2026-11-17T03:44:50.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "win",
-      "rating": 719,
-      "opponent": "lucas_cc27",
-      "opponentRating": 704,
-      "opening": "Philidor Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/187376542806",
-      "endedAt": "2026-11-17T03:26:41.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 711,
-      "opponent": "Sharvennnn",
-      "opponentRating": 666,
-      "opening": "French Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/187371331998",
-      "endedAt": "2026-11-17T01:01:28.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "win",
-      "rating": 703,
-      "opponent": "COMO-SIEMPREE",
-      "opponentRating": 683,
-      "opening": "Kings Fianchetto Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/187329925284",
-      "endedAt": "2026-11-16T13:07:49.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "loss",
-      "rating": 695,
-      "opponent": "andryhadrochyha",
-      "opponentRating": 723,
-      "opening": "Scandinavian Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/187304461016",
-      "endedAt": "2026-11-16T03:04:04.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 703,
-      "opponent": "TomahawkTDF",
-      "opponentRating": 689,
-      "opening": "Queens Pawn Opening"
     }
   ]
 }
