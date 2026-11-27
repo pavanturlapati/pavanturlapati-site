@@ -5,10 +5,10 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 751,
+      "rating": 724,
       "best": 804,
-      "win": 1797,
-      "loss": 1748,
+      "win": 1798,
+      "loss": 1751,
       "draw": 122
     },
     "blitz": {
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3766,
+  "totalGames": 3770,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2870,7 +2870,7 @@
     },
     {
       "date": "2026-11-27",
-      "rating": 751
+      "rating": 724
     }
   ],
   "openings": [
@@ -2901,9 +2901,9 @@
     {
       "name": "French Defense",
       "color": "white",
-      "games": 111,
+      "games": 113,
       "win": 54,
-      "loss": 54,
+      "loss": 56,
       "draw": 3
     },
     {
@@ -2925,9 +2925,9 @@
     {
       "name": "Nimzowitsch Defense",
       "color": "black",
-      "games": 315,
+      "games": 316,
       "win": 152,
-      "loss": 154,
+      "loss": 155,
       "draw": 9
     },
     {
@@ -2956,6 +2956,50 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/188137668234",
+      "endedAt": "2026-11-27T12:57:59.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 724,
+      "opponent": "SIBOI71",
+      "opponentRating": 696,
+      "opening": "Three Knights Opening"
+    },
+    {
+      "url": "https://www.chess.com/game/live/188106241582",
+      "endedAt": "2026-11-27T01:46:53.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 716,
+      "opponent": "Noobstergamer112",
+      "opponentRating": 603,
+      "opening": "French Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/188105898398",
+      "endedAt": "2026-11-27T01:34:36.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "loss",
+      "rating": 727,
+      "opponent": "Noobstergamer112",
+      "opponentRating": 582,
+      "opening": "Nimzowitsch Defense"
+    },
+    {
+      "url": "https://www.chess.com/game/live/188105411554",
+      "endedAt": "2026-11-27T01:25:04.000Z",
+      "timeClass": "rapid",
+      "color": "white",
+      "result": "loss",
+      "rating": 739,
+      "opponent": "Noobstergamer112",
+      "opponentRating": 558,
+      "opening": "French Defense"
+    },
     {
       "url": "https://www.chess.com/game/live/188104711848",
       "endedAt": "2026-11-27T01:06:50.000Z",
@@ -3241,50 +3285,6 @@
       "opponent": "breysanjaya",
       "opponentRating": 662,
       "opening": "Queens Pawn Opening"
-    },
-    {
-      "url": "https://www.chess.com/game/live/187526433566",
-      "endedAt": "2026-11-19T06:02:36.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "draw",
-      "rating": 695,
-      "opponent": "robercik14",
-      "opponentRating": 713,
-      "opening": "Indian Game"
-    },
-    {
-      "url": "https://www.chess.com/game/live/187480173998",
-      "endedAt": "2026-11-18T14:36:54.000Z",
-      "timeClass": "rapid",
-      "color": "black",
-      "result": "loss",
-      "rating": 695,
-      "opponent": "Griffin-5",
-      "opponentRating": 731,
-      "opening": "Scandinavian Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/187479855768",
-      "endedAt": "2026-11-18T14:24:17.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "loss",
-      "rating": 703,
-      "opponent": "RIYU-1991",
-      "opponentRating": 718,
-      "opening": "Englund Gambit"
-    },
-    {
-      "url": "https://www.chess.com/game/live/187449556810",
-      "endedAt": "2026-11-18T03:45:38.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "loss",
-      "rating": 711,
-      "opponent": "mr_divyansh_mishra",
-      "opponentRating": 735,
-      "opening": "Kings Pawn Opening"
     }
   ]
 }
