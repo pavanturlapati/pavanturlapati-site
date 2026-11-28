@@ -5,9 +5,9 @@
   "joinedAt": "2024-05-27T20:20:18.000Z",
   "ratings": {
     "rapid": {
-      "rating": 724,
+      "rating": 731,
       "best": 804,
-      "win": 1798,
+      "win": 1799,
       "loss": 1751,
       "draw": 122
     },
@@ -34,7 +34,7 @@
     }
   },
   "tactics": 1518,
-  "totalGames": 3770,
+  "totalGames": 3771,
   "rapidHistory": [
     {
       "date": "2024-06-14",
@@ -2871,6 +2871,10 @@
     {
       "date": "2026-11-27",
       "rating": 724
+    },
+    {
+      "date": "2026-11-28",
+      "rating": 731
     }
   ],
   "openings": [
@@ -2925,8 +2929,8 @@
     {
       "name": "Nimzowitsch Defense",
       "color": "black",
-      "games": 316,
-      "win": 152,
+      "games": 317,
+      "win": 153,
       "loss": 155,
       "draw": 9
     },
@@ -2956,6 +2960,17 @@
     }
   ],
   "games": [
+    {
+      "url": "https://www.chess.com/game/live/188187544724",
+      "endedAt": "2026-11-28T03:31:17.000Z",
+      "timeClass": "rapid",
+      "color": "black",
+      "result": "win",
+      "rating": 731,
+      "opponent": "GANGULY2007",
+      "opponentRating": 693,
+      "opening": "Nimzowitsch Defense"
+    },
     {
       "url": "https://www.chess.com/game/live/188137668234",
       "endedAt": "2026-11-27T12:57:59.000Z",
@@ -3274,17 +3289,6 @@
       "opponent": "MADHUSUDANMAHATO",
       "opponentRating": 699,
       "opening": "French Defense"
-    },
-    {
-      "url": "https://www.chess.com/game/live/187527112934",
-      "endedAt": "2026-11-19T06:11:24.000Z",
-      "timeClass": "rapid",
-      "color": "white",
-      "result": "win",
-      "rating": 702,
-      "opponent": "breysanjaya",
-      "opponentRating": 662,
-      "opening": "Queens Pawn Opening"
     }
   ]
 }
